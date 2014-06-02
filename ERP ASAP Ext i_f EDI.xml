@@ -1,0 +1,312 @@
+<?xml version="1.0" standalone="yes"?>
+<ROOT>
+  <xs:schema id="ROOT" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+    <xs:element name="ROOT" msdata:IsDataSet="true" msdata:Locale="" msdata:EnforceConstraints="False" msprop:Id="0f9daa67-4fe0-4ffb-9d8a-70204dc1ed78">
+      <xs:complexType>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element name="SchemaExtension" msdata:Locale="" msdata:DisplayExpression="'SchemaExtension'" msprop:Id="be6e112c-c8b3-48c6-85e3-1416c3c521a9" msprop:EntityId="d0e64ed8-2784-41ef-af7d-fabd05f5fed8" msprop:IsAuditingEnabled="False">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Description" msprop:OnCopyAction="Copy" msprop:AsapDataType="Memo" msprop:Id="08e29b5d-ce07-4215-a6de-575888d7cce1" msprop:FieldId="ba9014e3-8ef9-421f-aefe-4418b438954e" type="xs:string" minOccurs="0" msdata:Ordinal="3" />
+                <xs:element name="SchemaItemGroup" msdata:Locale="" msdata:DisplayExpression="'SchemaItemGroup'" msprop:Id="7b7987ca-e513-4b78-b985-3a30f35fa609" msprop:EntityId="fc5987dc-c5ca-4548-9d72-3fc78ac9545f" msprop:IsAuditingEnabled="False" minOccurs="0" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:attribute name="Id" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="53df1e03-33a3-44da-a086-a7b52b26834d" msprop:FieldId="b71c3496-6050-4209-85f7-573d98275605" type="xs:string" use="required" />
+                    <xs:attribute name="Name" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="fd01595b-60be-480e-9636-3d441ffe4d87" msprop:FieldId="81efce43-cc7c-41dc-a59d-853c1907f3c8" use="required">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="255" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="RootItemType" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="20ba453d-b078-4efc-bfcc-6dd4ddcc99c2" msprop:FieldId="60f99916-7bbb-432c-9c24-5a0255ef0ec4">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="255" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="refParentItemId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="f9cfe0ac-a6b8-4796-b0bd-4aadebd9f9b0" msprop:FieldId="b2176861-f027-4b8a-9dad-da1c8dec1fe5" type="xs:string" />
+                    <xs:attribute name="refParentGroupId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="5cc0b753-0036-4212-9637-f9af32277e2f" msprop:FieldId="e378f7bd-cab0-4334-aeb9-47f0b3412e50" type="xs:string" />
+                    <xs:attribute name="refSchemaExtensionId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="da37649d-1dce-49fc-9094-979aad8e86c2" msprop:FieldId="2777d776-b22d-4986-9193-e6c6c91337b6" type="xs:string" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="PackageReference" msdata:Locale="" msdata:DisplayExpression="'PackageReference'" msprop:Id="a7e80ddf-e5b7-4cd5-af07-8c11101ed038" msprop:EntityId="6af453f2-a9eb-41d7-83dd-7f08470c397b" msprop:IsAuditingEnabled="False" minOccurs="0" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="PackageReferenceElement" msdata:Locale="" msdata:DisplayExpression="'PackageReferenceElement'" msprop:Id="a41c0db8-d071-41f8-995a-d352e7791ee6" msprop:EntityId="384a3a24-3c6a-4580-806b-711b10f13854" msprop:IsAuditingEnabled="False" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                          <xs:attribute name="refPackageReferenceId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="001b208a-198b-4650-86d5-9edbbb2fec7f" msprop:FieldId="cb53013a-7f7c-426b-b03c-a903d3801c5e" type="xs:string" use="required" />
+                          <xs:attribute name="Id" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="53df1e03-33a3-44da-a086-a7b52b26834d" msprop:FieldId="18e71a51-0c7b-4f2b-8db1-9ef893ec7c6d" type="xs:string" use="required" />
+                          <xs:attribute name="refElementId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="14b3e41b-d3e9-4608-99b6-a8114ba07af8" msprop:FieldId="3bfb3915-ef72-401d-bdf1-92b01fa5295a" type="xs:string" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="Id" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="53df1e03-33a3-44da-a086-a7b52b26834d" msprop:FieldId="00f09c8f-db86-4059-9844-6a3b79d2299d" type="xs:string" use="required" />
+                    <xs:attribute name="IncludeAllElements" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="Boolean" msprop:Id="2ac69e1b-3637-4463-9346-93dfd8a2b5d2" msprop:FieldId="2634bec2-e8f5-4608-9234-bacab2b13713" type="xs:boolean" msdata:DefaultValue="false" use="required" />
+                    <xs:attribute name="ReferenceType" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="Integer" msprop:Id="5dafd694-e52e-4473-ad9f-42c5cf75868a" msprop:FieldId="c092731a-1f7d-4c0f-9d9c-fdea973fe093" type="xs:int" use="required" />
+                    <xs:attribute name="refPackageId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="f1c7fb3a-af55-4b7b-ac63-b00426964434" msprop:FieldId="3d584d2b-1855-45aa-a665-a02e395849ae" type="xs:string" use="required" />
+                    <xs:attribute name="refReferencedPackageId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="9b07e230-65fc-440d-8c63-ba5090b958e4" msprop:FieldId="da3d5fdb-0b31-4d39-9eb8-2e199af6bea9" type="xs:string" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="SchemaItem" msdata:Locale="" msdata:DisplayExpression="'SchemaItem'" msprop:Id="2fea8f01-fe4d-4414-abfe-dd463bc8d2bb" msprop:EntityId="77fdc536-f95d-47fd-baad-cd1cf8a4627d" msprop:IsAuditingEnabled="False" minOccurs="0" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="M01" msprop:OnCopyAction="Copy" msprop:AsapDataType="Memo" msprop:Id="13dc21ad-72b0-4b46-9819-56ae933d2786" msprop:FieldId="1ee848fe-30c6-4e59-8298-c4f7413fd4d6" type="xs:string" minOccurs="0" msdata:Ordinal="11" />
+                      <xs:element name="BLB01" msprop:OnCopyAction="Copy" msprop:AsapDataType="Blob" msprop:Id="296e38a1-dcd9-4ec4-a073-1a4d04b51707" msprop:FieldId="8f344f6b-7bc6-44a9-839c-f18936aa09b1" type="xs:base64Binary" minOccurs="0" msdata:Ordinal="58" />
+                      <xs:element name="Documentation" msdata:Locale="" msdata:DisplayExpression="'Documentation'" msprop:Id="44e3d13d-ea2c-4ede-9576-9601ab90d082" msprop:EntityId="ff084c11-c0a3-4d9c-bd38-0344300e60f4" msprop:IsAuditingEnabled="False" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="Data" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="Memo" msprop:Id="35098b11-ec3a-4f2d-b448-2db7601e974e" msprop:FieldId="0e83642a-8c8c-49d1-b5d5-56b5f8b36880" type="xs:string" msdata:Ordinal="2" />
+                          </xs:sequence>
+                          <xs:attribute name="Id" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="53df1e03-33a3-44da-a086-a7b52b26834d" msprop:FieldId="9e4d8be5-3770-4623-9ace-96e1f19bc311" type="xs:string" use="required" />
+                          <xs:attribute name="Category" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="d5702a7f-2314-4e30-b14a-a0ce5bd5e12e" msprop:FieldId="228558ed-b1b7-4ece-a119-844f7cf64323" use="required">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="50" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:attribute>
+                          <xs:attribute name="refSchemaItemId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="17d119e5-f71b-4c0f-8563-4834396a4c02" msprop:FieldId="89c0ae14-3587-46f4-b23b-17ba51c5debd" type="xs:string" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="SchemaItemAncestor" msdata:Locale="" msdata:DisplayExpression="'SchemaItemAncestor'" msprop:Id="33daf552-0c4f-4783-8520-eefb860c4756" msprop:EntityId="54341dd2-f706-4eeb-b138-cb24e9f7b10c" msprop:IsAuditingEnabled="False" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                          <xs:attribute name="refAncestorId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="a1246849-7ad3-4b1f-b63d-2dcf93b3061d" msprop:FieldId="bbe04633-1b8f-4d4d-82f2-ad07e287450e" type="xs:string" use="required" />
+                          <xs:attribute name="Id" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="53df1e03-33a3-44da-a086-a7b52b26834d" msprop:FieldId="88c99b15-eb9a-4f2b-8e82-a2f0886c29b8" type="xs:string" use="required" />
+                          <xs:attribute name="refSchemaItemId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="68eb9562-ef64-454c-b949-93851775044b" msprop:FieldId="b5f25679-046f-4830-9f4c-a2b6e353875f" type="xs:string" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="Id" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="53df1e03-33a3-44da-a086-a7b52b26834d" msprop:FieldId="a08ecc32-0996-4bdb-b4be-b60a1ad80512" type="xs:string" use="required" />
+                    <xs:attribute name="ItemType" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="cba9749e-1409-4615-8fef-f41fbf582420" msprop:FieldId="ea414940-0660-4518-bf2b-86e013f9c19f" use="required">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="255" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="Name" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="ff977f39-2dc6-4cf1-9317-75e1db177e9c" msprop:FieldId="20b7e0f1-a9ce-439b-ae06-36320c582c05" use="required">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="255" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="TargetType" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="37dba61f-9158-42c7-9111-f186b85a4f25" msprop:FieldId="c2263d6b-8ef7-4e09-8558-21d8bf43e54a" use="required">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="255" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="IsAbstract" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="Boolean" msprop:Id="72d42326-b43b-4874-afe8-0108c66cb8b2" msprop:FieldId="5e52f91a-7385-4890-9fc6-3d77ba72830a" type="xs:boolean" msdata:DefaultValue="false" use="required" />
+                    <xs:attribute name="SS01" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="d617d07f-c770-464b-b851-a7925ef8204d" msprop:FieldId="7c7f4bd5-8918-472e-8d86-a3c846a0dd13">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="300" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="SS02" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="d69514c5-1563-4f49-b5c5-960e1316a523" msprop:FieldId="33b480a4-7019-47c7-bbab-a8c1981e4611">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="300" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="SS03" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="d20b085f-dc5b-49e4-b088-603bdf22d3f1" msprop:FieldId="efe5c45e-8723-4563-a2b2-24503c47a3af">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="300" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="SS04" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="e291d0ff-e131-4b71-86bb-977453614061" msprop:FieldId="451cca40-7d96-405b-ba4c-e53de91eaea4">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="300" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="SS05" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="d9b0beb2-a82c-47bf-85e9-bcdf3d0455ed" msprop:FieldId="66258bb4-05a1-4816-8d71-3e8ca7708fb9">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="300" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="LS01" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="6913a880-e063-4cfb-9339-db643bc2b22d" msprop:FieldId="2155b17b-0d20-4e84-87b9-2fc658a50f6d">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2000" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="I01" msprop:OnCopyAction="Copy" msprop:AsapDataType="Integer" msprop:Id="ba93d48c-c127-4d7f-9d7c-633c827063f3" msprop:FieldId="648c752b-edce-4dc4-ad00-52eca3153753" type="xs:int" />
+                    <xs:attribute name="I02" msprop:OnCopyAction="Copy" msprop:AsapDataType="Integer" msprop:Id="8b1df231-f037-4cd6-a578-b8288a3509ba" msprop:FieldId="e48b9c98-4182-4d18-ad93-f32883864f77" type="xs:int" />
+                    <xs:attribute name="I03" msprop:OnCopyAction="Copy" msprop:AsapDataType="Integer" msprop:Id="808d76d6-5a81-4b1b-8b2b-14bfddb9254a" msprop:FieldId="49ac0d13-ca79-46a1-b38b-1f674b4c1447" type="xs:int" />
+                    <xs:attribute name="I04" msprop:OnCopyAction="Copy" msprop:AsapDataType="Integer" msprop:Id="74f0bcff-713f-4b43-b614-1c0f833082d9" msprop:FieldId="87640767-b67a-4a5b-94f5-07c891708474" type="xs:int" />
+                    <xs:attribute name="I05" msprop:OnCopyAction="Copy" msprop:AsapDataType="Integer" msprop:Id="06232210-a457-4633-88d4-df0982e74c86" msprop:FieldId="eae310b7-5ffa-4855-acd8-ce2423ea310f" type="xs:int" />
+                    <xs:attribute name="I06" msprop:OnCopyAction="Copy" msprop:AsapDataType="Integer" msprop:Id="a8bfddfd-cfa9-4e3e-80fc-f89d73a0b3ce" msprop:FieldId="896f0906-6696-45d9-9725-35dafd17deb7" type="xs:int" />
+                    <xs:attribute name="I07" msprop:OnCopyAction="Copy" msprop:AsapDataType="Integer" msprop:Id="79ed1f91-5847-44dd-8fc3-6d661fb4c9e4" msprop:FieldId="0b8b1a16-0cb9-41ff-86cd-3ea7758cc75e" type="xs:int" />
+                    <xs:attribute name="I08" msprop:OnCopyAction="Copy" msprop:AsapDataType="Integer" msprop:Id="35bab912-64e3-4877-86cf-f2e9d594a873" msprop:FieldId="f860344d-6630-4f95-b8c2-93f2d1ba4f12" type="xs:int" />
+                    <xs:attribute name="I09" msprop:OnCopyAction="Copy" msprop:AsapDataType="Integer" msprop:Id="c71b32a5-35b2-4313-a862-2af55408202b" msprop:FieldId="ecbfe1e7-7e8f-4d6d-ac04-6a0e33f48204" type="xs:int" />
+                    <xs:attribute name="F01" msprop:OnCopyAction="Copy" msprop:AsapDataType="Float" msprop:Id="01b00326-868c-4fc9-b377-34db3d63c34c" msprop:FieldId="3d87ecc9-cf53-4144-9506-794a586287fb" type="xs:decimal" />
+                    <xs:attribute name="F02" msprop:OnCopyAction="Copy" msprop:AsapDataType="Float" msprop:Id="40a46b48-ce33-497b-bfe9-a703b13122ac" msprop:FieldId="e81861c3-a9b7-4a5d-b800-121ff203c36c" type="xs:decimal" />
+                    <xs:attribute name="D01" msprop:OnCopyAction="Copy" msprop:AsapDataType="Date" msprop:Id="cd77f122-7430-415f-96d4-cd16160ac45c" msprop:FieldId="58df35c9-6f36-46b1-b538-e7e6ab84af0a" type="xs:dateTime" />
+                    <xs:attribute name="D02" msprop:OnCopyAction="Copy" msprop:AsapDataType="Date" msprop:Id="9012ea9c-cf91-4d83-9f7a-1c3b08c22209" msprop:FieldId="bde28821-a9c7-4e1b-a537-8be6b0433152" type="xs:dateTime" />
+                    <xs:attribute name="D03" msprop:OnCopyAction="Copy" msprop:AsapDataType="Date" msprop:Id="a7caa6eb-d3d2-4041-ad16-02b424ba80f9" msprop:FieldId="c702720c-1269-4043-a7fe-55e4e2d340b4" type="xs:dateTime" />
+                    <xs:attribute name="D04" msprop:OnCopyAction="Copy" msprop:AsapDataType="Date" msprop:Id="093f0707-ae20-4a5a-9788-efa0438d3a54" msprop:FieldId="b21bb3f4-3981-4136-b719-867bda595bbe" type="xs:dateTime" />
+                    <xs:attribute name="L01" msprop:OnCopyAction="Copy" msprop:AsapDataType="Long" msprop:Id="48497ad7-d883-4691-96e2-1e36e235b39a" msprop:FieldId="51a76de4-886c-478e-a3fd-49688afb3096" type="xs:long" />
+                    <xs:attribute name="L02" msprop:OnCopyAction="Copy" msprop:AsapDataType="Long" msprop:Id="11e6ded7-b966-4a01-9d67-8fdbab4e7334" msprop:FieldId="16940927-0a02-4ce9-bc57-61d69368d96f" type="xs:long" />
+                    <xs:attribute name="C01" msprop:OnCopyAction="Copy" msprop:AsapDataType="Currency" msprop:Id="c95c9bf9-9729-49a0-b584-47d25b3e0a69" msprop:FieldId="7f5066e2-7db0-4a8f-8e97-2f6073611ea4" type="xs:decimal" />
+                    <xs:attribute name="C02" msprop:OnCopyAction="Copy" msprop:AsapDataType="Currency" msprop:Id="5e314abf-5b5c-430b-a828-754dfbcb73f4" msprop:FieldId="6f42db81-2a38-4ad6-a7cb-9897099db200" type="xs:decimal" />
+                    <xs:attribute name="B01" msprop:OnCopyAction="Copy" msprop:AsapDataType="Boolean" msprop:Id="adae6242-798d-4856-b76f-7d078f45118a" msprop:FieldId="0d4c8ec5-5cfc-4159-9734-ad1740790f4d" type="xs:boolean" default="false" />
+                    <xs:attribute name="B02" msprop:OnCopyAction="Copy" msprop:AsapDataType="Boolean" msprop:Id="627506a3-8f87-4676-b931-f9f718560b23" msprop:FieldId="883926a2-7b7f-4235-971f-e45b9767f60e" type="xs:boolean" default="false" />
+                    <xs:attribute name="B03" msprop:OnCopyAction="Copy" msprop:AsapDataType="Boolean" msprop:Id="6d78b294-55ea-4fae-9eb0-33e1cffbc983" msprop:FieldId="01aac5c9-f3ac-43c1-9e9c-18d5e17a509c" type="xs:boolean" default="false" />
+                    <xs:attribute name="B04" msprop:OnCopyAction="Copy" msprop:AsapDataType="Boolean" msprop:Id="0e37bd6e-4be6-4138-8cd7-ed47ceb2671e" msprop:FieldId="aa694e67-48ea-42a9-ba4f-9146dc4304b9" type="xs:boolean" default="false" />
+                    <xs:attribute name="B05" msprop:OnCopyAction="Copy" msprop:AsapDataType="Boolean" msprop:Id="b34e2bdb-2557-4bf8-8767-932273037e7e" msprop:FieldId="9570d577-1173-4740-bdce-09510c82ae75" type="xs:boolean" default="false" />
+                    <xs:attribute name="B06" msprop:OnCopyAction="Copy" msprop:AsapDataType="Boolean" msprop:Id="01bd19c5-a0fb-47de-a2ee-84294d431ef7" msprop:FieldId="f7e911fc-f29a-4d87-aa92-eeb085a01ad2" type="xs:boolean" default="false" />
+                    <xs:attribute name="B07" msprop:OnCopyAction="Copy" msprop:AsapDataType="Boolean" msprop:Id="8f7bb651-403e-42e6-a7b2-fa99f3a99071" msprop:FieldId="f5bb7ff5-90b6-4d4d-9e08-37f86330d257" type="xs:boolean" default="false" />
+                    <xs:attribute name="G01" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="d7ff43e9-8e74-4f68-863f-b162c671535b" msprop:FieldId="59ebc4f8-9748-4df5-8186-80c23f747d08" type="xs:string" />
+                    <xs:attribute name="G02" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="30dcdab0-d8b4-4a4d-972a-d187f7885e5e" msprop:FieldId="8c9aa356-a176-4e2b-99f6-03cba3cdb4e6" type="xs:string" />
+                    <xs:attribute name="G03" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="43268500-04f4-436d-bc63-b06d5dfe0d52" msprop:FieldId="cf87da48-0dca-4784-a090-2a26c5b5d678" type="xs:string" />
+                    <xs:attribute name="G04" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="9d28ef37-3ec9-429c-9fe3-f376d79f3047" msprop:FieldId="76db973c-ae6d-480b-9905-bd0e80688cb8" type="xs:string" />
+                    <xs:attribute name="G05" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="0e9366d4-ba0c-41e1-8c66-f9b5ebaad8e3" msprop:FieldId="2073531f-d454-4065-873a-da8f76ebcf3d" type="xs:string" />
+                    <xs:attribute name="G06" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="3a8e632e-9e81-4628-857e-8293f8089d77" msprop:FieldId="002946b1-6b94-4f24-9b82-d054e49e046b" type="xs:string" />
+                    <xs:attribute name="G07" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="3942ce6e-2e67-4a40-b591-61ff1bdf8228" msprop:FieldId="b44d4946-26cb-49d5-9e68-c8dbd03c39bb" type="xs:string" />
+                    <xs:attribute name="G08" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="1d6abcdf-05a2-4c74-9dd9-88bfeacd48ff" msprop:FieldId="f4858875-41c0-488f-b4d9-19f121a3fbfc" type="xs:string" />
+                    <xs:attribute name="G09" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="d71967e3-b604-4ff7-bd1f-ff14a8d09b21" msprop:FieldId="90d130fa-67ee-471c-a393-aa84f6f4e428" type="xs:string" />
+                    <xs:attribute name="G10" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="b6f6d9e3-2def-4ce6-9435-2cfaa10d2dcd" msprop:FieldId="3eb9b626-4b60-4009-be91-2e67c84d2574" type="xs:string" />
+                    <xs:attribute name="G11" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="a8c9e9e3-b632-4af8-ab70-f77286889f2c" msprop:FieldId="aab3f65c-ab76-4092-9676-e74b6d7c83d4" type="xs:string" />
+                    <xs:attribute name="G12" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="66248f17-b4bf-4034-bbc3-0cf8961839c5" msprop:FieldId="5f0ca696-8353-42c9-bf04-02640a4167bd" type="xs:string" />
+                    <xs:attribute name="G13" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="e274f99b-26dc-4a11-ab9d-df6636d0199d" msprop:FieldId="fe15e159-2a8b-43d9-8a50-3b0498d1984c" type="xs:string" />
+                    <xs:attribute name="G14" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="68fe4914-3d81-42ec-b9c7-a6261ed36c8f" msprop:FieldId="788bbbe7-9618-4ba1-8748-ba6442a23d25" type="xs:string" />
+                    <xs:attribute name="G15" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="5c4a468a-a905-41e5-a938-7f226c65adb1" msprop:FieldId="e5d41984-4170-43ad-ad2d-48c3727cdb09" type="xs:string" />
+                    <xs:attribute name="G16" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="31c088b6-1a8a-4778-a466-aae47c37fc03" msprop:FieldId="b4a99103-9ddb-434d-8605-a5f76f04826e" type="xs:string" />
+                    <xs:attribute name="G17" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="b7dc16a9-8699-4770-90c7-997c003b5739" msprop:FieldId="1426b54d-a4e2-403b-829d-ae90180c6610" type="xs:string" />
+                    <xs:attribute name="G18" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="485b2fc5-c3a7-4618-b99c-140906336749" msprop:FieldId="229e77d4-6ee0-4dd5-8b6f-46b726740001" type="xs:string" />
+                    <xs:attribute name="G19" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="8efb71d6-eeaf-4697-a882-39100f8ac200" msprop:FieldId="cc014452-eca6-42a9-9a34-c96505ca01fb" type="xs:string" />
+                    <xs:attribute name="G20" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="ca0daaf2-5867-4490-b662-f2464a16a0d6" msprop:FieldId="cf0af0e2-9422-46f8-8c93-14b8aa01931e" type="xs:string" />
+                    <xs:attribute name="refSchemaItemGroupId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="f99588a5-7489-4efc-ba56-4133c9477abb" msprop:FieldId="3d81a2ed-e001-425a-b257-bc91cbaa6453" type="xs:string" />
+                    <xs:attribute name="refSchemaExtensionId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="608020a9-c7d7-4bbb-b050-f4e168efd47c" msprop:FieldId="b588d34c-8e90-45b1-96be-910c43353284" type="xs:string" use="required" />
+                    <xs:attribute name="refParentItemId" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="f6cfc82f-1e37-42fd-90be-83a47ae824a1" msprop:FieldId="708bdcdf-6f57-41e7-b8be-14dc49bf850e" type="xs:string" />
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute name="Id" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="UniqueIdentifier" msprop:Id="23f1ecad-5250-49c1-b9bb-130604a60e13" msprop:FieldId="d0599c4a-24ee-4436-a6c6-5a6dd0d24c0a" type="xs:string" use="required" />
+              <xs:attribute name="Name" msprop:AllowNulls="False" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="bc61ffeb-7d18-4c4b-b810-c731532ac4f1" msprop:FieldId="4b5a0766-f3e6-49b6-8348-4fbb114a1bd1" use="required">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:attribute>
+              <xs:attribute name="Version" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="f0a32e71-d3e2-41c1-8fd5-0c63a182efe2" msprop:FieldId="e3ed2112-2ecf-48af-a732-7e60c620db05">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:attribute>
+              <xs:attribute name="Copyright" msprop:OnCopyAction="Copy" msprop:AsapDataType="String" msprop:Id="d005fd3e-580a-4f69-a78e-22fed00cff9c" msprop:FieldId="8724ca8e-c1c1-4629-99fc-c4750d5ca91f">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:attribute>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="SchemaItemGroup_PK_Id" msdata:ConstraintName="PK_Id" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//SchemaItemGroup" />
+        <xs:field xpath="@Id" />
+      </xs:unique>
+      <xs:unique name="PackageReferenceElement_PK_Id" msdata:ConstraintName="PK_Id" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//PackageReferenceElement" />
+        <xs:field xpath="@Id" />
+      </xs:unique>
+      <xs:unique name="PackageReference_PK_Id" msdata:ConstraintName="PK_Id" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//PackageReference" />
+        <xs:field xpath="@Id" />
+      </xs:unique>
+      <xs:unique name="Documentation_PK_Id" msdata:ConstraintName="PK_Id" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Documentation" />
+        <xs:field xpath="@Id" />
+      </xs:unique>
+      <xs:unique name="SchemaItemAncestor_PK_Id" msdata:ConstraintName="PK_Id" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//SchemaItemAncestor" />
+        <xs:field xpath="@Id" />
+      </xs:unique>
+      <xs:unique name="SchemaItem_PK_Id" msdata:ConstraintName="PK_Id" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//SchemaItem" />
+        <xs:field xpath="@Id" />
+      </xs:unique>
+      <xs:unique name="PK_Id" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//SchemaExtension" />
+        <xs:field xpath="@Id" />
+      </xs:unique>
+      <xs:keyref name="FK_SchemaItem" refer="SchemaItem_PK_Id" msdata:RelationName="ChildSchemaItem">
+        <xs:selector xpath=".//SchemaItem" />
+        <xs:field xpath="@refParentItemId" />
+      </xs:keyref>
+      <xs:keyref name="SchemaItem_FK_SchemaExtension" refer="PK_Id" msdata:ConstraintName="FK_SchemaExtension" msdata:IsNested="true" msdata:RelationName="SchemaItem">
+        <xs:selector xpath=".//SchemaItem" />
+        <xs:field xpath="@refSchemaExtensionId" />
+      </xs:keyref>
+      <xs:keyref name="SchemaItemAncestor_FK_SchemaItem" refer="SchemaItem_PK_Id" msdata:ConstraintName="FK_SchemaItem" msdata:IsNested="true" msdata:RelationName="SchemaItemAncestor">
+        <xs:selector xpath=".//SchemaItemAncestor" />
+        <xs:field xpath="@refSchemaItemId" />
+      </xs:keyref>
+      <xs:keyref name="Documentation_FK_SchemaItem" refer="SchemaItem_PK_Id" msdata:ConstraintName="FK_SchemaItem" msdata:IsNested="true" msdata:RelationName="Documentation">
+        <xs:selector xpath=".//Documentation" />
+        <xs:field xpath="@refSchemaItemId" />
+      </xs:keyref>
+      <xs:keyref name="PackageReference_FK_SchemaExtension" refer="PK_Id" msdata:ConstraintName="FK_SchemaExtension" msdata:IsNested="true" msdata:RelationName="PackageReference">
+        <xs:selector xpath=".//PackageReference" />
+        <xs:field xpath="@refPackageId" />
+      </xs:keyref>
+      <xs:keyref name="FK_PackageReference" refer="PackageReference_PK_Id" msdata:IsNested="true" msdata:RelationName="PackageReferenceElement">
+        <xs:selector xpath=".//PackageReferenceElement" />
+        <xs:field xpath="@refPackageReferenceId" />
+      </xs:keyref>
+      <xs:keyref name="FK_SchemaExtension" refer="PK_Id" msdata:IsNested="true" msdata:RelationName="SchemaItemGroup">
+        <xs:selector xpath=".//SchemaItemGroup" />
+        <xs:field xpath="@refSchemaExtensionId" />
+      </xs:keyref>
+    </xs:element>
+  </xs:schema>
+  <SchemaExtension Id="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" Name="ERP ASAP Ext i/f EDI" Version="2.6" Copyright="">
+    <Description />
+    <SchemaItemGroup Id="c7fd5e84-787b-4663-9b71-c771a309433c" Name="EDI Ext" RootItemType="DeploymentVersion" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" />
+    <PackageReference Id="824a0ac4-3630-4aac-8a2b-e014d784c597" IncludeAllElements="true" ReferenceType="1" refPackageId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refReferencedPackageId="756a579c-57a2-4590-bc09-683f8a4eece4" />
+    <PackageReference Id="f0637d8e-a719-4c3a-85d5-ec87efd499a0" IncludeAllElements="true" ReferenceType="1" refPackageId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refReferencedPackageId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
+    <SchemaItem Id="edc10270-78e9-4cf6-97ca-8312750b9f27" ItemType="DataConstant" Name="BusinessPartnerCommunicationChannelType_AddressCrossdocking" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataConstant" IsAbstract="false" LS01="" I01="0" I02="10" F01="0" C01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G02="f9e1beba-17c6-40d0-b3dc-c40d23632eaa" refSchemaItemGroupId="50d72285-3969-49e7-a35c-5ba705b9fb0b" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" />
+    <SchemaItem Id="1942b13a-ff90-415c-a9d7-5c76d70c258b" ItemType="DeploymentVersion" Name="1.1" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="1.1" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="c7fd5e84-787b-4663-9b71-c771a309433c" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" />
+    <SchemaItem Id="506277f6-4359-422d-afb8-4a8c1894c23c" ItemType="DeploymentUpdateScriptActivity" Name="00010_AddRoles" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refParentItemId="1942b13a-ff90-415c-a9d7-5c76d70c258b">
+      <M01>INSERT INTO AsapApplicationRole (Id, Name, Description, IsSystemRole, RecordCreated) VALUES (newid(), 'WF_Sync_EDI_ExportDeliveryNotesOutbound', 'Průvodce: Menu &gt; Synchronizace &gt; Export dodacích listů EDI', 1, getdate())
+INSERT INTO AsapApplicationRole (Id, Name, Description, IsSystemRole, RecordCreated) VALUES (newid(), 'FRM_Sync_Config_EDIDelivery', 'Formulář: Menu &gt; Synchronizace &gt; Základní data &gt; Konfigurace poskytovatelů &gt; EDI Dodací listy', 1, getdate())
+</M01>
+    </SchemaItem>
+    <SchemaItem Id="36eb8614-bf6f-4de6-b35e-3cedfeac2430" ItemType="DeploymentVersion" Name="1.0.0" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="1.0.0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="c7fd5e84-787b-4663-9b71-c771a309433c" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" />
+    <SchemaItem Id="95fae247-c0a7-406b-9ecb-8a3e832543cb" ItemType="DeploymentUpdateScriptActivity" Name="00010_AddRoles" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refParentItemId="36eb8614-bf6f-4de6-b35e-3cedfeac2430">
+      <M01>INSERT INTO AsapApplicationRole (Id, Name, Description, IsSystemRole, RecordCreated) VALUES (newid(), 'FRM_Sync_Config_EDIBills', 'Formulář: Menu &gt; Synchronizace &gt; Základní data &gt; Konfigurace poskytovatelů &gt; EDI fakturace', 1, getdate())
+INSERT INTO AsapApplicationRole (Id, Name, Description, IsSystemRole, RecordCreated) VALUES (newid(), 'WF_Sync_EDI_ExportSalesBills', 'Průvodce: Menu &gt; Synchronizace &gt; Export vydaných faktur EDI', 1, getdate())</M01>
+    </SchemaItem>
+    <SchemaItem Id="a37a2827-d061-4b95-82e4-6e1b3d8b8460" ItemType="DeploymentVersion" Name="2.5" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2.5" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="c7fd5e84-787b-4663-9b71-c771a309433c" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" />
+    <SchemaItem Id="b038c09e-343c-4745-bd1b-1bf00f882f33" ItemType="DeploymentVersion" Name="2.0" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2.0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="c7fd5e84-787b-4663-9b71-c771a309433c" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" />
+    <SchemaItem Id="e35f892b-0149-4889-b44a-df4837b1647b" ItemType="DeploymentVersion" Name="2.6" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2.6" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="c7fd5e84-787b-4663-9b71-c771a309433c" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" />
+    <SchemaItem Id="6622b53e-cdcf-4dd2-a609-431aa0dc7c28" ItemType="DataStructureDefaultSet" Name="EDI_Delivery" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureDefaultSet" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refParentItemId="bcad0ea2-8715-41ed-8301-ddd493032d19" />
+    <SchemaItem Id="b2906234-b1b4-4fbe-905a-d44b44d07850" ItemType="DataStructureDefaultSet" Name="Delivery" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureDefaultSet" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refParentItemId="bcad0ea2-8715-41ed-8301-ddd493032d19" />
+    <SchemaItem Id="cb003021-f129-4f37-acdd-38070dc12df5" ItemType="DataStructureDefaultSetDefault" Name="AsapSyncProviderConfig_refAsapSyncProviderId_AsapSyncProvider_EDIDeliveryNotes" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureDefaultSetDefault" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="e1e4244a-1d40-4c49-9d21-8b4ac0d7fc14" G02="199ddc65-ad8c-4401-8678-acf5993dd123" G03="109af2b1-9ba8-456b-9c41-bb26806413a4" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refParentItemId="6622b53e-cdcf-4dd2-a609-431aa0dc7c28" />
+    <SchemaItem Id="1dc98091-bfbb-4773-8e76-38119310433d" ItemType="DataStructureDefaultSetDefault" Name="AsapSyncProviderConfig_refAsapSyncProviderId_AsapSyncProvider_AsapDeliveryNotes" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureDefaultSetDefault" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="e1e4244a-1d40-4c49-9d21-8b4ac0d7fc14" G02="018df4ac-5045-4859-b0c8-79075ee2fb34" G03="109af2b1-9ba8-456b-9c41-bb26806413a4" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refParentItemId="b2906234-b1b4-4fbe-905a-d44b44d07850" />
+    <SchemaItem Id="82ef743f-999a-498b-9d21-9a8e9afd7e17" ItemType="DataStructureFilterSet" Name="EDI_DeliveryNotes" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSet" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refParentItemId="bcad0ea2-8715-41ed-8301-ddd493032d19" />
+    <SchemaItem Id="48f8c746-0d10-4d64-9b5b-d44dd28023a6" ItemType="DataStructureFilterSetFilter" Name="AsapSyncProviderConfig_GetAsapSyncProvider_EDIDeliveryNotes" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSetFilter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="e1e4244a-1d40-4c49-9d21-8b4ac0d7fc14" G02="b1b3b47a-ed94-40dc-974b-691cc8f1de4c" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refParentItemId="82ef743f-999a-498b-9d21-9a8e9afd7e17" />
+    <SchemaItem Id="bfa69592-820d-411c-bfaf-37b78c114bce" ItemType="MenuItem" Name="AsapSyncProviderConfig_EDIDeliveryNotes" TargetType="CZ.Advantages.Asap.Schema.MenuModel.FormReferenceMenuItem" IsAbstract="false" SS01="EDI Dodací listy" LS01="FRM_Sync_Config_EDIDelivery" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G02="0159ebb5-71a4-4a56-803b-1cf478ad7e4b" G03="6622b53e-cdcf-4dd2-a609-431aa0dc7c28" G04="82ef743f-999a-498b-9d21-9a8e9afd7e17" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refParentItemId="a264b397-be78-4913-b8bc-38a3b10f5ce1" />
+    <SchemaItem Id="d3567df1-b00d-4d32-a7d6-4e00612da220" ItemType="MenuItem" Name="AsapSyncProviderConfig_EDIBills" TargetType="CZ.Advantages.Asap.Schema.MenuModel.FormReferenceMenuItem" IsAbstract="false" SS01="EDI fakturace" LS01="FRM_Sync_Config_EDIBills" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G02="39b2d0eb-a4c9-4a61-a9d1-b3003dd13505" G03="d5199029-fbc7-463d-84be-e68f69b81821" G04="7824297d-b09a-4d22-8ac2-a07f21230538" G09="2a5dc9b3-d7a6-45e0-8c1a-92cc7f8fd5ef" G10="2a3955b4-68af-4303-9f90-ce8f134eba45" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refParentItemId="a264b397-be78-4913-b8bc-38a3b10f5ce1" />
+    <SchemaItem Id="09b2037b-9e97-4313-8d7f-86e8aa01cbb2" ItemType="MenuItem" Name="Sync_Controller_Delivery_2_EDI" TargetType="CZ.Advantages.Asap.Schema.MenuModel.WorkflowReferenceMenuItem" IsAbstract="false" SS01="Export dodacích listů EDI" LS01="WF_Sync_EDI_ExportDeliveryNotesOutbound" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G02="e145ede3-25dd-458e-aa10-088e08f7fa33" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refParentItemId="0d4f4418-8788-4b14-b3ac-58cac4bf7a61" />
+    <SchemaItem Id="08383f69-aa12-4bb6-a9f2-c222793425ff" ItemType="MenuItem" Name="Sync_Controller_ERP_2_EDI" TargetType="CZ.Advantages.Asap.Schema.MenuModel.WorkflowReferenceMenuItem" IsAbstract="false" SS01="Export vydaných faktur EDI" LS01="WF_Sync_EDI_ExportSalesBills" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G02="2bf7fafd-397d-4e42-81e6-21bdc5d23cf6" refSchemaExtensionId="a308f06a-bf36-485f-9ea7-c5d2a1e7cb80" refParentItemId="0d4f4418-8788-4b14-b3ac-58cac4bf7a61" />
+  </SchemaExtension>
+</ROOT>

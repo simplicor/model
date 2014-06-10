@@ -1034,7 +1034,9 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 				&lt;xsl:choose&gt;
 					&lt;xsl:when test="@IsSSCCPrinted = 'true'"&gt;
 						&lt;package_items&gt;
-							&lt;xsl:apply-templates select="DeliveryDetail/DeliveryDetailItem[generate-id(.)=generate-id(key('sscc', concat(../@refDeliveryId, @SSCC))[1])]"/&gt;
+							&lt;xsl:apply-templates select="DeliveryDetail/DeliveryDetailItem[generate-id(.)=generate-id(key('sscc', concat(../@refDeliveryId, @SSCC))[1])]"&gt;
+								&lt;xsl:with-param name="customerContractNumber" select="$customerContractNumber"/&gt;
+							&lt;/xsl:apply-templates&gt;
 						&lt;/package_items&gt;
 					&lt;/xsl:when&gt;
 					&lt;xsl:otherwise&gt;
@@ -1075,6 +1077,8 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 	&lt;/xsl:template&gt;
 	
 	&lt;xsl:template match="DeliveryDetailItem"&gt;
+		&lt;xsl:param name="customerContractNumber"/&gt;
+
 		&lt;xsl:variable name="items" select="key('sscc', concat(../@refDeliveryId, @SSCC))"/&gt;
 		&lt;package&gt;
 			&lt;package_item_number&gt;&lt;xsl:value-of select="position()"/&gt;&lt;/package_item_number&gt;
@@ -1082,6 +1086,7 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 			&lt;sscc_number&gt;&lt;xsl:value-of select="@SSCC"/&gt;&lt;/sscc_number&gt;
 			&lt;line_items&gt;
 				&lt;xsl:apply-templates select=".."&gt;
+					&lt;xsl:with-param name="customerContractNumber" select="$customerContractNumber"/&gt;
 					&lt;xsl:with-param name="quantity" select="AS:sum($items/@Quantity)"/&gt;
 				&lt;/xsl:apply-templates&gt;
 			&lt;/line_items&gt;

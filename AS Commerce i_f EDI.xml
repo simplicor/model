@@ -285,6 +285,7 @@
     <SchemaItemGroup Id="04c97c85-ed04-48d4-87ad-7345c02df878" Name="Interface EDI" RootItemType="Transformation" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
     <SchemaItemGroup Id="0704414b-f3c2-4ec6-8903-90934a624106" Name="EDI" RootItemType="String" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
     <SchemaItemGroup Id="437559ce-df0f-4989-81f7-b26cdd9a8d2d" Name="EDI" RootItemType="DataStructure" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
+    <SchemaItemGroup Id="31f30c69-a68d-41f0-b6f3-ca0beadbae21" Name="EDI" RootItemType="DataConstant" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
     <SchemaItemGroup Id="dd69c051-07c2-4107-ad7a-ca0e4d8c8377" Name="EDI" RootItemType="DataStructure" refParentGroupId="2b95c3cd-2185-4f80-81e6-10d0e6aae349" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
     <SchemaItemGroup Id="2393d457-724c-4da1-a12e-cb5c9ab487c9" Name="EDI" RootItemType="Workflow" refParentGroupId="a0d905d1-4bf4-4e59-93e0-a716dba0c9ea" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
     <SchemaItemGroup Id="4e7eb140-59c5-4e75-98b7-dbca46a3cc15" Name="EDI" RootItemType="DataEntity" refParentGroupId="86da6d86-e22d-4cc9-b2b2-68a86cd652d8" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
@@ -300,6 +301,8 @@
     <SchemaItem Id="199ddc65-ad8c-4401-8678-acf5993dd123" ItemType="DataConstant" Name="AsapSyncProvider_EDIDeliveryNotes" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataConstant" IsAbstract="false" LS01="" I01="0" I02="10" F01="0" C01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="60d79711-f0ca-4c79-af58-d205727f19fb" G02="5725f3b0-9af3-4848-afa1-641308a298bf" refSchemaItemGroupId="05f1210f-cc49-439e-bd7b-a095f4248190" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
     <SchemaItem Id="3b750195-d382-45bc-af4d-ba0628c07ca1" ItemType="DataConstant" Name="AsapSyncProvider_EDIBills" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataConstant" IsAbstract="false" LS01="" I01="0" I02="10" F01="0" C01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="f9e4c83a-f76a-4e96-83fe-719dcb4f3529" G02="5725f3b0-9af3-4848-afa1-641308a298bf" refSchemaItemGroupId="05f1210f-cc49-439e-bd7b-a095f4248190" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
     <SchemaItem Id="4273b3bd-f200-493e-b010-3dada834fa65" ItemType="DataConstant" Name="BusinessPartnerCommunicationDeviceType_EDI" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataConstant" IsAbstract="false" LS01="" I01="0" I02="10" F01="0" C01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="e6bf0b83-ceb3-4095-a4da-de9a4f488487" G02="8ccc428e-f750-4991-ad94-2f3cf94736a8" refSchemaItemGroupId="1eda8d7a-20e5-4a45-9fdf-b971568012a0" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
+    <SchemaItem Id="d50ded2d-eb74-42ef-8454-6f597ef6cd21" ItemType="DataConstant" Name="BusinessPartnerCommunicationChannelType_EDI_AddressCrossdocking" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataConstant" IsAbstract="false" LS01="" I01="0" I02="10" F01="0" C01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G02="f9e1beba-17c6-40d0-b3dc-c40d23632eaa" refSchemaItemGroupId="31f30c69-a68d-41f0-b6f3-ca0beadbae21" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
+    <SchemaItem Id="efd6c337-f31a-489d-9ffc-77857c0315dd" ItemType="DataConstant" Name="BusinessPartnerCommunicationChannelType_EDI_AddressInvoicePlaceId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataConstant" IsAbstract="false" LS01="" I01="0" I02="10" F01="0" C01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G02="f9e1beba-17c6-40d0-b3dc-c40d23632eaa" refSchemaItemGroupId="31f30c69-a68d-41f0-b6f3-ca0beadbae21" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
     <SchemaItem Id="e9d55907-2437-48ba-8169-73d6f9c662ad" ItemType="DataEntity" Name="AsapSyncProviderConfig_EDITaxMapping" TargetType="CZ.Advantages.Asap.Schema.EntityModel.TableMappingItem" IsAbstract="false" SS01="Konfigurace poskytovatele synchronizace - EDI mapování DPH" SS03="AsapSyncProviderConfig_EDITaxMapping" I05="0" B01="false" B02="true" B03="false" B04="false" B05="true" B06="false" B07="false" refSchemaItemGroupId="4e7eb140-59c5-4e75-98b7-dbca46a3cc15" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a">
       <SchemaItemAncestor refAncestorId="28c21d99-785a-4cc5-bce9-62dca7b852c6" Id="53248837-3b16-4c86-9e72-710c707b05f4" refSchemaItemId="e9d55907-2437-48ba-8169-73d6f9c662ad" />
     </SchemaItem>
@@ -949,8 +952,9 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 	&lt;xsl:param name="senderEDI_ID"/&gt;
 	&lt;xsl:param name="supplier_party_ean"/&gt;
 	&lt;xsl:param name="supplier_business_name_1"/&gt;
-
+	
 	&lt;xsl:key name="sscc" match="/ROOT/Delivery/DeliveryDetail/DeliveryDetailItem" use="concat(../@refDeliveryId, @SSCC)" /&gt;
+	&lt;xsl:key name="product" match="/ROOT/Delivery/DeliveryDetail/DeliveryDetailItem" use="concat(../@refDeliveryId, @SSCC, ../@refProductId)" /&gt;
 
 	&lt;xsl:template match="ROOT"&gt;
  		&lt;biztalk_1&gt;
@@ -959,8 +963,13 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 	&lt;/xsl:template&gt;
 
 	&lt;xsl:template match="Delivery"&gt;
+		&lt;xsl:message&gt;&lt;xsl:value-of select="AS:InitPosition(@Id, 0)"/&gt;&lt;/xsl:message&gt;
+		
 		&lt;xsl:variable name="recipientEAN" select="AS:LookupValue('6310ab85-6fc1-4668-9fa1-60c61a7c695b', @refBusinessPartnerId)"/&gt;
-		&lt;xsl:variable name="crossdockingAddressId" select="AS:LookupValue('d294eca8-1dc8-4ba9-959a-9450494e7897', 'BusinessPartnerCommunicationChannel_parBusinessPartnerId', @refBusinessPartnerId, 'BusinessPartnerCommunicationChannel_parBusinessPartnerCommunicationChannelTypeId', AS:GetConstant('BusinessPartnerCommunicationChannelType_AddressCrossdocking'))"/&gt;
+		&lt;xsl:variable name="crossdockingAddressId" select="AS:LookupValue('d294eca8-1dc8-4ba9-959a-9450494e7897',
+			'BusinessPartnerCommunicationChannel_parBusinessPartnerId', @refBusinessPartnerId,
+			'BusinessPartnerCommunicationChannel_parBusinessPartnerCommunicationChannelTypeId', 
+				AS:GetConstant('BusinessPartnerCommunicationChannelType_EDI_AddressCrossdocking'))"/&gt;
 		&lt;xsl:variable name="recipientAddressSet"&gt;
 			&lt;xsl:choose&gt;	
 				&lt;xsl:when test="string($crossdockingAddressId)"&gt;
@@ -1049,6 +1058,7 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 				&lt;/xsl:choose&gt;
 			&lt;/xml_document&gt;
 		&lt;/body&gt;
+		&lt;xsl:message&gt;&lt;xsl:value-of select="AS:DestroyPosition(@Id)"/&gt;&lt;/xsl:message&gt;
 	&lt;/xsl:template&gt;
 	
 	&lt;xsl:template match="DeliveryDetail"&gt;
@@ -1056,7 +1066,7 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 		&lt;xsl:param name="quantity" select="@QuantityDelivered"/&gt;
 		
 		&lt;item&gt;
-			&lt;item_number&gt;&lt;xsl:value-of select="position()"/&gt;&lt;/item_number&gt;
+			&lt;item_number&gt;&lt;xsl:value-of select="AS:NextPosition(@refDeliveryId, 1)"/&gt;&lt;/item_number&gt;
 			&lt;xsl:if test="string(@refProductId)"&gt;
 				&lt;article_ean&gt;&lt;xsl:value-of select="AS:LookupValue('c637e15b-6d9c-48f0-b596-3c040816b265', @refProductId)"/&gt;&lt;/article_ean&gt; 
 				&lt;article_name&gt;&lt;xsl:value-of select="AS:LookupValue('2ca0c125-060d-4c64-9f25-80d5469fb093', @refProductId)"/&gt;&lt;/article_name&gt; 
@@ -1085,10 +1095,20 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 			&lt;package_type&gt;200&lt;/package_type&gt;
 			&lt;sscc_number&gt;&lt;xsl:value-of select="@SSCC"/&gt;&lt;/sscc_number&gt;
 			&lt;line_items&gt;
-				&lt;xsl:apply-templates select=".."&gt;
-					&lt;xsl:with-param name="customerContractNumber" select="$customerContractNumber"/&gt;
-					&lt;xsl:with-param name="quantity" select="AS:sum($items/@Quantity)"/&gt;
-				&lt;/xsl:apply-templates&gt;
+				&lt;xsl:message&gt;&lt;xsl:value-of select="AS:Trace(concat(@SSCC, ': ', count($items)))"/&gt;&lt;/xsl:message&gt;
+				&lt;xsl:for-each select="$items"&gt;
+					&lt;xsl:sort select="../@refProductId"/&gt;
+					&lt;xsl:variable name="deliveryId" select="../@refDeliveryId"/&gt;
+					&lt;xsl:variable name="productId" select="../@refProductId"/&gt;
+					&lt;xsl:variable name="sscc" select="@SSCC"/&gt;
+					&lt;!--&lt;xsl:message&gt;&lt;xsl:value-of select="AS:Trace(concat(' ', $productId, ': ', count(preceding-sibling::*[../@refDeliveryId = $deliveryId and @SSCC = $sscc and ../@refProductId = $productId])))"/&gt;&lt;/xsl:message&gt; --&gt;
+					&lt;xsl:if test="count(preceding-sibling::*[../@refDeliveryId = $deliveryId and @SSCC = $sscc and ../@refProductId = $productId]) = 0"&gt;
+						&lt;xsl:apply-templates select=".."&gt;
+							&lt;xsl:with-param name="customerContractNumber" select="$customerContractNumber"/&gt;
+							&lt;xsl:with-param name="quantity" select="@Quantity + AS:sum(following-sibling::*[../@refDeliveryId = $deliveryId and @SSCC = $sscc and ../@refProductId = $productId]/@Quantity)"/&gt;
+						&lt;/xsl:apply-templates&gt;
+					&lt;/xsl:if&gt;
+				&lt;/xsl:for-each&gt;
 			&lt;/line_items&gt;
 		&lt;/package&gt;
 	&lt;/xsl:template&gt;

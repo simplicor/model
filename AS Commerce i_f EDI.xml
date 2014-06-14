@@ -594,7 +594,10 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 	&lt;xsl:template match="Document"&gt;
 		&lt;xsl:variable name="recipientEAN" select="AS:LookupValue('6310ab85-6fc1-4668-9fa1-60c61a7c695b', @refBusinessPartnerId)"/&gt;
 		&lt;xsl:variable name="coef" select="AS:iif(@refDocumentSubtypeId = AS:GetConstant('DocumentSubtype_Bill_CreditNote'), -1, 1)"/&gt;
-		&lt;xsl:variable name="orderingAddressId" select="AS:LookupValue('d294eca8-1dc8-4ba9-959a-9450494e7897', 'BusinessPartnerCommunicationChannel_parBusinessPartnerId', @refBusinessPartnerId, 'BusinessPartnerCommunicationChannel_parBusinessPartnerCommunicationChannelTypeId', AS:GetConstant('BusinessPartnerCommunicationChannelType_AddressOrdering'))"/&gt;
+		&lt;xsl:variable name="orderingAddressId" select="AS:LookupValue('d294eca8-1dc8-4ba9-959a-9450494e7897', 
+			'BusinessPartnerCommunicationChannel_parBusinessPartnerId', @refBusinessPartnerId, 
+			'BusinessPartnerCommunicationChannel_parBusinessPartnerCommunicationChannelTypeId', 
+				AS:GetConstant('BusinessPartnerCommunicationChannelType_AddressOrdering'))"/&gt;
 		&lt;xsl:variable name="orderingEAN"&gt;
 			&lt;xsl:if test="string($orderingAddressId)"&gt;
 				&lt;xsl:value-of select="AS:LookupValue('4651e5c5-f0a9-4faa-8adc-020f2f425afe', $orderingAddressId)"/&gt;
@@ -652,11 +655,16 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 							&lt;xsl:when test="@refPaymentAccountTypeId = AS:GetConstant('PaymentAccountType_Cash')"&gt;10&lt;/xsl:when&gt;
 						&lt;/xsl:choose&gt;
 					&lt;/payment_means&gt;
-					&lt;currancy_code&gt;&lt;xsl:value-of select="AS:LookupValue('8318fbda-a5b3-415b-9992-613da595fec3', @refCurrencyId)"/&gt;&lt;/currancy_code&gt; 
+					&lt;currancy_code&gt;
+						&lt;xsl:value-of select="AS:LookupValue('8318fbda-a5b3-415b-9992-613da595fec3', @refCurrencyId)"/&gt;
+					&lt;/currancy_code&gt;
 					&lt;free_text_1&gt;&lt;xsl:value-of select="$free_text_1"/&gt;&lt;/free_text_1&gt; 
 					&lt;referencies&gt;
 						&lt;xsl:if test="string(DocumentDelivery/DocumentBillingDetail[string(@refContractDocumentId)][1]/@refContractDocumentId)"&gt;
-							&lt;order_number&gt;&lt;xsl:value-of select="AS:LookupValue('3d975659-e236-4103-9473-b748c1e719b2', DocumentDelivery/DocumentBillingDetail[string(@refContractDocumentId)][1]/@refContractDocumentId)"/&gt;&lt;/order_number&gt; 
+							&lt;order_number&gt;
+								&lt;xsl:value-of select="AS:LookupValue('3d975659-e236-4103-9473-b748c1e719b2', 
+									DocumentDelivery/DocumentBillingDetail[string(@refContractDocumentId)][1]/@refContractDocumentId)"/&gt;
+							&lt;/order_number&gt;
 						&lt;/xsl:if&gt;
 					&lt;/referencies&gt;
 					&lt;buyer&gt;
@@ -665,11 +673,24 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 						&lt;street_1&gt;&lt;xsl:value-of select="@BusinessPartnerStreet1"/&gt;&lt;/street_1&gt; 
 						&lt;place&gt;&lt;xsl:value-of select="@BusinessPartnerCity"/&gt;&lt;/place&gt; 
 						&lt;postcode&gt;&lt;xsl:value-of select="@BusinessPartnerPostalCode"/&gt;&lt;/postcode&gt; 
-						&lt;company_id&gt;&lt;xsl:value-of select="AS:LookupValue('8d0d1ffa-f21e-4f5d-84cc-bc97ddb4f6a6', @refBusinessPartnerId)"/&gt;&lt;/company_id&gt; 
-						&lt;tax_id&gt;&lt;xsl:value-of select="AS:LookupValue('36d832ea-00f7-4627-87a8-a22a3edc83cc', @refBusinessPartnerId)"/&gt;&lt;/tax_id&gt; 
+						&lt;company_id&gt;
+							&lt;xsl:value-of select="AS:LookupValue('8d0d1ffa-f21e-4f5d-84cc-bc97ddb4f6a6', @refBusinessPartnerId)"/&gt;
+						&lt;/company_id&gt;
+						&lt;tax_id&gt;
+							&lt;xsl:value-of select="AS:LookupValue('36d832ea-00f7-4627-87a8-a22a3edc83cc', @refBusinessPartnerId)"/&gt;
+						&lt;/tax_id&gt;
 						&lt;xsl:if test="string($orderingEAN)"&gt;
 							&lt;orderedby_ean&gt;&lt;xsl:value-of select="$orderingEAN"/&gt;&lt;/orderedby_ean&gt;
 						&lt;/xsl:if&gt;
+						&lt;xsl:variable name="invoicePlaceAddressId" select="AS:LookupValue('d294eca8-1dc8-4ba9-959a-9450494e7897', 
+							'BusinessPartnerCommunicationChannel_parBusinessPartnerId', @refBusinessPartnerId, 
+							'BusinessPartnerCommunicationChannel_parBusinessPartnerCommunicationChannelTypeId', 
+								AS:GetConstant('BusinessPartnerCommunicationChannelType_EDI_AddressInvoicePlaceId'))"/&gt;
+						&lt;xsl:if test="string($invoicePlaceAddressId)"&gt;
+							&lt;invoice_place_ean&gt;
+								&lt;xsl:value-of select="AS:LookupValue('4651e5c5-f0a9-4faa-8adc-020f2f425afe', $invoicePlaceAddressId)"/&gt;
+							&lt;/invoice_place_ean&gt;
+						&lt;/xsl:if&gt;	
 					&lt;/buyer&gt;
 					&lt;supplier&gt;
 						&lt;party_ean&gt;&lt;xsl:value-of select="$supplier_party_ean"/&gt;&lt;/party_ean&gt; 
@@ -680,8 +701,12 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 						&lt;company_id&gt;&lt;xsl:value-of select="$supplier_company_id"/&gt;&lt;/company_id&gt; 
 						&lt;tax_id&gt;&lt;xsl:value-of select="$supplier_tax_id"/&gt;&lt;/tax_id&gt;
 						&lt;xsl:if test="string(@refPaymentAccountId)"&gt;
-							&lt;account_number&gt;&lt;xsl:value-of select="AS:LookupValue('9563753d-c2a1-42c2-87b4-d5007c9fab19', @refPaymentAccountId)"/&gt;&lt;/account_number&gt; 
-							&lt;bank_code&gt;&lt;xsl:value-of select="AS:LookupValue('d2779099-98e7-4024-b26d-dcb149a5988f', @refPaymentAccountId)"/&gt;&lt;/bank_code&gt; 
+							&lt;account_number&gt;
+								&lt;xsl:value-of select="AS:LookupValue('9563753d-c2a1-42c2-87b4-d5007c9fab19', @refPaymentAccountId)"/&gt;
+							&lt;/account_number&gt;
+							&lt;bank_code&gt;
+								&lt;xsl:value-of select="AS:LookupValue('d2779099-98e7-4024-b26d-dcb149a5988f', @refPaymentAccountId)"/&gt;
+							&lt;/bank_code&gt;
 						&lt;/xsl:if&gt;
 						&lt;constant_symbol&gt;&lt;xsl:value-of select="$supplier_constant_symbol"/&gt;&lt;/constant_symbol&gt; 
 						&lt;variable_symbol&gt;&lt;xsl:value-of select="@VariableSymbol"/&gt;&lt;/variable_symbol&gt; 
@@ -722,13 +747,18 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 	&lt;/xsl:template&gt;
 	
 	&lt;xsl:template match="DocumentBillingDetail"&gt;
-		&lt;xsl:variable name="addressId" select="AS:isnull(../@refBusinessPartnerCommunicationChannelId, ../../@refBusinessPartnerCommunicationChannelId)"/&gt;
+		&lt;xsl:variable name="addressId" 
+			select="AS:isnull(../@refBusinessPartnerCommunicationChannelId, ../../@refBusinessPartnerCommunicationChannelId)"/&gt;
 			
 		&lt;item&gt;
 			&lt;item_number&gt;&lt;xsl:value-of select="@Position"/&gt;&lt;/item_number&gt;
 			&lt;xsl:if test="string(@refProductId)"&gt;
-				&lt;article_ean&gt;&lt;xsl:value-of select="AS:LookupValue('c637e15b-6d9c-48f0-b596-3c040816b265', @refProductId)"/&gt;&lt;/article_ean&gt;
-				&lt;article_number&gt;&lt;xsl:value-of select="AS:LookupValue('a3eabe74-2fca-4e98-9af0-3614a74f574d', @refProductId)"/&gt;&lt;/article_number&gt;
+				&lt;article_ean&gt;
+					&lt;xsl:value-of select="AS:LookupValue('c637e15b-6d9c-48f0-b596-3c040816b265', @refProductId)"/&gt;
+				&lt;/article_ean&gt;
+				&lt;article_number&gt;
+					&lt;xsl:value-of select="AS:LookupValue('a3eabe74-2fca-4e98-9af0-3614a74f574d', @refProductId)"/&gt;
+				&lt;/article_number&gt;
 			&lt;/xsl:if&gt;
 			&lt;article_name&gt;&lt;xsl:value-of select="@InfoText1"/&gt;&lt;/article_name&gt; 
 			&lt;quantity&gt;&lt;xsl:value-of select="@Quantity"/&gt;&lt;/quantity&gt; 
@@ -744,20 +774,28 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 					select="AS:LookupValue('d294eca8-1dc8-4ba9-959a-9450494e7897',
 						'BusinessPartnerCommunicationChannel_parBusinessPartnerId', ../@refBusinessPartnerId,
 						'BusinessPartnerCommunicationChannel_parBusinessPartnerCommunicationChannelTypeId',
-							AS:GetConstant('BusinessPartnerCommunicationChannelType_AddressCrossdocking'))
+							AS:GetConstant('BusinessPartnerCommunicationChannelType_EDI_AddressCrossdocking'))
 					"/&gt;
 				&lt;xsl:choose&gt;	
 					&lt;xsl:when test="string($crossdockingAddressId)"&gt;
-							&lt;place_of_delivery_ean&gt;&lt;xsl:value-of select="AS:LookupValue('4651e5c5-f0a9-4faa-8adc-020f2f425afe', $crossdockingAddressId)"/&gt;&lt;/place_of_delivery_ean&gt;
+						&lt;place_of_delivery_ean&gt;
+							&lt;xsl:value-of select="AS:LookupValue('4651e5c5-f0a9-4faa-8adc-020f2f425afe', $crossdockingAddressId)"/&gt;
+						&lt;/place_of_delivery_ean&gt;
 					&lt;/xsl:when&gt;
 					&lt;xsl:otherwise&gt;
-							&lt;place_of_delivery_ean&gt;&lt;xsl:value-of select="AS:LookupValue('4651e5c5-f0a9-4faa-8adc-020f2f425afe', $addressId)"/&gt;&lt;/place_of_delivery_ean&gt;
+						&lt;place_of_delivery_ean&gt;
+							&lt;xsl:value-of select="AS:LookupValue('4651e5c5-f0a9-4faa-8adc-020f2f425afe', $addressId)"/&gt;
+						&lt;/place_of_delivery_ean&gt;
 					&lt;/xsl:otherwise&gt;
 				&lt;/xsl:choose&gt;
 			&lt;/xsl:if&gt;
 			
-			&lt;date_of_delivery&gt;&lt;xsl:value-of select="substring-before(../@DateDelivered, 'T')"/&gt;&lt;/date_of_delivery&gt; 
-			&lt;despatch_advice_number&gt;&lt;xsl:value-of select="substring-before(substring-after(../TextDeliveryNote, ': '), ' ')"/&gt;&lt;/despatch_advice_number&gt;
+			&lt;date_of_delivery&gt;
+				&lt;xsl:value-of select="substring-before(../@DateDelivered, 'T')"/&gt;
+			&lt;/date_of_delivery&gt;
+			&lt;despatch_advice_number&gt;
+				&lt;xsl:value-of select="substring-before(substring-after(../TextDeliveryNote, ': '), ' ')"/&gt;
+			&lt;/despatch_advice_number&gt;
 			
 		&lt;/item&gt;
 	&lt;/xsl:template&gt;

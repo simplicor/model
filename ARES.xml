@@ -368,14 +368,11 @@
 
 		&lt;xsl:if test="string($currencyId)"&gt;
 			&lt;!-- Check if the rate exists already.
-				 The rate delivered is e.g. from 1.1.2014 till 31.12.2999
-				 and we check if we have a rate valid until 31.12.2013.
-				 In that case this new rate has been already stored.
 			--&gt;
 			&lt;xsl:variable name="existingRate" select="AS:LookupValue(
 				'baa51837-f69d-4449-804c-c4edfcd617ea',
 				'ExchangeRate_parCurrencyId', $currencyId,
-				'ExchangeRate_parDate', AS:AddDays(ds:OD, -1),
+				'ExchangeRate_parDate', ds:OD,
 				'ExchangeRate_parExchangeRateListId', $listId
 				)"/&gt;
 			&lt;xsl:variable name="rate" select="number(translate(ds:KURZ, ',', '.'))"/&gt;

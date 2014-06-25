@@ -3628,6 +3628,7 @@ DELETE FROM AsapApplicationRole WHERE Name IN ('PAR_DefaultWarehouse_Shipping', 
 		&lt;ROOT&gt;
 			&lt;xsl:value-of select="concat('BEGIN:VCALENDAR', $crlf)"/&gt;
 			&lt;xsl:value-of select="concat('VERSION:2.0', $crlf)"/&gt;
+			&lt;xsl:value-of select="concat('METHOD:REQUEST', $crlf)"/&gt;
 			&lt;xsl:value-of select="concat('PRODID:-//www.advantages.cz//NONSGML SIMPLICOR//EN', $crlf)"/&gt;
 			
 			&lt;xsl:apply-templates select="ProjectTask"/&gt;
@@ -3642,8 +3643,9 @@ DELETE FROM AsapApplicationRole WHERE Name IN ('PAR_DefaultWarehouse_Shipping', 
 		
 		&lt;xsl:if test="string($dateFrom) and string($dateTo)"&gt;
 			&lt;xsl:value-of select="concat('BEGIN:VEVENT', $crlf)"/&gt;
-			&lt;xsl:value-of select="concat('DTSTART:', str:replace(substring-before(translate($dateFrom, '-:', ''), '+'), 'T000000', ''), $crlf)"/&gt;
-			&lt;xsl:value-of select="concat('DTEND:', str:replace(substring-before(translate($dateTo, '-:', ''), '+'), 'T000000', ''), $crlf)"/&gt;
+			&lt;xsl:value-of select="concat('UID:', @Id, $crlf)"/&gt;
+			&lt;xsl:value-of select="concat('DTSTART:', str:replace(substring-before(translate($dateFrom, '-:', ''), '+'), 'T000000Z', ''), $crlf)"/&gt;
+			&lt;xsl:value-of select="concat('DTEND:', str:replace(substring-before(translate($dateTo, '-:', ''), '+'), 'T000000Z', ''), $crlf)"/&gt;
 			&lt;xsl:value-of select="concat('SUMMARY:', @Name, $crlf)"/&gt;
 
 			&lt;xsl:if test="string(Description)"&gt;

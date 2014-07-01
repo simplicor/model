@@ -2491,7 +2491,7 @@ WHERE
       <M01>Není vyplněna fakturační adresa u dokladu {0}.</M01>
     </SchemaItem>
     <SchemaItem Id="da621b9c-ae65-489f-afbf-6842881dd057" ItemType="String" Name="Commerce_ShippingScheduleWeightByOrdersExceeded" TargetType="CZ.Advantages.Asap.Schema.StringItem" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="926373d4-db0a-4cee-a4d5-1a8b4883b0c8" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4">
-      <M01>Celková váha všech objednávek pro expediční jízdu {0} přesahuje maximální nosnost vozidla.</M01>
+      <M01>Celková hmotnost všech objednávek pro expediční jízdu {0} přesahuje maximální nosnost vozidla.</M01>
     </SchemaItem>
     <SchemaItem Id="e6cbe8ab-f1af-41b6-a9be-9446fcdf866a" ItemType="String" Name="Commerce_DocumentQuantityZeroNotAllowed" TargetType="CZ.Advantages.Asap.Schema.StringItem" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="926373d4-db0a-4cee-a4d5-1a8b4883b0c8" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4">
       <M01>Produkt {0} neumožňuje zadat nulové množství. Doklad: {1}, plnění: {2}.</M01>

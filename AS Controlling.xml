@@ -278,7 +278,7 @@
       </xs:keyref>
     </xs:element>
   </xs:schema>
-  <SchemaExtension Id="3a0ce4ff-540b-4a18-ab21-73b2f0b91347" Name="AS Controlling" Version="3.4.10" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
+  <SchemaExtension Id="3a0ce4ff-540b-4a18-ab21-73b2f0b91347" Name="AS Controlling" Version="3.4.11" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
     <Description />
     <SchemaItemGroup Id="4271b1b6-ed85-40ac-9773-03dbc4cc4029" Name="Controlling" RootItemType="FormControlSet" refSchemaExtensionId="3a0ce4ff-540b-4a18-ab21-73b2f0b91347" />
     <SchemaItemGroup Id="97742d85-b667-4905-9484-10429d4ffc3f" Name="Controlling" RootItemType="Transformation" refSchemaExtensionId="3a0ce4ff-540b-4a18-ab21-73b2f0b91347" />
@@ -5762,6 +5762,1075 @@ group by
 	fp11.DateEnd,
 	fp12.DateBegin,
 	fp12.DateEnd</M01>
+    </SchemaItem>
+    <SchemaItem Id="b500fbf7-b292-494d-b402-1f42595c966c" ItemType="DeploymentVersion" Name="3.4.11" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="3.4.11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="d5800c87-5582-4697-8e12-72cdfef6ccc1" refSchemaExtensionId="3a0ce4ff-540b-4a18-ab21-73b2f0b91347" />
+    <SchemaItem Id="f50555f2-7d4a-4873-b505-9f3eaa723971" ItemType="DeploymentUpdateScriptActivity" Name="00010_VIEW_BudgetMonitoringReport" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="3a0ce4ff-540b-4a18-ab21-73b2f0b91347" refParentItemId="b500fbf7-b292-494d-b402-1f42595c966c">
+      <M01>ALTER view [BudgetMonitoringReport] as
+select
+	bl.refBudgetId,
+	bl.refAccountingLedgerAccountId,
+	b.refFiscalYearId,
+	SUM(bmra.Budget1) Budget1,
+	SUM(bmra.Budget2) Budget2,
+	SUM(bmra.Budget3) Budget3,
+	SUM(bmra.Budget4) Budget4,
+	SUM(bmra.Budget5) Budget5,
+	SUM(bmra.Budget6) Budget6,
+	SUM(bmra.Budget7) Budget7,
+	SUM(bmra.Budget8) Budget8,
+	SUM(bmra.Budget9) Budget9,
+	SUM(bmra.Budget10) Budget10,
+	SUM(bmra.Budget11) Budget11,
+	SUM(bmra.Budget12) Budget12,
+	SUM(bmra.Compare1AmountLocal1) Compare1AmountLocal1,
+	SUM(bmra.Compare1AmountLocal2) Compare1AmountLocal2,
+	SUM(bmra.Compare1AmountLocal3) Compare1AmountLocal3,
+	SUM(bmra.Compare1AmountLocal4) Compare1AmountLocal4,
+	SUM(bmra.Compare1AmountLocal5) Compare1AmountLocal5,
+	SUM(bmra.Compare1AmountLocal6) Compare1AmountLocal6,
+	SUM(bmra.Compare1AmountLocal7) Compare1AmountLocal7,
+	SUM(bmra.Compare1AmountLocal8) Compare1AmountLocal8,
+	SUM(bmra.Compare1AmountLocal9) Compare1AmountLocal9,
+	SUM(bmra.Compare1AmountLocal10) Compare1AmountLocal10,
+	SUM(bmra.Compare1AmountLocal11) Compare1AmountLocal11,
+	SUM(bmra.Compare1AmountLocal12) Compare1AmountLocal12,
+	SUM(bmra.Compare1TotalLocal) Compare1TotalLocal,
+	SUM(bmra.Compare2AmountLocal1) Compare2AmountLocal1,
+	SUM(bmra.Compare2AmountLocal2) Compare2AmountLocal2,
+	SUM(bmra.Compare2AmountLocal3) Compare2AmountLocal3,
+	SUM(bmra.Compare2AmountLocal4) Compare2AmountLocal4,
+	SUM(bmra.Compare2AmountLocal5) Compare2AmountLocal5,
+	SUM(bmra.Compare2AmountLocal6) Compare2AmountLocal6,
+	SUM(bmra.Compare2AmountLocal7) Compare2AmountLocal7,
+	SUM(bmra.Compare2AmountLocal8) Compare2AmountLocal8,
+	SUM(bmra.Compare2AmountLocal9) Compare2AmountLocal9,
+	SUM(bmra.Compare2AmountLocal10) Compare2AmountLocal10,
+	SUM(bmra.Compare2AmountLocal11) Compare2AmountLocal11,
+	SUM(bmra.Compare2AmountLocal12) Compare2AmountLocal12,
+	SUM(bmra.Compare2TotalLocal) Compare2TotalLocal,
+	SUM(bmra.Compare3AmountLocal1) Compare3AmountLocal1,
+	SUM(bmra.Compare3AmountLocal2) Compare3AmountLocal2,
+	SUM(bmra.Compare3AmountLocal3) Compare3AmountLocal3,
+	SUM(bmra.Compare3AmountLocal4) Compare3AmountLocal4,
+	SUM(bmra.Compare3AmountLocal5) Compare3AmountLocal5,
+	SUM(bmra.Compare3AmountLocal6) Compare3AmountLocal6,
+	SUM(bmra.Compare3AmountLocal7) Compare3AmountLocal7,
+	SUM(bmra.Compare3AmountLocal8) Compare3AmountLocal8,
+	SUM(bmra.Compare3AmountLocal9) Compare3AmountLocal9,
+	SUM(bmra.Compare3AmountLocal10) Compare3AmountLocal10,
+	SUM(bmra.Compare3AmountLocal11) Compare3AmountLocal11,
+	SUM(bmra.Compare3AmountLocal12) Compare3AmountLocal12,
+	SUM(bmra.Compare3TotalLocal) Compare3TotalLocal,
+	SUM(bmra.Compare4AmountLocal1) Compare4AmountLocal1,
+	SUM(bmra.Compare4AmountLocal2) Compare4AmountLocal2,
+	SUM(bmra.Compare4AmountLocal3) Compare4AmountLocal3,
+	SUM(bmra.Compare4AmountLocal4) Compare4AmountLocal4,
+	SUM(bmra.Compare4AmountLocal5) Compare4AmountLocal5,
+	SUM(bmra.Compare4AmountLocal6) Compare4AmountLocal6,
+	SUM(bmra.Compare4AmountLocal7) Compare4AmountLocal7,
+	SUM(bmra.Compare4AmountLocal8) Compare4AmountLocal8,
+	SUM(bmra.Compare4AmountLocal9) Compare4AmountLocal9,
+	SUM(bmra.Compare4AmountLocal10) Compare4AmountLocal10,
+	SUM(bmra.Compare4AmountLocal11) Compare4AmountLocal11,
+	SUM(bmra.Compare4AmountLocal12) Compare4AmountLocal12,
+	SUM(bmra.Compare4TotalLocal) Compare4TotalLocal,
+	SUM(bmra.TotalBill) TotalBill,
+	SUM(bmra.Bill1) Bill1,
+	SUM(bmra.Bill2) Bill2,
+	SUM(bmra.Bill3) Bill3,
+	SUM(bmra.Bill4) Bill4,
+	SUM(bmra.Bill5) Bill5,
+	SUM(bmra.Bill6) Bill6,
+	SUM(bmra.Bill7) Bill7,
+	SUM(bmra.Bill8) Bill8,
+	SUM(bmra.Bill9) Bill9,
+	SUM(bmra.Bill10) Bill10,
+	SUM(bmra.Bill11) Bill11,
+	SUM(bmra.Bill11) Bill12,
+	SUM(bmra.Contract1) Contract1,
+	SUM(bmra.Contract2) Contract2,
+	SUM(bmra.Contract3) Contract3,
+	SUM(bmra.Contract4) Contract4,
+	SUM(bmra.Contract5) Contract5,
+	SUM(bmra.Contract6) Contract6,
+	SUM(bmra.Contract7) Contract7,
+	SUM(bmra.Contract8) Contract8,
+	SUM(bmra.Contract9) Contract9,
+	SUM(bmra.Contract10) Contract10,
+	SUM(bmra.Contract11) Contract11,
+	SUM(bmra.Contract12) Contract12,
+	SUM(bmra.Due1) Due1,
+	SUM(bmra.Due2) Due2,
+	SUM(bmra.Due3) Due3,
+	SUM(bmra.Due4) Due4,
+	SUM(bmra.Due5) Due5,
+	SUM(bmra.Due6) Due6,
+	SUM(bmra.Due7) Due7,
+	SUM(bmra.Due8) Due8,
+	SUM(bmra.Due9) Due9,
+	SUM(bmra.Due10) Due10,
+	SUM(bmra.Due11) Due11,
+	SUM(bmra.Due12) Due12
+from
+	BudgetLine bl
+	inner join Budget b on
+		b.Id = bl.refBudgetId
+	left outer join FiscalYear fy on
+		fy.Id = b.refFiscalYearId
+	left outer join BudgetMonitoringReportActivity bmra on
+		bmra.refBudgetId = b.Id
+		and bmra.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+		and bmra.refActivityId = bl.refActivityId 
+group by
+	bl.refBudgetId,
+	bl.refAccountingLedgerAccountId,
+	b.refFiscalYearId,
+	b.refCompare1BudgetId,
+	b.refCompare2BudgetId,
+	b.refCompare3BudgetId,
+	b.refCompare4BudgetId,
+	fy.DateBegin,
+	fy.DateEnd</M01>
+    </SchemaItem>
+    <SchemaItem Id="ac99b709-4b79-4374-b2db-da6463d6f660" ItemType="DeploymentUpdateScriptActivity" Name="00005_VIEW_BudgetMonitoringReportActivity" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="5" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="3a0ce4ff-540b-4a18-ab21-73b2f0b91347" refParentItemId="b500fbf7-b292-494d-b402-1f42595c966c">
+      <M01>ALTER VIEW [BudgetMonitoringReportActivity] as
+select
+	bl.refBudgetId,
+	bl.refAccountingLedgerAccountId,
+	bl.refActivityId,
+	b.refFiscalYearId,
+	SUM(bl.AmountLocal1) Budget1,
+	SUM(bl.AmountLocal2) Budget2,
+	SUM(bl.AmountLocal3) Budget3,
+	SUM(bl.AmountLocal4) Budget4,
+	SUM(bl.AmountLocal5) Budget5,
+	SUM(bl.AmountLocal6) Budget6,
+	SUM(bl.AmountLocal7) Budget7,
+	SUM(bl.AmountLocal8) Budget8,
+	SUM(bl.AmountLocal9) Budget9,
+	SUM(bl.AmountLocal10) Budget10,
+	SUM(bl.AmountLocal11) Budget11,
+	SUM(bl.AmountLocal12) Budget12,
+	-- compare budget 1
+	(	select isnull(SUM(bl1.AmountLocal1), SUM(bl.AmountLocal1))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1AmountLocal1,
+	(	select isnull(SUM(bl1.AmountLocal2), SUM(bl.AmountLocal2))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1AmountLocal2,
+	(	select isnull(SUM(bl1.AmountLocal3), SUM(bl.AmountLocal3))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1AmountLocal3,
+	(	select isnull(SUM(bl1.AmountLocal4), SUM(bl.AmountLocal4))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1AmountLocal4,
+	(	select isnull(SUM(bl1.AmountLocal5), SUM(bl.AmountLocal5))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1AmountLocal5,
+	(	select isnull(SUM(bl1.AmountLocal6), SUM(bl.AmountLocal6))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1AmountLocal6,
+	(	select isnull(SUM(bl1.AmountLocal7), SUM(bl.AmountLocal7))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1AmountLocal7,
+	(	select isnull(SUM(bl1.AmountLocal8), SUM(bl.AmountLocal8))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1AmountLocal8,
+	(	select isnull(SUM(bl1.AmountLocal9), SUM(bl.AmountLocal9))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1AmountLocal9,
+	(	select isnull(SUM(bl1.AmountLocal10), SUM(bl.AmountLocal10))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1AmountLocal10,
+	(	select isnull(SUM(bl1.AmountLocal11), SUM(bl.AmountLocal11))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1AmountLocal11,
+	(	select isnull(SUM(bl1.AmountLocal12), SUM(bl.AmountLocal12))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1AmountLocal12,
+	(	select isnull(SUM(bl1.TotalLocal), SUM(bl.TotalLocal))
+		from
+			BudgetLine bl1
+		where
+			bl1.refBudgetId = b.refCompare1BudgetId
+			and bl1.refActivityId = bl.refActivityId
+			and bl1.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare1TotalLocal,
+	-- compare budget 2
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.AmountLocal1) ELSE SUM(bl2.AmountLocal1) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2AmountLocal1,
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.AmountLocal2) ELSE SUM(bl2.AmountLocal2) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2AmountLocal2,
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.AmountLocal3) ELSE SUM(bl2.AmountLocal3) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2AmountLocal3,
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.AmountLocal4) ELSE SUM(bl2.AmountLocal4) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2AmountLocal4,
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.AmountLocal5) ELSE SUM(bl2.AmountLocal5) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2AmountLocal5,
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.AmountLocal6) ELSE SUM(bl2.AmountLocal6) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2AmountLocal6,
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.AmountLocal7) ELSE SUM(bl2.AmountLocal7) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2AmountLocal7,
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.AmountLocal8) ELSE SUM(bl2.AmountLocal8) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2AmountLocal8,
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.AmountLocal9) ELSE SUM(bl2.AmountLocal9) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2AmountLocal9,
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.AmountLocal10) ELSE SUM(bl2.AmountLocal10) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2AmountLocal10,
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.AmountLocal11) ELSE SUM(bl2.AmountLocal11) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2AmountLocal11,
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.AmountLocal12) ELSE SUM(bl2.AmountLocal12) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2AmountLocal12,
+	(	select (case when b.refCompare1BudgetId IS NOT NULL and b.refCompare2BudgetId IS NULL
+			THEN SUM(bl.TotalLocal) ELSE SUM(bl2.TotalLocal) END)
+		from
+			BudgetLine bl2
+		where
+			bl2.refBudgetId = b.refCompare2BudgetId
+			and bl2.refActivityId = bl.refActivityId
+			and bl2.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare2TotalLocal,
+	-- compare budget 3
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.AmountLocal1) ELSE SUM(bl3.AmountLocal1) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3AmountLocal1,
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.AmountLocal2) ELSE SUM(bl3.AmountLocal2) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3AmountLocal2,
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.AmountLocal3) ELSE SUM(bl3.AmountLocal3) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3AmountLocal3,
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.AmountLocal4) ELSE SUM(bl3.AmountLocal4) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3AmountLocal4,
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.AmountLocal5) ELSE SUM(bl3.AmountLocal5) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3AmountLocal5,
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.AmountLocal6) ELSE SUM(bl3.AmountLocal6) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3AmountLocal6,
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.AmountLocal7) ELSE SUM(bl3.AmountLocal7) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3AmountLocal7,
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.AmountLocal8) ELSE SUM(bl3.AmountLocal8) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3AmountLocal8,
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.AmountLocal9) ELSE SUM(bl3.AmountLocal9) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3AmountLocal9,
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.AmountLocal10) ELSE SUM(bl3.AmountLocal10) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3AmountLocal10,
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.AmountLocal11) ELSE SUM(bl3.AmountLocal11) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3AmountLocal11,
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.AmountLocal12) ELSE SUM(bl3.AmountLocal12) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3AmountLocal12,
+	(	select (case when b.refCompare2BudgetId IS NOT NULL and b.refCompare3BudgetId IS NULL
+			THEN SUM(bl.TotalLocal) ELSE SUM(bl3.TotalLocal) END)
+		from
+			BudgetLine bl3
+		where
+			bl3.refBudgetId = b.refCompare3BudgetId
+			and bl3.refActivityId = bl.refActivityId
+			and bl3.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare3TotalLocal,
+	-- compare budget 4
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.AmountLocal1) ELSE SUM(bl4.AmountLocal1) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4AmountLocal1,
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.AmountLocal2) ELSE SUM(bl4.AmountLocal2) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4AmountLocal2,
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.AmountLocal3) ELSE SUM(bl4.AmountLocal3) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4AmountLocal3,
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.AmountLocal4) ELSE SUM(bl4.AmountLocal4) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4AmountLocal4,
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.AmountLocal5) ELSE SUM(bl4.AmountLocal5) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4AmountLocal5,
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.AmountLocal6) ELSE SUM(bl4.AmountLocal6) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4AmountLocal6,
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.AmountLocal7) ELSE SUM(bl4.AmountLocal7) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4AmountLocal7,
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.AmountLocal8) ELSE SUM(bl4.AmountLocal8) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4AmountLocal8,
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.AmountLocal9) ELSE SUM(bl4.AmountLocal9) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4AmountLocal9,
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.AmountLocal10) ELSE SUM(bl4.AmountLocal10) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4AmountLocal10,
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.AmountLocal11) ELSE SUM(bl4.AmountLocal11) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4AmountLocal11,
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.AmountLocal12) ELSE SUM(bl4.AmountLocal12) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4AmountLocal12,
+	(	select (case when b.refCompare3BudgetId IS NOT NULL and b.refCompare4BudgetId IS NULL
+			THEN SUM(bl.TotalLocal) ELSE SUM(bl4.TotalLocal) END)
+		from
+			BudgetLine bl4
+		where
+			bl4.refBudgetId = b.refCompare3BudgetId
+			and bl4.refActivityId = bl.refActivityId
+			and bl4.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+	) as Compare4TotalLocal,
+	-- contract prices
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fy.DateBegin and fy.DateEnd
+	) TotalBill,
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp1.DateBegin and fp1.DateEnd
+			and bm.IsPosted = 1
+	) Bill1,
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp2.DateBegin and fp2.DateEnd
+			and bm.IsPosted = 1
+	) Bill2,
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp3.DateBegin and fp3.DateEnd
+			and bm.IsPosted = 1
+	) Bill3,
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp4.DateBegin and fp4.DateEnd
+			and bm.IsPosted = 1
+	) Bill4,
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp5.DateBegin and fp5.DateEnd
+			and bm.IsPosted = 1
+	) Bill5,
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp6.DateBegin and fp6.DateEnd
+			and bm.IsPosted = 1
+	) Bill6,
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp7.DateBegin and fp7.DateEnd
+			and bm.IsPosted = 1
+	) Bill7,
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp8.DateBegin and fp8.DateEnd
+			and bm.IsPosted = 1
+	) Bill8,
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp9.DateBegin and fp9.DateEnd
+			and bm.IsPosted = 1
+	) Bill9,
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp10.DateBegin and fp10.DateEnd
+			and bm.IsPosted = 1
+	) Bill10,
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp11.DateBegin and fp11.DateEnd
+			and bm.IsPosted = 1
+	) Bill11,
+	(
+		select
+			isnull(SUM(bm.BillPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp12.DateBegin and fp12.DateEnd
+			and bm.IsPosted = 1
+	) Bill12,
+	(
+		select
+			isnull(SUM(bm.ContractPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp1.DateBegin and fp1.DateEnd
+	) Contract1,
+	(
+		select
+			isnull(SUM(bm.ContractPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp2.DateBegin and fp2.DateEnd
+	) Contract2,
+	(
+		select
+			isnull(SUM(bm.ContractPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp3.DateBegin and fp3.DateEnd
+	) Contract3,
+	(
+		select
+			isnull(SUM(bm.ContractPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp4.DateBegin and fp4.DateEnd
+	) Contract4,
+	(
+		select
+			isnull(SUM(bm.ContractPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp5.DateBegin and fp5.DateEnd
+	) Contract5,
+	(
+		select
+			isnull(SUM(bm.ContractPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp6.DateBegin and fp6.DateEnd
+	) Contract6,
+	(
+		select
+			isnull(SUM(bm.ContractPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp7.DateBegin and fp7.DateEnd
+	) Contract7,
+	(
+		select
+			isnull(SUM(bm.ContractPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp8.DateBegin and fp8.DateEnd
+	) Contract8,
+	(
+		select
+			isnull(SUM(bm.ContractPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp9.DateBegin and fp9.DateEnd
+	) Contract9,
+	(
+		select
+			isnull(SUM(bm.ContractPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp10.DateBegin and fp10.DateEnd
+	) Contract10,
+	(
+		select
+			isnull(SUM(bm.ContractPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp11.DateBegin and fp11.DateEnd
+	) Contract11,
+	(
+		select
+			isnull(SUM(bm.ContractPriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp12.DateBegin and fp12.DateEnd
+	) Contract12,
+	(
+		select
+			isnull(SUM(bm.DuePriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp1.DateBegin and fp1.DateEnd
+	) Due1,
+	(
+		select
+			isnull(SUM(bm.DuePriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp2.DateBegin and fp2.DateEnd
+	) Due2,
+	(
+		select
+			isnull(SUM(bm.DuePriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp3.DateBegin and fp3.DateEnd
+	) Due3,
+	(
+		select
+			isnull(SUM(bm.DuePriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp4.DateBegin and fp4.DateEnd
+	) Due4,
+	(
+		select
+			isnull(SUM(bm.DuePriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp5.DateBegin and fp5.DateEnd
+	) Due5,
+	(
+		select
+			isnull(SUM(bm.DuePriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp6.DateBegin and fp6.DateEnd
+	) Due6,
+	(
+		select
+			isnull(SUM(bm.DuePriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp7.DateBegin and fp7.DateEnd
+	) Due7,
+	(
+		select
+			isnull(SUM(bm.DuePriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp8.DateBegin and fp8.DateEnd
+	) Due8,
+	(
+		select
+			isnull(SUM(bm.DuePriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp9.DateBegin and fp9.DateEnd
+	) Due9,
+	(
+		select
+			isnull(SUM(bm.DuePriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp10.DateBegin and fp10.DateEnd
+	) Due10,
+	(
+		select
+			isnull(SUM(bm.DuePriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp11.DateBegin and fp11.DateEnd
+	) Due11,
+	(
+		select
+			isnull(SUM(bm.DuePriceLocal), 0)
+		from
+			BudgetMonitoring bm
+		where
+			bm.refAccountingLedgerAccountId = bl.refAccountingLedgerAccountId
+			and bm.refActivityId = bl.refActivityId
+			and bm.Date between fp12.DateBegin and fp12.DateEnd
+	) Due12
+from
+	BudgetLine bl
+	inner join Budget b on
+		b.Id = bl.refBudgetId
+	left outer join FiscalYear fy on
+		fy.Id = b.refFiscalYearId
+	left outer join FiscalPeriod fp1 on 
+		fp1.refFiscalYearId = b.refFiscalYearId
+		and fp1.Period = 1
+	left outer join FiscalPeriod fp2 on 
+		fp2.refFiscalYearId = b.refFiscalYearId
+		and fp2.Period = 2
+	left outer join FiscalPeriod fp3 on 
+		fp3.refFiscalYearId = b.refFiscalYearId
+		and fp3.Period = 3
+	left outer join FiscalPeriod fp4 on 
+		fp4.refFiscalYearId = b.refFiscalYearId
+		and fp4.Period = 4
+	left outer join FiscalPeriod fp5 on 
+		fp5.refFiscalYearId = b.refFiscalYearId
+		and fp5.Period = 5
+	left outer join FiscalPeriod fp6 on 
+		fp6.refFiscalYearId = b.refFiscalYearId
+		and fp6.Period = 6
+	left outer join FiscalPeriod fp7 on 
+		fp7.refFiscalYearId = b.refFiscalYearId
+		and fp7.Period = 7
+	left outer join FiscalPeriod fp8 on 
+		fp8.refFiscalYearId = b.refFiscalYearId
+		and fp8.Period = 8
+	left outer join FiscalPeriod fp9 on 
+		fp9.refFiscalYearId = b.refFiscalYearId
+		and fp9.Period = 9
+	left outer join FiscalPeriod fp10 on 
+		fp10.refFiscalYearId = b.refFiscalYearId
+		and fp10.Period = 10
+	left outer join FiscalPeriod fp11 on 
+		fp11.refFiscalYearId = b.refFiscalYearId
+		and fp11.Period = 11
+	left outer join FiscalPeriod fp12 on 
+		fp12.refFiscalYearId = b.refFiscalYearId
+		and fp12.Period = 12		
+group by
+	bl.refBudgetId,
+	b.refFiscalYearId,
+	bl.refAccountingLedgerAccountId,
+	bl.refActivityId,
+	b.refCompare1BudgetId,
+	b.refCompare2BudgetId,
+	b.refCompare3BudgetId,
+	b.refCompare4BudgetId,
+	fy.DateBegin,
+	fy.DateEnd,
+	fp1.DateBegin,
+	fp1.DateEnd,
+	fp2.DateBegin,
+	fp2.DateEnd,
+	fp3.DateBegin,
+	fp3.DateEnd,
+	fp4.DateBegin,
+	fp4.DateEnd,
+	fp5.DateBegin,
+	fp5.DateEnd,
+	fp6.DateBegin,
+	fp6.DateEnd,
+	fp7.DateBegin,
+	fp7.DateEnd,
+	fp8.DateBegin,
+	fp8.DateEnd,
+	fp9.DateBegin,
+	fp9.DateEnd,
+	fp10.DateBegin,
+	fp10.DateEnd,
+	fp11.DateBegin,
+	fp11.DateEnd,
+	fp12.DateBegin,
+	fp12.DateEnd
+</M01>
     </SchemaItem>
     <SchemaItem Id="c1350f38-ba0e-4e4a-a7d7-efb74be802f2" ItemType="DeploymentVersion" Name="1.001" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="1.001" refSchemaItemGroupId="d5800c87-5582-4697-8e12-72cdfef6ccc1" refSchemaExtensionId="3a0ce4ff-540b-4a18-ab21-73b2f0b91347" />
     <SchemaItem Id="d6b6fec9-10bb-4276-a4a0-0f92764ed620" ItemType="DeploymentUpdateScriptActivity" Name="00020_SetReferenceCode" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="20" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="3a0ce4ff-540b-4a18-ab21-73b2f0b91347" refParentItemId="c1350f38-ba0e-4e4a-a7d7-efb74be802f2">

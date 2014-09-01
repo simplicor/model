@@ -3664,6 +3664,7 @@ DELETE FROM AsapApplicationRole WHERE Name IN ('PAR_DefaultWarehouse_Shipping', 
 			&lt;xsl:value-of select="concat('DTSTART:', str:replace(substring-before(translate($dateFrom, '-:', ''), '+'), 'T000000Z', ''),'.0000000+02:00', $crlf)"/&gt;
 			&lt;xsl:value-of select="concat('DTEND:', str:replace(substring-before(translate($dateTo, '-:', ''), '+'), 'T000000Z', ''), $crlf)"/&gt;
 			&lt;xsl:value-of select="concat('SUMMARY:', @Name, $crlf)"/&gt;
+			&lt;xsl:value-of select="concat('LOCATION:', @Location, $crlf)"/&gt;
 
 			&lt;xsl:if test="string(Description)"&gt;
 				&lt;xsl:variable name="normalized" select="str:replace(str:replace(Description, '&amp;#x000A;', ''), '\', '\\')"/&gt;

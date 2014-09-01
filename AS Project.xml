@@ -278,7 +278,7 @@
       </xs:keyref>
     </xs:element>
   </xs:schema>
-  <SchemaExtension Id="ccda3930-c9de-4f2d-99f9-39f182343ca0" Name="AS Project" Version="3.6" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
+  <SchemaExtension Id="ccda3930-c9de-4f2d-99f9-39f182343ca0" Name="AS Project" Version="3.7" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
     <Description />
     <SchemaItemGroup Id="3cae234e-f75d-4674-a36d-04eb6204af67" Name="Project Management" RootItemType="DeploymentVersion" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" />
     <SchemaItemGroup Id="46c1228a-157b-41e5-8c5d-08a242234cd8" Name="Project Management" RootItemType="DataLookup" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" />
@@ -1045,6 +1045,7 @@ stálý zákazník
       <SchemaItemAncestor refAncestorId="219d0e5f-2aa5-4920-b02f-7d6837a9fa49" Id="e8ce8498-703a-4c55-9d9c-c3f9d527b5ab" refSchemaItemId="43a4a638-83ca-4591-9d4f-35cfd6e5a97f" />
       <SchemaItemAncestor refAncestorId="85de4821-d615-4b53-8542-3aaeeca1c7c0" Id="132da650-280d-4a3a-8836-deab10dd85e5" refSchemaItemId="43a4a638-83ca-4591-9d4f-35cfd6e5a97f" />
     </SchemaItem>
+    <SchemaItem Id="89016aeb-406d-40c7-96e8-05a48d4a54b8" ItemType="DataEntityColumn" Name="Location" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Místo" SS03="Location" I01="9" I02="200" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" refParentItemId="43a4a638-83ca-4591-9d4f-35cfd6e5a97f" />
     <SchemaItem Id="997f4346-8e09-462e-8334-0d9080c15769" ItemType="DataEntityColumn" Name="refProjectTaskCategoryId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Kategorie" SS03="refProjectTaskCategoryId" I01="10" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0be4a6f0-312e-4e62-b684-10451972d763" G03="557a9f44-b1a7-4a01-89c0-880dff92a5c3" G04="c54413b6-eb88-49c8-a7ff-3bb942c1984e" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" refParentItemId="43a4a638-83ca-4591-9d4f-35cfd6e5a97f">
       <Documentation Id="48b92834-49be-46ba-996e-d1156dfeadd6" Category="USER_LONG_HELP" refSchemaItemId="997f4346-8e09-462e-8334-0d9080c15769">
         <Data>Slouží k rozlišení úkolů do kategorií: např. Schůzka, Interni školení atp.</Data>
@@ -5676,6 +5677,10 @@ CREATE INDEX [ix_ProjectTemplate] ON [ProjectResourceTemplate] ([refProjectTempl
 	REFERENCES [ResourceAccessLevel] (
 		[Id]
 	)</M01>
+    </SchemaItem>
+    <SchemaItem Id="9124aabe-cf52-48b8-bf67-bce142587749" ItemType="DeploymentVersion" Name="3.7_ProjectTask_add_Location" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="3.7" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="3cae234e-f75d-4674-a36d-04eb6204af67" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" />
+    <SchemaItem Id="9f2ecbe8-a0d6-4db2-b200-1f7079e74b3e" ItemType="DeploymentUpdateScriptActivity" Name="00010_Database_Field_ProjectTask.Location" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" refParentItemId="9124aabe-cf52-48b8-bf67-bce142587749">
+      <M01>ALTER TABLE [ProjectTask] ADD [Location] NVARCHAR(200) NULL</M01>
     </SchemaItem>
     <SchemaItem Id="917f85a8-3cf4-433b-954d-2c010b42bdf1" ItemType="DeploymentVersion" Name="2.10" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2.10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="3cae234e-f75d-4674-a36d-04eb6204af67" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" />
     <SchemaItem Id="8a5859ec-c5e4-47ce-88cb-26d9c89274b5" ItemType="DeploymentUpdateScriptActivity" Name="00020_Database_Column_Mapping_ProjectTaskTemplate.refProjectTaskCategoryId" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="20" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" refParentItemId="917f85a8-3cf4-433b-954d-2c010b42bdf1">

@@ -619,18 +619,57 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 				&lt;xsl:value-of select="AS:LookupValue('4651e5c5-f0a9-4faa-8adc-020f2f425afe', $orderingAddressId)"/&gt;
 			&lt;/xsl:if&gt;
 		&lt;/xsl:variable&gt;
-		&lt;xsl:variable name="totalDiscount1" select="AS:sum(DocumentDelivery/DocumentBillingDetail/@DiscountForeign1)"/&gt;
-		&lt;xsl:variable name="totalDiscount2" select="AS:sum(DocumentDelivery/DocumentBillingDetail/@DiscountForeign2)"/&gt;
-		&lt;xsl:variable name="totalDiscount" select="AS:isnull($totalDiscount1, 0) + AS:isnull($totalDiscount2, 0)"/&gt;
-		&lt;xsl:variable name="discountPctUnrounded"&gt;
+		&lt;xsl:variable name="totalDiscount" select="AS:sum(DocumentDelivery/DocumentBillingDetail/@DiscountForeignTotal)"/&gt;
+		&lt;xsl:variable name="totalDiscount0"
+			select="AS:sum(DocumentDelivery/DocumentBillingDetail[
+				AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 
+					'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 
+					'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId)
+				= 0]/@DiscountForeignTotal)"/&gt;
+		&lt;xsl:variable name="totalDiscount1"
+			select="AS:sum(DocumentDelivery/DocumentBillingDetail[
+				AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 
+					'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 
+					'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId)
+				= 1]/@DiscountForeignTotal)"/&gt;
+		&lt;xsl:variable name="totalDiscount2"
+			select="AS:sum(DocumentDelivery/DocumentBillingDetail[
+				AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 
+					'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 
+					'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId)
+				= 2]/@DiscountForeignTotal)"/&gt;
+		&lt;xsl:variable name="discountPct"&gt;
 			&lt;xsl:choose&gt;
 				&lt;xsl:when test="@PriceForeignTotal = 0"&gt;0&lt;/xsl:when&gt;
 				&lt;xsl:otherwise&gt;
-					&lt;xsl:value-of select="AS:NumberOperand($totalDiscount, @PriceForeignTotal, 'DIV')"/&gt;
+					&lt;xsl:value-of select="AS:NormalRound(AS:NumberOperand($totalDiscount, @PriceForeignTotal, 'DIV'), 4) * 100"/&gt;
 				&lt;/xsl:otherwise&gt;
 			&lt;/xsl:choose&gt;
 		&lt;/xsl:variable&gt;
-		&lt;xsl:variable name="discountPct" select="AS:NormalRound($discountPctUnrounded, 4) * 100"/&gt;
+		&lt;xsl:variable name="discountPct0"&gt;
+			&lt;xsl:choose&gt;
+				&lt;xsl:when test="@PriceForeignTotal = 0"&gt;0&lt;/xsl:when&gt;
+				&lt;xsl:otherwise&gt;
+					&lt;xsl:value-of select="AS:NormalRound(AS:NumberOperand($totalDiscount0, @PriceForeignTotal, 'DIV'), 4) * 100"/&gt;
+				&lt;/xsl:otherwise&gt;
+			&lt;/xsl:choose&gt;
+		&lt;/xsl:variable&gt;
+		&lt;xsl:variable name="discountPct1"&gt;
+			&lt;xsl:choose&gt;
+				&lt;xsl:when test="@PriceForeignTotal = 0"&gt;0&lt;/xsl:when&gt;
+				&lt;xsl:otherwise&gt;
+					&lt;xsl:value-of select="AS:NormalRound(AS:NumberOperand($totalDiscount1, @PriceForeignTotal, 'DIV'), 4) * 100"/&gt;
+				&lt;/xsl:otherwise&gt;
+			&lt;/xsl:choose&gt;
+		&lt;/xsl:variable&gt;
+		&lt;xsl:variable name="discountPct2"&gt;
+			&lt;xsl:choose&gt;
+				&lt;xsl:when test="@PriceForeignTotal = 0"&gt;0&lt;/xsl:when&gt;
+				&lt;xsl:otherwise&gt;
+					&lt;xsl:value-of select="AS:NormalRound(AS:NumberOperand($totalDiscount2, @PriceForeignTotal, 'DIV'), 4) * 100"/&gt;
+				&lt;/xsl:otherwise&gt;
+			&lt;/xsl:choose&gt;
+		&lt;/xsl:variable&gt;
 		
 		&lt;header&gt;
 			&lt;delivery&gt;
@@ -795,8 +834,30 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 					&lt;/tax_details&gt;
 					&lt;xsl:if test="$totalDiscount != 0"&gt;
 						&lt;allowances_and_charges&gt;
-							&lt;total_allowance_rate&gt;&lt;xsl:value-of select="$discountPct"/&gt;&lt;/total_allowance_rate&gt;
-							&lt;total_allowance&gt;&lt;xsl:value-of select="$totalDiscount"/&gt;&lt;/total_allowance&gt;
+							&lt;allowance_rate_0&gt;
+								&lt;xsl:value-of select="$discountPct0"/&gt;
+							&lt;/allowance_rate_0&gt;
+							&lt;allowance_0&gt;
+								&lt;xsl:value-of select="$totalDiscount0"/&gt;
+							&lt;/allowance_0&gt;
+							&lt;allowance_rate_1&gt;
+								&lt;xsl:value-of select="$discountPct1"/&gt;
+							&lt;/allowance_rate_1&gt;
+							&lt;allowance_1&gt;
+								&lt;xsl:value-of select="$totalDiscount1"/&gt;
+							&lt;/allowance_1&gt;
+							&lt;allowance_rate_2&gt;
+								&lt;xsl:value-of select="$discountPct2"/&gt;
+							&lt;/allowance_rate_2&gt;
+							&lt;allowance_2&gt;
+								&lt;xsl:value-of select="$totalDiscount2"/&gt;
+							&lt;/allowance_2&gt;
+							&lt;total_allowance_rate&gt;
+								&lt;xsl:value-of select="$discountPct"/&gt;
+							&lt;/total_allowance_rate&gt;
+							&lt;total_allowance&gt;
+								&lt;xsl:value-of select="$totalDiscount"/&gt;
+							&lt;/total_allowance&gt;
 						&lt;/allowances_and_charges&gt;
 					&lt;/xsl:if&gt;
 				&lt;/summary&gt;

@@ -311,6 +311,12 @@
     <SchemaItem Id="96624aaf-6b6f-4c5b-893f-fc4ddfe1c016" ItemType="DataEntityColumn" Name="EDINumber" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Sazba EDI" SS03="EDINumber" I01="8" I02="0" I03="1" I04="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="e9d55907-2437-48ba-8169-73d6f9c662ad" />
     <SchemaItem Id="5e30f0af-ff87-4733-9202-4f495a903b41" ItemType="DataEntityIndex" Name="ix_refAsapSyncProviderConfigId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataEntityIndex" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="e9d55907-2437-48ba-8169-73d6f9c662ad" />
     <SchemaItem Id="d080ca38-0fda-4ea0-93fe-d7221fb73819" ItemType="DataEntityIndexField" Name="0_refAsapSyncProviderConfigId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataEntityIndexField" IsAbstract="false" I01="0" I02="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="de5c2f83-724f-474a-b666-3fc3d247a421" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="5e30f0af-ff87-4733-9202-4f495a903b41" />
+    <SchemaItem Id="317f81a0-6bcf-4f63-8e48-104f13ba183e" ItemType="EntityFilter" Name="GetByAsapSyncProviderConfigId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.EntityFilter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="e9d55907-2437-48ba-8169-73d6f9c662ad" />
+    <SchemaItem Id="cb4b4758-15d5-4836-a784-47e87022130b" ItemType="DataEntityColumn" Name="Equal" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCall" IsAbstract="false" SS01="" I01="0" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="6882ebdc-54d4-4847-830d-defd9c9540a4" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="317f81a0-6bcf-4f63-8e48-104f13ba183e" />
+    <SchemaItem Id="9a8ebc28-4b71-4cc8-9a27-942c23279dc3" ItemType="FunctionCallParameter" Name="Left" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="eb0c430b-1247-4f2f-9e37-ecb931a98498" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="cb4b4758-15d5-4836-a784-47e87022130b" />
+    <SchemaItem Id="cf41bd5a-c17d-4eb8-a482-3a59ff8a6270" ItemType="EntityColumnReference" Name="refAsapSyncProviderConfigId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.EntityColumnReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="de5c2f83-724f-474a-b666-3fc3d247a421" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="9a8ebc28-4b71-4cc8-9a27-942c23279dc3" />
+    <SchemaItem Id="ad751f72-23d5-4af4-854d-eaa0fc9a1bfc" ItemType="FunctionCallParameter" Name="Right" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="b1ebfe7e-8c38-4e53-8ecb-cee20ab61c34" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="cb4b4758-15d5-4836-a784-47e87022130b" />
+    <SchemaItem Id="61ca1673-9298-49db-8ad3-286ed3ac84f6" ItemType="ParameterReference" Name="parAsapSyncProviderConfigId" TargetType="CZ.Advantages.Asap.Schema.ParameterReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="53550212-f731-479c-8f1e-9776a7ebee57" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="ad751f72-23d5-4af4-854d-eaa0fc9a1bfc" />
     <SchemaItem Id="ba73cde2-89fe-410d-915f-163ec8a037c9" ItemType="EntityFilter" Name="GetByProviderAndTax" TargetType="CZ.Advantages.Asap.Schema.EntityModel.EntityFilter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="e9d55907-2437-48ba-8169-73d6f9c662ad" />
     <SchemaItem Id="6a586a80-b50d-4b93-b7ac-930c9914a0d0" ItemType="DataEntityColumn" Name="LogicalAnd" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCall" IsAbstract="false" SS01="" I01="0" I02="0" I03="0" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="030bf9c0-69a3-459c-88a1-3a3b8025392a" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="ba73cde2-89fe-410d-915f-163ec8a037c9" />
     <SchemaItem Id="82ed552c-a4dc-4a34-8954-ce06ef6cfa87" ItemType="FunctionCallParameter" Name="Arguments" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="d86e8210-ad76-4b11-9cba-67a33c8f33f7" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="6a586a80-b50d-4b93-b7ac-930c9914a0d0" />
@@ -319,18 +325,26 @@
     <SchemaItem Id="fde689a6-3659-429d-b6ee-6b872a0a0a08" ItemType="EntityColumnReference" Name="refTaxId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.EntityColumnReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="d12a2746-7ae9-4bcc-8ad8-c4236634ee60" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="e2004aa6-595f-4b6c-ad71-0802f6f53fe0" />
     <SchemaItem Id="162ddb2d-2786-4257-b626-5467a11fffb6" ItemType="FunctionCallParameter" Name="Right" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="b1ebfe7e-8c38-4e53-8ecb-cee20ab61c34" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="9055bef9-420f-4fa1-8217-72bc103966da" />
     <SchemaItem Id="ba4bda85-235d-4666-80cd-f91ab991d29d" ItemType="ParameterReference" Name="parTaxId" TargetType="CZ.Advantages.Asap.Schema.ParameterReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="057f044f-e50b-41cc-923b-8c76e92b7a04" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="162ddb2d-2786-4257-b626-5467a11fffb6" />
-    <SchemaItem Id="50962ef9-1d00-4499-bb6f-fc9df88563ed" ItemType="DataEntityColumn" Name="Provider" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCall" IsAbstract="false" SS01="" I01="0" I02="0" I03="0" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="6882ebdc-54d4-4847-830d-defd9c9540a4" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="82ed552c-a4dc-4a34-8954-ce06ef6cfa87" />
-    <SchemaItem Id="16105af1-fd9b-4f2c-8bdc-1982ee230b21" ItemType="FunctionCallParameter" Name="Left" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="eb0c430b-1247-4f2f-9e37-ecb931a98498" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="50962ef9-1d00-4499-bb6f-fc9df88563ed" />
-    <SchemaItem Id="ac6f0a86-16ac-4e80-940a-bc5d872e3a7d" ItemType="EntityColumnReference" Name="refAsapSyncProviderConfigId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.EntityColumnReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="de5c2f83-724f-474a-b666-3fc3d247a421" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="16105af1-fd9b-4f2c-8bdc-1982ee230b21" />
-    <SchemaItem Id="5cd6dfc9-a63c-4c6b-bfa3-3f761ac91959" ItemType="FunctionCallParameter" Name="Right" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="b1ebfe7e-8c38-4e53-8ecb-cee20ab61c34" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="50962ef9-1d00-4499-bb6f-fc9df88563ed" />
-    <SchemaItem Id="8a431462-98b8-4beb-9542-1369bd900b79" ItemType="ParameterReference" Name="parAsapSyncProviderConfigId" TargetType="CZ.Advantages.Asap.Schema.ParameterReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="53550212-f731-479c-8f1e-9776a7ebee57" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="5cd6dfc9-a63c-4c6b-bfa3-3f761ac91959" />
+    <SchemaItem Id="a7b823ab-57fb-49fc-8802-1a935dcff226" ItemType="EntityFilterReference" Name="GetByAsapSyncProviderConfigId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.EntityFilterReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="317f81a0-6bcf-4f63-8e48-104f13ba183e" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="82ed552c-a4dc-4a34-8954-ce06ef6cfa87" />
+    <SchemaItem Id="459da87f-d40d-46b2-b0cc-6e0e22a2ee11" ItemType="EntityFilter" Name="GetByEDINumber" TargetType="CZ.Advantages.Asap.Schema.EntityModel.EntityFilter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="e9d55907-2437-48ba-8169-73d6f9c662ad" />
+    <SchemaItem Id="abd8873e-edee-42d2-9055-3a23fd49a19c" ItemType="DataEntityColumn" Name="Equal" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCall" IsAbstract="false" SS01="" I01="0" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="6882ebdc-54d4-4847-830d-defd9c9540a4" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="459da87f-d40d-46b2-b0cc-6e0e22a2ee11" />
+    <SchemaItem Id="890c0625-612f-457e-80ff-3ccc8180981f" ItemType="FunctionCallParameter" Name="Left" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="eb0c430b-1247-4f2f-9e37-ecb931a98498" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="abd8873e-edee-42d2-9055-3a23fd49a19c" />
+    <SchemaItem Id="4810c71d-7ea4-44b6-b999-7b3f5988c062" ItemType="EntityColumnReference" Name="EDINumber" TargetType="CZ.Advantages.Asap.Schema.EntityModel.EntityColumnReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="96624aaf-6b6f-4c5b-893f-fc4ddfe1c016" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="890c0625-612f-457e-80ff-3ccc8180981f" />
+    <SchemaItem Id="be332e7d-8cf8-4b08-bfb3-f2d4ebfa0813" ItemType="FunctionCallParameter" Name="Right" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="b1ebfe7e-8c38-4e53-8ecb-cee20ab61c34" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="abd8873e-edee-42d2-9055-3a23fd49a19c" />
+    <SchemaItem Id="d8fb20d8-c0d1-402d-a5e4-8f735acbf8e7" ItemType="ParameterReference" Name="parEDINumber" TargetType="CZ.Advantages.Asap.Schema.ParameterReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="dd10ce76-616f-4cea-92c9-d8e23a417216" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="be332e7d-8cf8-4b08-bfb3-f2d4ebfa0813" />
     <SchemaItem Id="057f044f-e50b-41cc-923b-8c76e92b7a04" ItemType="Parameter" Name="parTaxId" TargetType="CZ.Advantages.Asap.Schema.SchemaItemParameter" IsAbstract="false" I01="10" I02="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="e9d55907-2437-48ba-8169-73d6f9c662ad" />
     <SchemaItem Id="53550212-f731-479c-8f1e-9776a7ebee57" ItemType="Parameter" Name="parAsapSyncProviderConfigId" TargetType="CZ.Advantages.Asap.Schema.SchemaItemParameter" IsAbstract="false" I01="10" I02="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="e9d55907-2437-48ba-8169-73d6f9c662ad" />
+    <SchemaItem Id="dd10ce76-616f-4cea-92c9-d8e23a417216" ItemType="Parameter" Name="parEDINumber" TargetType="CZ.Advantages.Asap.Schema.SchemaItemParameter" IsAbstract="false" I01="8" I02="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="e9d55907-2437-48ba-8169-73d6f9c662ad" />
+    <SchemaItem Id="7a553d4b-cc09-4321-b614-a02a4f8d07e5" ItemType="DataLookup" Name="AsapSyncProviderConfig_EDITaxMapping_refTaxId_ByEDINumber" TargetType="CZ.Advantages.Asap.Schema.LookupModel.DataServiceDataLookup" IsAbstract="false" SS01="refTaxId" SS02="" SS03="Id" SS04="refTaxId" SS05="Id" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="26a6ab73-4453-4e46-8bc4-896fb243d717" G02="26a6ab73-4453-4e46-8bc4-896fb243d717" G04="b950c1da-d501-482a-af25-94fc04d29874" refSchemaItemGroupId="757f101e-9b88-45d2-9f23-dc2ed914298e" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
     <SchemaItem Id="bcfa003b-373e-4a99-bbd8-2f0ea75ccb37" ItemType="DataLookup" Name="AsapSyncProviderConfig_EDITaxMapping_EDINumber" TargetType="CZ.Advantages.Asap.Schema.LookupModel.DataServiceDataLookup" IsAbstract="false" SS01="EDINumber" SS02="" SS03="Id" SS04="EDINumber" SS05="Id" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="26a6ab73-4453-4e46-8bc4-896fb243d717" G02="26a6ab73-4453-4e46-8bc4-896fb243d717" G04="d0ce1094-95e9-425c-8ab5-bfeb07d3dd52" refSchemaItemGroupId="757f101e-9b88-45d2-9f23-dc2ed914298e" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
     <SchemaItem Id="26a6ab73-4453-4e46-8bc4-896fb243d717" ItemType="DataStructure" Name="LookupAsapSyncProviderConfig_EDITaxMapping_EDINumber" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructure" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="437559ce-df0f-4989-81f7-b26cdd9a8d2d" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
     <SchemaItem Id="47726cc5-34e1-408c-b71e-19c44eb1792b" ItemType="DataStructureEntity" Name="AsapSyncProviderConfig_EDITaxMapping" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureEntity" IsAbstract="false" SS01="" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="e9d55907-2437-48ba-8169-73d6f9c662ad" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="26a6ab73-4453-4e46-8bc4-896fb243d717" />
+    <SchemaItem Id="631bc435-8415-466e-a07c-1714da7c09c8" ItemType="DataStructureColumn" Name="refTaxId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureColumn" IsAbstract="false" SS01="" I02="0" I03="0" I04="0" I05="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="d12a2746-7ae9-4bcc-8ad8-c4236634ee60" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="47726cc5-34e1-408c-b71e-19c44eb1792b" />
     <SchemaItem Id="47b4b07d-5c80-478f-9e25-ab669b580c21" ItemType="DataStructureColumn" Name="EDINumber" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureColumn" IsAbstract="false" SS01="" I03="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="96624aaf-6b6f-4c5b-893f-fc4ddfe1c016" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="47726cc5-34e1-408c-b71e-19c44eb1792b" />
     <SchemaItem Id="30775882-b78c-4b15-adc3-e73270a68b43" ItemType="DataStructureColumn" Name="Id" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureColumn" IsAbstract="false" SS01="" I03="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="c54413b6-eb88-49c8-a7ff-3bb942c1984e" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="47726cc5-34e1-408c-b71e-19c44eb1792b" />
+    <SchemaItem Id="b950c1da-d501-482a-af25-94fc04d29874" ItemType="DataStructureFilterSet" Name="GetByProviderAndNumber" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSet" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="26a6ab73-4453-4e46-8bc4-896fb243d717" />
+    <SchemaItem Id="d5dbab6a-b337-42dc-995e-28d9e3f71b94" ItemType="DataStructureFilterSetFilter" Name="AsapSyncProviderConfig_EDITaxMapping_GetByAsapSyncProviderConfigId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSetFilter" IsAbstract="false" LS01="" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="47726cc5-34e1-408c-b71e-19c44eb1792b" G02="317f81a0-6bcf-4f63-8e48-104f13ba183e" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="b950c1da-d501-482a-af25-94fc04d29874" />
+    <SchemaItem Id="579c2534-c871-4490-b7b3-6b8ea45425cd" ItemType="DataStructureFilterSetFilter" Name="AsapSyncProviderConfig_EDITaxMapping_GetByEDINumber" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSetFilter" IsAbstract="false" LS01="" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="47726cc5-34e1-408c-b71e-19c44eb1792b" G02="459da87f-d40d-46b2-b0cc-6e0e22a2ee11" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="b950c1da-d501-482a-af25-94fc04d29874" />
     <SchemaItem Id="d0ce1094-95e9-425c-8ab5-bfeb07d3dd52" ItemType="DataStructureFilterSet" Name="GetByProviderAndTax" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSet" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="26a6ab73-4453-4e46-8bc4-896fb243d717" />
     <SchemaItem Id="5b410068-5494-4716-8676-d30e001bda42" ItemType="DataStructureFilterSetFilter" Name="AsapSyncProviderConfig_EDITaxMapping_GetByProviderAndTax" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSetFilter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="47726cc5-34e1-408c-b71e-19c44eb1792b" G02="ba73cde2-89fe-410d-915f-163ec8a037c9" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="d0ce1094-95e9-425c-8ab5-bfeb07d3dd52" />
     <SchemaItem Id="3248bb20-4b7d-45e9-b09d-8159fe2be663" ItemType="DataStructure" Name="AsapSyncProviderConfig_EDIBills" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructure" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="dd69c051-07c2-4107-ad7a-ca0e4d8c8377" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" />
@@ -570,6 +584,8 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
 	xmlns:date="http://exslt.org/dates-and-times"
 	exclude-result-prefixes="AS date"&gt;
+	
+	&lt;xsl:include href="model://2b38c7eb-714f-4ae9-8280-ce7a4c99d93f"/&gt;
 
 	&lt;xsl:param name="senderEDI_ID"/&gt;
 	&lt;xsl:param name="supplier_party_ean"/&gt;
@@ -583,7 +599,7 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 	&lt;xsl:param name="supplier_storehouse_ean"/&gt;
 	&lt;xsl:param name="free_text_1"/&gt;
 
-	&lt;xsl:param name="providerConfigId" select="'4ed815d7-8947-4a15-ba91-f9fd22683f0e'"/&gt;
+	&lt;xsl:param name="providerConfigId" select="'56843798-532F-49EC-843A-50FE0A3F32F0'"/&gt;
 
 	&lt;xsl:template match="ROOT"&gt;
  		&lt;biztalk_1&gt;
@@ -762,18 +778,16 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 								= 2]/@VatAmountForeign)"/&gt;
 						&lt;/vat_2&gt;
 						&lt;vat_rate_1&gt;
-							&lt;xsl:value-of select="AS:isnull(DocumentDelivery/DocumentBillingDetail[
-								AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 
-									'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 
-									'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) 
-								= 1][1]/@VatRate, 0)"/&gt;
+							&lt;xsl:call-template name="getEDIVatRate"&gt;
+								&lt;xsl:with-param name="number" select="1"/&gt;
+								&lt;xsl:with-param name="date" select="AS:isnull(@DateVAT, @DateIssued)"/&gt;
+							&lt;/xsl:call-template&gt;
 						&lt;/vat_rate_1&gt;
 						&lt;vat_rate_2&gt;
-							&lt;xsl:value-of select="DocumentDelivery/DocumentBillingDetail[
-								AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 
-									'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 
-									'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) 
-								= 2][1]/@VatRate"/&gt;
+							&lt;xsl:call-template name="getEDIVatRate"&gt;
+								&lt;xsl:with-param name="number" select="2"/&gt;
+								&lt;xsl:with-param name="date" select="AS:isnull(@DateVAT, @DateIssued)"/&gt;
+							&lt;/xsl:call-template&gt;
 						&lt;/vat_rate_2&gt;
 						&lt;total_vat&gt;
 							&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail/@VatAmountForeign)"/&gt;
@@ -816,7 +830,7 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 			&lt;xsl:if test="string($addressId)"&gt;
 				&lt;xsl:variable name="crossdockingAddressId" 
 					select="AS:LookupValue('d294eca8-1dc8-4ba9-959a-9450494e7897',
-						'BusinessPartnerCommunicationChannel_parBusinessPartnerId', ../@refBusinessPartnerId,
+						'BusinessPartnerCommunicationChannel_parBusinessPartnerId', AS:isnull(../@refBusinessPartnerId, ../../@refBusinessPartnerId),
 						'BusinessPartnerCommunicationChannel_parBusinessPartnerCommunicationChannelTypeId',
 							AS:GetConstant('BusinessPartnerCommunicationChannelType_EDI_AddressCrossdocking'))
 					"/&gt;
@@ -842,6 +856,19 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 			&lt;/despatch_advice_number&gt;
 			
 		&lt;/item&gt;
+	&lt;/xsl:template&gt;
+	
+	&lt;xsl:template name="getEDIVatRate"&gt;
+		&lt;xsl:param name="number"/&gt;
+		&lt;xsl:param name="date"/&gt;
+
+		&lt;xsl:call-template name="getVatRate"&gt;
+			&lt;xsl:with-param name="taxId" select="AS:LookupValue('7a553d4b-cc09-4321-b614-a02a4f8d07e5',
+				'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 
+				'AsapSyncProviderConfig_EDITaxMapping_parEDINumber', $number)
+				"/&gt;
+			&lt;xsl:with-param name="date" select="$date"/&gt;
+		&lt;/xsl:call-template&gt;
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>

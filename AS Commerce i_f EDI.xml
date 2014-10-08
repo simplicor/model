@@ -726,14 +726,58 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 						&lt;taxable_amount&gt;&lt;xsl:value-of select="@PriceForeignTotal"/&gt;&lt;/taxable_amount&gt; 
 					&lt;/monetary_amounts&gt;
 					&lt;tax_details&gt;
-						&lt;basis_of_vat_0&gt;&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail[AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) = 0]/@PriceForeignTotal)"/&gt;&lt;/basis_of_vat_0&gt; 
-						&lt;basis_of_vat_1&gt;&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail[AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) = 1]/@PriceForeignTotal)"/&gt;&lt;/basis_of_vat_1&gt; 
-						&lt;basis_of_vat_2&gt;&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail[AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) = 2]/@PriceForeignTotal)"/&gt;&lt;/basis_of_vat_2&gt; 
-						&lt;vat_1&gt;&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail[AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) = 1]/@VatAmountForeign)"/&gt;&lt;/vat_1&gt; 
-						&lt;vat_2&gt;&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail[AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) = 2]/@VatAmountForeign)"/&gt;&lt;/vat_2&gt; 
-						&lt;vat_rate_1&gt;&lt;xsl:value-of select="AS:isnull(DocumentDelivery/DocumentBillingDetail[AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) = 1][1]/@VatRate, 0)"/&gt;&lt;/vat_rate_1&gt; 
-						&lt;vat_rate_2&gt;&lt;xsl:value-of select="DocumentDelivery/DocumentBillingDetail[AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) = 2][1]/@VatRate"/&gt;&lt;/vat_rate_2&gt; 
-						&lt;total_vat&gt;&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail/@VatAmountForeign)"/&gt;&lt;/total_vat&gt; 
+						&lt;basis_of_vat_0&gt;
+							&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail[
+								AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37',
+									'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId,
+									'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId)
+								= 0]/@PriceForeignTotal)"/&gt;
+						&lt;/basis_of_vat_0&gt;
+						&lt;basis_of_vat_1&gt;
+							&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail[
+								AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 
+									'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 
+									'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId)
+								= 1]/@PriceForeignTotal)"/&gt;
+						&lt;/basis_of_vat_1&gt;
+						&lt;basis_of_vat_2&gt;
+							&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail[
+								AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 
+									'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 
+									'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId)
+								= 2]/@PriceForeignTotal)"/&gt;
+						&lt;/basis_of_vat_2&gt;
+						&lt;vat_1&gt;
+							&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail[
+								AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 
+									'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 
+									'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) 
+								= 1]/@VatAmountForeign)"/&gt;
+						&lt;/vat_1&gt;
+						&lt;vat_2&gt;
+							&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail[
+								AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 
+									'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 
+									'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) 
+								= 2]/@VatAmountForeign)"/&gt;
+						&lt;/vat_2&gt;
+						&lt;vat_rate_1&gt;
+							&lt;xsl:value-of select="AS:isnull(DocumentDelivery/DocumentBillingDetail[
+								AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 
+									'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 
+									'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) 
+								= 1][1]/@VatRate, 0)"/&gt;
+						&lt;/vat_rate_1&gt;
+						&lt;vat_rate_2&gt;
+							&lt;xsl:value-of select="DocumentDelivery/DocumentBillingDetail[
+								AS:LookupValue('bcfa003b-373e-4a99-bbd8-2f0ea75ccb37', 
+									'AsapSyncProviderConfig_EDITaxMapping_parAsapSyncProviderConfigId', $providerConfigId, 
+									'AsapSyncProviderConfig_EDITaxMapping_parTaxId', @refTaxId) 
+								= 2][1]/@VatRate"/&gt;
+						&lt;/vat_rate_2&gt;
+						&lt;total_vat&gt;
+							&lt;xsl:value-of select="AS:sum(DocumentDelivery/DocumentBillingDetail/@VatAmountForeign)"/&gt;
+						&lt;/total_vat&gt;
 					&lt;/tax_details&gt;
 					&lt;xsl:if test="$totalDiscount != 0"&gt;
 						&lt;allowances_and_charges&gt;

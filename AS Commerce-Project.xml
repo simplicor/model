@@ -278,7 +278,7 @@
       </xs:keyref>
     </xs:element>
   </xs:schema>
-  <SchemaExtension Id="86773c55-567c-4478-b14f-ffa9ae7156ad" Name="AS Commerce-Project" Version="2.6" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
+  <SchemaExtension Id="86773c55-567c-4478-b14f-ffa9ae7156ad" Name="AS Commerce-Project" Version="2.7" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
     <Description />
     <SchemaItemGroup Id="9bfcd9b7-4de8-4a0a-bfa7-42f3174a1eb5" Name="Commerce-Project" RootItemType="DeploymentVersion" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad" />
     <PackageReference Id="ca238ffc-cfd7-45f1-92fa-2de9be6e5983" IncludeAllElements="true" ReferenceType="1" refPackageId="86773c55-567c-4478-b14f-ffa9ae7156ad" refReferencedPackageId="ccda3930-c9de-4f2d-99f9-39f182343ca0" />
@@ -1522,6 +1522,46 @@ WHERE
     <SchemaItem Id="24b1fdc4-32ea-4155-b60e-f5bdee903724" ItemType="DeploymentUpdateScriptActivity" Name="00010_DROP_columns" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad" refParentItemId="93f66372-700e-47e6-9f54-5942d234afd4">
       <M01>ALTER TABLE ProjectBudgetLine DROP COLUMN ConfirmedPurchasePriceLocal
 ALTER TABLE ProjectBudgetLine DROP COLUMN ConfirmedPurchasePriceForeign</M01>
+    </SchemaItem>
+    <SchemaItem Id="9c17a1e6-674e-4a42-b1c8-5b0151e75160" ItemType="DeploymentVersion" Name="2.7" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2.7" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9bfcd9b7-4de8-4a0a-bfa7-42f3174a1eb5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad" />
+    <SchemaItem Id="54fb5184-b24a-4058-b8e7-abaf1e953c44" ItemType="DeploymentUpdateScriptActivity" Name="00010_recreate_VIEW_DocumentDeliveryExtended" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad" refParentItemId="9c17a1e6-674e-4a42-b1c8-5b0151e75160">
+      <M01>alter VIEW [DocumentDeliveryExtended]
+as
+select
+	P.[Name] as Project_Name,
+	P.[Id] as Project_Id,
+	D.[refBusinessPartnerId] as Document_refBusinessPartnerId,
+	(
+		select 
+			sum(cast((dbd.PriceLocal - (dbd.PriceLocal * (dbd.DiscountPct1 + dbd.DiscountPct2 - (dbd.DiscountPct2 * (cast(dbd.DiscountPct1 as money) / 100))) / 100)) * (case ddBill.refDocumentDeliveryBillingTypeId when '015AEA9F-7638-4E66-A9CC-4967CE990636' then dbd.Quantity when '537E37B8-A8C0-4975-A6EF-78A85112A920' then dbd.Quantity else isnull(dbd.QuantityDeliveryNote, dbd.Quantity) end) as money)) 
+		from 
+			DocumentBillingDetail dbd 
+			inner join DocumentDelivery ddBill on 
+				ddBill.Id = dbd.refDocumentDeliveryId 
+			where 
+				dbd.refDocumentDeliveryId = dd.Id
+		)
+	- isnull((
+		select 
+			sum(dbd_bill.PriceLocalTotal) 
+		from 
+			DocumentBillingDetail dbd_bill 
+			inner join DocumentDelivery dd_bill on 
+				dd_bill.Id = dbd_bill.refDocumentDeliveryId 
+			inner join Document d_bill on 
+				d_bill.Id = dd_bill.refDocumentId 
+				and d_bill.refDocumentBillStateId &lt;&gt; 'E3E062F8-456D-469A-9667-177F9ACE5794' 
+		where 
+			dbd_bill.refContractDocumentDeliveryId = dd.Id
+		), 0) 
+	as PriceLocal_NotBilled,
+	(select count(*) from DocumentBillingDetail dbd where dbd.refDocumentDeliveryId = dd.Id) as ItemCount,
+	(select sum(dbd.Weight) from DocumentBillingDetail dbd where dbd.refDocumentDeliveryId = dd.Id) as TotalWeightFromView,
+	dd.*
+from
+	DocumentDelivery dd
+	LEFT OUTER JOIN Document D ON D.[Id] = dd.[refDocumentId]
+	LEFT OUTER JOIN Project P ON P.[Id] = D.[refProjectId]</M01>
     </SchemaItem>
     <SchemaItem Id="9c43d938-f3eb-42b1-84eb-58e707062fe1" ItemType="DeploymentVersion" Name="1.13" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="1.13" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9bfcd9b7-4de8-4a0a-bfa7-42f3174a1eb5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad" />
     <SchemaItem Id="182265c1-f236-4b91-9497-04b52a3b3e9c" ItemType="DeploymentUpdateScriptActivity" Name="00010_VIEW_DocumentDeliveryExtended" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad" refParentItemId="9c43d938-f3eb-42b1-84eb-58e707062fe1">

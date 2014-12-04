@@ -2578,6 +2578,10 @@ WHERE
 	             
 	             &lt;xsl:variable name="referenceCode"&gt;
 		             &lt;xsl:choose&gt;
+		             	&lt;!-- reference code already assigned (not default) - we keep it --&gt;
+		             	&lt;xsl:when test="@ReferenceCode != AS:GetConstant('_auto_string')"&gt;
+		             		&lt;xsl:value-of select="@ReferenceCode"/&gt;
+		             	&lt;/xsl:when&gt;
 		             	&lt;xsl:when test="$isPayment = 'true'"&gt;
 			             	&lt;!-- cash payment, we assign a cash document code --&gt;
 		             		&lt;xsl:call-template name="GetPaymentReferenceCode"&gt;

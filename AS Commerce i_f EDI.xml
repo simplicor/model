@@ -887,8 +887,7 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 			&lt;article_name&gt;&lt;xsl:value-of select="@InfoText1"/&gt;&lt;/article_name&gt; 
 			&lt;quantity&gt;&lt;xsl:value-of select="@Quantity"/&gt;&lt;/quantity&gt; 
 			&lt;gross_price&gt;&lt;xsl:value-of select="@PriceForeign"/&gt;&lt;/gross_price&gt; 
-			&lt;net_price&gt;&lt;xsl:value-of select="format-number(((1+(((0.0001*number(@DiscountPct2))-0.01)*number(@DiscountPct1))-0.01*number(@DiscountPct2))*@PriceForeign), '#.0000')"/&gt;&lt;/net_price&gt;
-			&lt;total_price&gt;&lt;xsl:value-of select="@PriceForeignTotal"/&gt;&lt;/total_price&gt;
+			&lt;total_price&gt;&lt;xsl:value-of select="@PriceForeignTotal"/&gt;&lt;/total_price&gt; 
 			&lt;vat_rate&gt;&lt;xsl:value-of select="@VatRate"/&gt;&lt;/vat_rate&gt; 
 			&lt;xsl:if test="string(@refUomId)"&gt;
 				&lt;unit&gt;&lt;xsl:value-of select="AS:LookupValue('da134e3d-abd9-4d47-bfdf-0cf058699b1d', @refUomId)"/&gt;&lt;/unit&gt; 

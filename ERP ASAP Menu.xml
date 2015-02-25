@@ -282,7 +282,7 @@
       </xs:keyref>
     </xs:element>
   </xs:schema>
-  <SchemaExtension Id="756a579c-57a2-4590-bc09-683f8a4eece4" Name="ERP ASAP Menu" Version="2014.4.1" Copyright="(c) 2005-2012 Advantage Solutions, s. r. o.">
+  <SchemaExtension Id="756a579c-57a2-4590-bc09-683f8a4eece4" Name="ERP ASAP Menu" Version="2014.4.2" Copyright="(c) 2005-2012 Advantage Solutions, s. r. o.">
     <Description />
     <SchemaItemGroup Id="6b9340de-7ae0-4d04-bb80-3a2c788ee72f" Name="ERP ASAP Menu" RootItemType="DeploymentVersion" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" />
     <SchemaItemGroup Id="8cc0fbaa-7a38-434d-b8f9-95d3a7ec030f" Name="pages" RootItemType="Transformation" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" />
@@ -817,7 +817,7 @@ INSERT INTO AsapApplicationRole (Id, Name, Description, IsSystemRole, RecordCrea
 INSERT INTO AsapApplicationRole (Id, Name, Description, IsSystemRole, RecordCreated) VALUES (newid(), 'WF_Commerce_SalesOrdersRenewal', 'Formulář: Menu &gt; Zakázky &gt; Objednávky &gt; Obnovení smluv/objednávek', 1, getdate())
 INSERT INTO AsapApplicationRole (Id, Name, Description, IsSystemRole, RecordCreated) VALUES (newid(), 'FRM_Marketing_InterestAreas', 'Formulář: Menu &gt; Základní data &gt; Marketing &gt; Zájmy', 1, getdate())</M01>
     </SchemaItem>
-    <SchemaItem Id="a140101b-b3ce-46dc-baea-5203c3401f83" ItemType="DeploymentVersion" Name="2014.4.0" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2014.4.0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="6b9340de-7ae0-4d04-bb80-3a2c788ee72f" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" />
+    <SchemaItem Id="a140101b-b3ce-46dc-baea-5203c3401f83" ItemType="DeploymentVersion" Name="2014.4.2" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2014.4.2" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="6b9340de-7ae0-4d04-bb80-3a2c788ee72f" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" />
     <SchemaItem Id="a40ea965-ed16-4833-9f09-1e09cd75841b" ItemType="DeploymentVersion" Name="2013.1.8_bugfixes" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2013.1.8" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="6b9340de-7ae0-4d04-bb80-3a2c788ee72f" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" />
     <SchemaItem Id="a68785d2-d422-49d6-9a7a-c504d343401e" ItemType="DeploymentVersion" Name="2014.2.3" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2014.2.3" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="6b9340de-7ae0-4d04-bb80-3a2c788ee72f" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" />
     <SchemaItem Id="b8ed60c8-6e6c-4a3b-b7ce-c7b53f161fb3" ItemType="DeploymentUpdateScriptActivity" Name="00010_AddRole_WF_BusinessPartner_UpdateAddress" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" refParentItemId="a68785d2-d422-49d6-9a7a-c504d343401e">

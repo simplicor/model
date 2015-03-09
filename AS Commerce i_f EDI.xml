@@ -921,7 +921,9 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 			&lt;despatch_advice_number&gt;
 				&lt;xsl:value-of select="substring-before(substring-after(../TextDeliveryNote, ': '), ' ')"/&gt;
 			&lt;/despatch_advice_number&gt;
-			
+			&lt;date_of_despatch_advice&gt;
+				&lt;xsl:value-of select="substring-before(../@DatePlanned, 'T')"/&gt;
+			&lt;/date_of_despatch_advice&gt;
 		&lt;/item&gt;
 	&lt;/xsl:template&gt;
 	

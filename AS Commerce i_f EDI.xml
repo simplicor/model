@@ -605,10 +605,6 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 	&lt;xsl:param name="free_text_1"/&gt;
 
 	&lt;xsl:param name="providerConfigId" select="'56843798-532F-49EC-843A-50FE0A3F32F0'"/&gt;
-	
-	
-	
-	
 
   	&lt;xsl:template match="ROOT"&gt;
  		&lt;biztalk_1&gt;
@@ -707,7 +703,27 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
 			&lt;xml_document type_identifier="INVOIC" version_number="2003"&gt;
 				&lt;form_header&gt;
 					&lt;userdocid&gt;&lt;xsl:value-of select="@ReferenceCode"/&gt;&lt;/userdocid&gt;
-					&lt;document_type&gt;380&lt;/document_type&gt;
+					&lt;document_type&gt;
+						&lt;xsl:choose&gt;
+							&lt;xsl:when test="@refDocumentSubtypeId = 
+								AS:GetConstant('DocumentSubtype_Bill_Invoice')"&gt;380&lt;/xsl:when&gt;
+							&lt;xsl:when test="@refDocumentSubtypeId = 
+								AS:GetConstant('DocumentSubtype_Bill_CreditNote')"&gt;381&lt;/xsl:when&gt;
+							&lt;xsl:otherwise&gt;
+								&lt;xsl:message terminate="yes"&gt;
+									Nepodporovaný typ dokladu &lt;xsl:value-of select="AS:LookupValue('94b39dab-ce38-4c0d-859b-55cd0accdf9b', @refDocumentSubtypeId)"/&gt;
+								&lt;/xsl:message&gt;
+							&lt;/xsl:otherwise&gt;
+						&lt;/xsl:choose&gt;
+					&lt;/document_type&gt;
+					&lt;xsl:if test="@refDocumentSubtypeId = 
+								AS:GetConstant('DocumentSubtype_Bill_CreditNote')
+								and string(@refOriginalDocumentId)"&gt;
+						&lt;ref_invoice_number&gt;
+							&lt;xsl:value-of select="AS:LookupValue(
+								'13f12478-a50f-4d1d-bbc4-b8cdd0464d54', @refOriginalDocumentId)"/&gt;
+						&lt;/ref_invoice_number&gt;
+					&lt;/xsl:if&gt;
 					&lt;message_function&gt;9&lt;/message_function&gt; 
 					&lt;date_of_issue&gt;&lt;xsl:value-of select="substring-before(@DateIssued, 'T')"/&gt;&lt;/date_of_issue&gt; 
 					&lt;date_of_tax&gt;&lt;xsl:value-of select="substring-before(@DateVAT, 'T')"/&gt;&lt;/date_of_tax&gt; 
@@ -1619,7 +1635,7 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
     <SchemaItem Id="2685ec59-32b0-4517-8402-7178cdca08d0" ItemType="DataEntityColumn" Name="=" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCall" IsAbstract="false" SS01="" I01="0" I02="0" I03="0" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="6882ebdc-54d4-4847-830d-defd9c9540a4" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="b461deb6-5bb7-4f30-a1be-b1f408dbd104" />
     <SchemaItem Id="cc4eaa14-598f-4a2a-92fc-05f3bc8f6d3c" ItemType="DataStructureEntity" Name="Project" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureEntity" IsAbstract="false" SS01="" I01="1" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="4b085c67-daaf-4f80-8e35-a7f9edc12b4f" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="8b127e85-0292-4ddf-bffa-1577066446f9" />
     <SchemaItem Id="6f4b5c73-f1ef-420c-9b6d-77ab86e9a354" ItemType="DataStructureFilterSet" Name="GetSource_OnlyInvoice" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSet" IsAbstract="false" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="85057268-bb8a-43f4-b022-6a2d6d733420" />
-    <SchemaItem Id="0586c0ee-3e0c-451c-bf80-62c5d01ddd4e" ItemType="DataStructureFilterSetFilter" Name="Document_GetDocumentSubtype_DocumentSubtype_Bill_Invoice" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSetFilter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ed5cc479-2d9b-406f-9287-f8cad4d368ab" G02="fa6cebc6-8a10-4efc-8cf2-8247ad3b384e" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="6f4b5c73-f1ef-420c-9b6d-77ab86e9a354" />
+    <SchemaItem Id="0586c0ee-3e0c-451c-bf80-62c5d01ddd4e" ItemType="DataStructureFilterSetFilter" Name="Document_GetFinalBills" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSetFilter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ed5cc479-2d9b-406f-9287-f8cad4d368ab" G02="2d73ca16-8c13-4d87-bebf-66c63f14ff0a" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="6f4b5c73-f1ef-420c-9b6d-77ab86e9a354" />
     <SchemaItem Id="69ac4567-996b-4091-b6ad-6ccda40b0c82" ItemType="DataStructureFilterSetFilter" Name="Document_GetSalesBills" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSetFilter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ed5cc479-2d9b-406f-9287-f8cad4d368ab" G02="1c052e0e-a8c4-45c0-a607-0952c78e5188" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="6f4b5c73-f1ef-420c-9b6d-77ab86e9a354" />
     <SchemaItem Id="c8b4deb8-2f1e-4435-a018-78e2be4eb593" ItemType="DataStructureFilterSetFilter" Name="Document_GetAfterReportDistributionCategoryAssigned" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSetFilter" IsAbstract="false" LS01="" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ed5cc479-2d9b-406f-9287-f8cad4d368ab" G02="29349a3b-9d62-4f6b-aae7-15e109f60422" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="6f4b5c73-f1ef-420c-9b6d-77ab86e9a354" />
     <SchemaItem Id="fa378e6a-e2e7-4b61-9964-a53a719bf4e2" ItemType="DataStructureFilterSetFilter" Name="AsapSyncRun_Source_GetByAsapSyncConfigId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSetFilter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="1a3e93d2-28a4-4085-bb15-a7bacf3bb7c0" G02="6727d668-9cdc-48e3-8126-12eae21ec5aa" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="6f4b5c73-f1ef-420c-9b6d-77ab86e9a354" />

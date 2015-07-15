@@ -4054,7 +4054,7 @@ DELETE FROM AsapApplicationRole WHERE Name IN ('PAR_DefaultWarehouse_Shipping', 
 			&lt;xsl:if test="count(BusinessPartnerContactPerson) &gt; 0"&gt;
 				&lt;cell type="text" x="0" y="1" height="1" width="1"/&gt;
 				&lt;cell type="grid" x="0" y="1" height="1" width="1" verticalGap="2"&gt;
-					&lt;xsl:for-each select="BusinessPartnerContactPerson"&gt;
+					&lt;xsl:for-each select="BusinessPartnerContactPerson[@IsBranchOffice='false']"&gt;
 						&lt;row&gt;
 							&lt;col width="5"/&gt;
 							&lt;col width="23" type="image"&gt;
@@ -4066,7 +4066,7 @@ DELETE FROM AsapApplicationRole WHERE Name IN ('PAR_DefaultWarehouse_Shipping', 
 									&lt;xsl:value-of select="concat(', ',@JobTitle)" /&gt;
 								&lt;/xsl:if&gt;
 							&lt;/xsl:variable&gt;
-							&lt;col width="{string-length($namePos)* 5 }"&gt;
+							&lt;col width="{string-length($namePos)* 5.5 }"&gt;
 								&lt;xsl:value-of select="$namePos" /&gt;
 							&lt;/col&gt;
 							&lt;xsl:if test="count(BusinessPartnerContactCommunicationChannel[@DeviceId = AS:GetConstant('BusinessPartnerCommunicationDeviceType_Phone')]) &gt; 0"&gt;
@@ -4090,7 +4090,7 @@ DELETE FROM AsapApplicationRole WHERE Name IN ('PAR_DefaultWarehouse_Shipping', 
 										&lt;/xsl:if&gt;
 									&lt;/xsl:for-each&gt;
 								&lt;/xsl:variable&gt;
-								&lt;col width="{string-length($emails) * 5}"&gt;
+								&lt;col width="{string-length($emails) * 5.5}"&gt;
 									&lt;xsl:value-of select="substring($emails, 1, string-length($emails) - 2)"/&gt;
 								&lt;/col&gt;
 							&lt;/xsl:if&gt;
@@ -4533,7 +4533,7 @@ DELETE FROM AsapApplicationRole WHERE Name IN ('PAR_DefaultWarehouse_Shipping', 
     <SchemaItem Id="ba38c10b-9ae1-422b-b13a-1d8c5efe467c" ItemType="DataTooltip" Name="tooltip" TargetType="CZ.Advantages.Asap.Schema.LookupModel.DataServiceDataTooltip" IsAbstract="false" LS01="*" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0e81800e-3f9e-4532-932f-4ab5af931128" G02="c7d45c17-ad0b-49fd-b14a-ee23d4882d90" G08="5740f542-132e-49f3-b7f0-f1bfa5edaa8d" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" refParentItemId="c79ba724-c4b7-4457-9fc3-aa42294ca316" />
     <SchemaItem Id="b5ae9d87-8e63-43d3-bbdc-20a5403e314e" ItemType="DataTooltip" Name="tooltip" TargetType="CZ.Advantages.Asap.Schema.LookupModel.DataServiceDataTooltip" IsAbstract="false" LS01="*" I01="100" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0e81800e-3f9e-4532-932f-4ab5af931128" G02="c7d45c17-ad0b-49fd-b14a-ee23d4882d90" G08="d84ed3a0-b965-4ba9-b5f5-df8dd2da168c" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" refParentItemId="0c75ba7a-b402-4a92-b9d1-224ad60bca4d" />
     <SchemaItem Id="0e2b5fd4-d056-4bb0-b9f8-312cbd9b90c9" ItemType="DataTooltip" Name="tooltip" TargetType="CZ.Advantages.Asap.Schema.LookupModel.DataServiceDataTooltip" IsAbstract="false" LS01="*" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0e81800e-3f9e-4532-932f-4ab5af931128" G02="c7d45c17-ad0b-49fd-b14a-ee23d4882d90" G08="5740f542-132e-49f3-b7f0-f1bfa5edaa8d" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" refParentItemId="738e7e53-4f19-45c9-8c20-d3772cefb840" />
-    <SchemaItem Id="9cc792f5-a060-4bca-a03a-3673310cf318" ItemType="DataTooltip" Name="tooltip" TargetType="CZ.Advantages.Asap.Schema.LookupModel.DataServiceDataTooltip" IsAbstract="false" LS01="*" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0e81800e-3f9e-4532-932f-4ab5af931128" G02="c7d45c17-ad0b-49fd-b14a-ee23d4882d90" G08="bfda9bca-861f-4fb1-a85e-1830152166eb" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" refParentItemId="2f327944-a528-4518-b2f6-435df797fd07" />
+    <SchemaItem Id="9cc792f5-a060-4bca-a03a-3673310cf318" ItemType="DataTooltip" Name="tooltip" TargetType="CZ.Advantages.Asap.Schema.LookupModel.DataServiceDataTooltip" IsAbstract="false" LS01="*" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0e81800e-3f9e-4532-932f-4ab5af931128" G02="c7d45c17-ad0b-49fd-b14a-ee23d4882d90" G08="5740f542-132e-49f3-b7f0-f1bfa5edaa8d" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" refParentItemId="2f327944-a528-4518-b2f6-435df797fd07" />
     <SchemaItem Id="061a58b4-2615-4a35-8e6d-372d8a60459f" ItemType="DataTooltip" Name="tooltip" TargetType="CZ.Advantages.Asap.Schema.LookupModel.DataServiceDataTooltip" IsAbstract="false" LS01="*" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0e81800e-3f9e-4532-932f-4ab5af931128" G02="c7d45c17-ad0b-49fd-b14a-ee23d4882d90" G08="5740f542-132e-49f3-b7f0-f1bfa5edaa8d" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" refParentItemId="f2c2c707-477d-46fa-9e0e-8f508acb9621" />
     <SchemaItem Id="66843f08-b3b5-4aaa-aff7-52ed7efaee19" ItemType="DataTooltip" Name="tooltip" TargetType="CZ.Advantages.Asap.Schema.LookupModel.DataServiceDataTooltip" IsAbstract="false" LS01="*" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0e81800e-3f9e-4532-932f-4ab5af931128" G02="c7d45c17-ad0b-49fd-b14a-ee23d4882d90" G08="5740f542-132e-49f3-b7f0-f1bfa5edaa8d" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" refParentItemId="0acd8e88-830b-401e-acc8-5066bc5e1455" />
     <SchemaItem Id="f188669e-5726-4f2a-aaf0-7edd7971fa9a" ItemType="DataTooltip" Name="tooltip" TargetType="CZ.Advantages.Asap.Schema.LookupModel.DataServiceDataTooltip" IsAbstract="false" LS01="*" I01="100" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0e81800e-3f9e-4532-932f-4ab5af931128" G02="c7d45c17-ad0b-49fd-b14a-ee23d4882d90" G08="d84ed3a0-b965-4ba9-b5f5-df8dd2da168c" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" refParentItemId="3d70293a-7eb6-49ea-98b8-d1014ada283f" />

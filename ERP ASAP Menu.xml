@@ -3989,7 +3989,7 @@ DELETE FROM AsapApplicationRole WHERE Name IN ('PAR_DefaultWarehouse_Shipping', 
 			&lt;cell type="grid" x="0" y="0" height="1" width="1"&gt;
 				&lt;xsl:if test="string(@refBusinessPartnerCategoryId)"&gt;
 					&lt;row&gt;
-						&lt;col percentWidth="32"&gt;Kategorie&lt;/col&gt;
+						&lt;col width="45"&gt;Kategorie&lt;/col&gt;
 						&lt;col&gt;&amp;lt;b&amp;gt;&lt;xsl:value-of select="AS:LookupValue('2634a1d5-3ad6-4357-8001-a289c6376aa2', @refBusinessPartnerCategoryId)"/&gt;&amp;lt;/b&amp;gt;&lt;/col&gt;
 					&lt;/row&gt;
 				&lt;/xsl:if&gt;

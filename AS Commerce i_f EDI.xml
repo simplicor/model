@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="yes"?>
 <ROOT>
   <xs:schema id="ROOT" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
-    <xs:element name="ROOT" msdata:IsDataSet="true" msdata:Locale="" msdata:EnforceConstraints="False" msprop:Id="0f9daa67-4fe0-4ffb-9d8a-70204dc1ed78">
+    <xs:element name="ROOT" msdata:IsDataSet="true" msdata:Locale="" msdata:EnforceConstraints="False" msprop:ModelVersion="4.10.0.0" msprop:Id="0f9daa67-4fe0-4ffb-9d8a-70204dc1ed78">
       <xs:complexType>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element name="SchemaExtension" msdata:Locale="" msdata:DisplayExpression="'SchemaExtension'" msprop:EntityId="d0e64ed8-2784-41ef-af7d-fabd05f5fed8" msprop:IsAuditingEnabled="False" msprop:Id="be6e112c-c8b3-48c6-85e3-1416c3c521a9">
@@ -537,7 +537,7 @@ INSERT INTO AsapSyncProvider (Id, Name, refAsapSyncSystemId, RecordCreated) VALU
     <SchemaItem Id="705dab88-51ee-4228-957a-9fb665a13e15" ItemType="PropertyValueItem" Name="PanelTitle" TargetType="CZ.Advantages.Asap.Schema.GuiModel.PropertyValueItem" IsAbstract="false" LS01="Mapování sazeb DPH na EDI" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="8e2ee6f6-ef26-4954-ae70-b864e3ef21f2" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="47ed79d0-8718-4d6d-895f-544aa3393346" />
     <SchemaItem Id="8afecfc3-8891-48dd-8867-eb3ca1735e3a" ItemType="PropertyValueItem" Name="HideNavigationPanel" TargetType="CZ.Advantages.Asap.Schema.GuiModel.PropertyValueItem" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="298b927a-509d-4c65-930c-c871746fb7e2" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="47ed79d0-8718-4d6d-895f-544aa3393346" />
     <SchemaItem Id="d16abf87-8310-46f5-bf23-ed677e912b63" ItemType="PropertyValueItem" Name="ShowDeleteButton" TargetType="CZ.Advantages.Asap.Schema.GuiModel.PropertyValueItem" IsAbstract="false" I01="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="c9e691f4-520e-46a8-b1a1-941ae833bf88" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a" refParentItemId="47ed79d0-8718-4d6d-895f-544aa3393346" />
-    <SchemaItem Id="1afbcd58-8c65-42e5-9269-4b856350d931" ItemType="Rule" Name="ER_EDI_DeliveryValid" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fd31c84c-4df7-4cdb-b3c3-dc5e76551093" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a">
+    <SchemaItem Id="1afbcd58-8c65-42e5-9269-4b856350d931" ItemType="Rule" Name="ER_EDI_DeliveryValid" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EndRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fd31c84c-4df7-4cdb-b3c3-dc5e76551093" refSchemaExtensionId="774d9a3b-7b27-4ca5-9077-0dbd6f86f22a">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"

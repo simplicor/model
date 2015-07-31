@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="yes"?>
 <ROOT>
   <xs:schema id="ROOT" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
-    <xs:element name="ROOT" msdata:IsDataSet="true" msdata:Locale="" msdata:EnforceConstraints="False" msprop:Id="0f9daa67-4fe0-4ffb-9d8a-70204dc1ed78">
+    <xs:element name="ROOT" msdata:IsDataSet="true" msdata:Locale="" msdata:EnforceConstraints="False" msprop:ModelVersion="4.10.0.0" msprop:Id="0f9daa67-4fe0-4ffb-9d8a-70204dc1ed78">
       <xs:complexType>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element name="SchemaExtension" msdata:Locale="" msdata:DisplayExpression="'SchemaExtension'" msprop:EntityId="d0e64ed8-2784-41ef-af7d-fabd05f5fed8" msprop:IsAuditingEnabled="False" msprop:Id="be6e112c-c8b3-48c6-85e3-1416c3c521a9">
@@ -6797,10 +6797,10 @@ ALTER TABLE [ProjectBudgetLine] DROP CONSTRAINT [DF_ProjectBudgetLine_SalesListP
     <SchemaItem Id="70ae213c-f9c7-4ea8-a28f-f54a4b382150" ItemType="PropertyValueItem" Name="ShowNewButton" TargetType="CZ.Advantages.Asap.Schema.GuiModel.PropertyValueItem" IsAbstract="false" I01="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="af590ff2-4668-40e3-8195-e1a1f735d433" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad" refParentItemId="6837c151-5b27-4e89-aaba-8fa9da4fa1a3" />
     <SchemaItem Id="e39846b4-c781-478e-95fa-f967ec9c71ce" ItemType="PropertyValueItem" Name="PipelineStateLookupId" TargetType="CZ.Advantages.Asap.Schema.GuiModel.PropertyValueItem" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="91c94efb-ef4a-4851-a427-4d10f6c0a923" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad" refParentItemId="6837c151-5b27-4e89-aaba-8fa9da4fa1a3" />
     <SchemaItem Id="2dc07311-9387-40d9-836c-facc42e3936d" ItemType="PropertyValueItem" Name="Top" TargetType="CZ.Advantages.Asap.Schema.GuiModel.PropertyValueItem" IsAbstract="false" I01="15" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0ab85221-d0b8-4df7-bfcc-ac196db06439" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad" refParentItemId="6837c151-5b27-4e89-aaba-8fa9da4fa1a3" />
-    <SchemaItem Id="0223075d-e194-4793-b2ed-2ed7c3a53ba9" ItemType="Rule" Name="DocumentBillingDetail_refProjectId" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="77898c38-443f-4e1d-932b-bb60630effa3" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="0223075d-e194-4793-b2ed-2ed7c3a53ba9" ItemType="Rule" Name="DocumentBillingDetail_refProjectId" TargetType="CZ.Advantages.Asap.Schema.RuleModel.SimpleDataRule" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="77898c38-443f-4e1d-932b-bb60630effa3" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>AS:isnull(/ROOT/Document/DocumentDelivery/DocumentBillingDetail/@refContractProjectId, /ROOT/Document/@refProjectId)</M01>
     </SchemaItem>
-    <SchemaItem Id="2254db40-a0e9-457a-9256-406c0a98e40b" ItemType="Rule" Name="ProjectBudgetLine_GetProductData" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="2254db40-a0e9-457a-9256-406c0a98e40b" ItemType="Rule" Name="ProjectBudgetLine_GetProductData" TargetType="CZ.Advantages.Asap.Schema.RuleModel.ComplexDataRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
@@ -6845,7 +6845,7 @@ ALTER TABLE [ProjectBudgetLine] DROP CONSTRAINT [DF_ProjectBudgetLine_SalesListP
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="40c10ca3-5d79-4c91-8ab8-6fa17d541d08" ItemType="Rule" Name="ProjectBudgetLine_CalculateDates_Receipts" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="40c10ca3-5d79-4c91-8ab8-6fa17d541d08" ItemType="Rule" Name="ProjectBudgetLine_CalculateDates_Receipts" TargetType="CZ.Advantages.Asap.Schema.RuleModel.ComplexDataRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
@@ -6998,10 +6998,10 @@ ALTER TABLE [ProjectBudgetLine] DROP CONSTRAINT [DF_ProjectBudgetLine_SalesListP
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="4c87446f-26be-4da9-a30f-281d1bbb94ea" ItemType="Rule" Name="BR_ProjectBudgetLine_DenyDelete" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="4c87446f-26be-4da9-a30f-281d1bbb94ea" ItemType="Rule" Name="BR_ProjectBudgetLine_DenyDelete" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EntityRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>string(/row/@refPurchaseContractDocumentId) or string(/row/@refSalesContractDocumentId) or not(AS:IsInRole(AS:LookupValue('aebff680-c85a-4c5c-a8dd-fd31178d31d4', /row/@refProjectBudgetLineTypeId)))</M01>
     </SchemaItem>
-    <SchemaItem Id="57a078de-e55b-42b7-95b2-1e1be47fd21d" ItemType="Rule" Name="ProjectBudgetLine_CalculateDates_Costs" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="57a078de-e55b-42b7-95b2-1e1be47fd21d" ItemType="Rule" Name="ProjectBudgetLine_CalculateDates_Costs" TargetType="CZ.Advantages.Asap.Schema.RuleModel.ComplexDataRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
@@ -7050,13 +7050,13 @@ ALTER TABLE [ProjectBudgetLine] DROP CONSTRAINT [DF_ProjectBudgetLine_SalesListP
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="5dbf3ecd-5a24-4915-89e3-b25f2e61a850" ItemType="Rule" Name="ProjectBudgetLine_SalesListPriceEntry" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="3" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="5dbf3ecd-5a24-4915-89e3-b25f2e61a850" ItemType="Rule" Name="ProjectBudgetLine_SalesListPriceEntry" TargetType="CZ.Advantages.Asap.Schema.RuleModel.SimpleDataRule" IsAbstract="false" I01="3" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>AS:iif(@IsSalesFromPriceList = 'true', @SalesListPriceEntry, @SalesPriceEntry)</M01>
     </SchemaItem>
     <SchemaItem Id="725a0a87-635b-44ba-bccc-355fbaf20cfc" ItemType="Rule" Name="ProjectBudgetLine_GetProductPrice_Condition" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>string(/ROOT/ProjectBudget/ProjectBudgetLine/@refProductId)</M01>
     </SchemaItem>
-    <SchemaItem Id="75df613b-7279-4c96-a2a2-94fc193a6e62" ItemType="Rule" Name="ProjectBudgetLine_CalculateTotals" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="75df613b-7279-4c96-a2a2-94fc193a6e62" ItemType="Rule" Name="ProjectBudgetLine_CalculateTotals" TargetType="CZ.Advantages.Asap.Schema.RuleModel.ComplexDataRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
@@ -7163,10 +7163,10 @@ ALTER TABLE [ProjectBudgetLine] DROP CONSTRAINT [DF_ProjectBudgetLine_SalesListP
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="82d7c76d-9614-4e6d-b998-1761afba5d7c" ItemType="Rule" Name="ProjectBudgetLine_SetIsFromPriceList_False" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="82d7c76d-9614-4e6d-b998-1761afba5d7c" ItemType="Rule" Name="ProjectBudgetLine_SetIsFromPriceList_False" TargetType="CZ.Advantages.Asap.Schema.RuleModel.SimpleDataRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>'false'</M01>
     </SchemaItem>
-    <SchemaItem Id="876b125f-e392-4a26-802e-19a0fa1b163f" ItemType="Rule" Name="ProjectBudgetLine_CalculateDates_Expenditures" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="876b125f-e392-4a26-802e-19a0fa1b163f" ItemType="Rule" Name="ProjectBudgetLine_CalculateDates_Expenditures" TargetType="CZ.Advantages.Asap.Schema.RuleModel.ComplexDataRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
@@ -7201,7 +7201,7 @@ ALTER TABLE [ProjectBudgetLine] DROP CONSTRAINT [DF_ProjectBudgetLine_SalesListP
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="8b0e0fd6-d78d-4dda-9540-5889a05d845c" ItemType="Rule" Name="ProjectBudgetLine_SetIsFromPriceList_False_Condition" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="8b0e0fd6-d78d-4dda-9540-5889a05d845c" ItemType="Rule" Name="ProjectBudgetLine_SetIsFromPriceList_False_Condition" TargetType="CZ.Advantages.Asap.Schema.RuleModel.StartRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>not(string(/ROOT/ProjectBudget/ProjectBudgetLine/@refProductId))</M01>
     </SchemaItem>
     <SchemaItem Id="ade988f5-f498-4e7e-b233-6d52497fd504" ItemType="Rule" Name="_projectBudgetLine_CalculateDates_Templates" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
@@ -7236,7 +7236,7 @@ ALTER TABLE [ProjectBudgetLine] DROP CONSTRAINT [DF_ProjectBudgetLine_SalesListP
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="c1e6be3c-3d68-4201-a2bf-61a5ddbbfa26" ItemType="Rule" Name="ProjectBudgetLine_CalculateDates_Revenues" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="c1e6be3c-3d68-4201-a2bf-61a5ddbbfa26" ItemType="Rule" Name="ProjectBudgetLine_CalculateDates_Revenues" TargetType="CZ.Advantages.Asap.Schema.RuleModel.ComplexDataRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
@@ -7285,10 +7285,10 @@ ALTER TABLE [ProjectBudgetLine] DROP CONSTRAINT [DF_ProjectBudgetLine_SalesListP
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="c336f50a-425d-42b7-8f21-09a574f4e2de" ItemType="Rule" Name="ProjectBudgetLine_PurchaseListPriceEntry" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="3" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="c336f50a-425d-42b7-8f21-09a574f4e2de" ItemType="Rule" Name="ProjectBudgetLine_PurchaseListPriceEntry" TargetType="CZ.Advantages.Asap.Schema.RuleModel.SimpleDataRule" IsAbstract="false" I01="3" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>AS:iif(@IsPurchaseFromPriceList = 'true', @PurchaseListPriceEntry, @PurchasePriceEntry)</M01>
     </SchemaItem>
-    <SchemaItem Id="d74e2bdf-f263-43c9-b79e-d5167cb5326d" ItemType="Rule" Name="ProjectBudgetLine_CalculatePriceFromPriceEntry" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="d74e2bdf-f263-43c9-b79e-d5167cb5326d" ItemType="Rule" Name="ProjectBudgetLine_CalculatePriceFromPriceEntry" TargetType="CZ.Advantages.Asap.Schema.RuleModel.ComplexDataRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
@@ -7327,7 +7327,7 @@ ALTER TABLE [ProjectBudgetLine] DROP CONSTRAINT [DF_ProjectBudgetLine_SalesListP
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="d982a85d-ebb8-4dff-94f1-254f685175d7" ItemType="Rule" Name="ProjectBudgetLine_GetProductPrice" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="d982a85d-ebb8-4dff-94f1-254f685175d7" ItemType="Rule" Name="ProjectBudgetLine_GetProductPrice" TargetType="CZ.Advantages.Asap.Schema.RuleModel.ComplexDataRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
@@ -7445,7 +7445,7 @@ ALTER TABLE [ProjectBudgetLine] DROP CONSTRAINT [DF_ProjectBudgetLine_SalesListP
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="de019c9d-afd7-48b9-9baf-b4aef663713e" ItemType="Rule" Name="ProjectBudgetLine_ConfirmedPurchasePriceEntry" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="de019c9d-afd7-48b9-9baf-b4aef663713e" ItemType="Rule" Name="ProjectBudgetLine_ConfirmedPurchasePriceEntry" TargetType="CZ.Advantages.Asap.Schema.RuleModel.ComplexDataRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
@@ -7476,7 +7476,7 @@ ALTER TABLE [ProjectBudgetLine] DROP CONSTRAINT [DF_ProjectBudgetLine_SalesListP
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="f8efbd51-7372-4be5-ae79-5d88c4565699" ItemType="Rule" Name="ProjectBudgetLine_CalculateDates_Resources" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
+    <SchemaItem Id="f8efbd51-7372-4be5-ae79-5d88c4565699" ItemType="Rule" Name="ProjectBudgetLine_CalculateDates_Resources" TargetType="CZ.Advantages.Asap.Schema.RuleModel.ComplexDataRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="6fd3f681-f872-439b-acb1-46dbc19f4897" refSchemaItemGroupId="47f1f057-76c4-4ad1-9902-861472be92a5" refSchemaExtensionId="86773c55-567c-4478-b14f-ffa9ae7156ad">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"

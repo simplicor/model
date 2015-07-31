@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="yes"?>
 <ROOT>
   <xs:schema id="ROOT" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
-    <xs:element name="ROOT" msdata:IsDataSet="true" msdata:Locale="" msdata:EnforceConstraints="False" msprop:Id="0f9daa67-4fe0-4ffb-9d8a-70204dc1ed78">
+    <xs:element name="ROOT" msdata:IsDataSet="true" msdata:Locale="" msdata:EnforceConstraints="False" msprop:ModelVersion="4.10.0.0" msprop:Id="0f9daa67-4fe0-4ffb-9d8a-70204dc1ed78">
       <xs:complexType>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element name="SchemaExtension" msdata:Locale="" msdata:DisplayExpression="'SchemaExtension'" msprop:EntityId="d0e64ed8-2784-41ef-af7d-fabd05f5fed8" msprop:IsAuditingEnabled="False" msprop:Id="be6e112c-c8b3-48c6-85e3-1416c3c521a9">
@@ -3684,7 +3684,7 @@ DELETE FROM AsapApplicationRole WHERE Name IN ('PAR_DefaultWarehouse_Shipping', 
     <SchemaItem Id="f47493a2-8b30-449a-90ca-fcbb0e3ab007" ItemType="PropertyValueItem" Name="IsGridHeightDynamic" TargetType="CZ.Advantages.Asap.Schema.GuiModel.PropertyValueItem" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="d7a13674-7f44-4463-a595-2fb3ab1dbb61" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" refParentItemId="81955e56-dae8-4954-aedb-3424f58386e5" />
     <SchemaItem Id="7111948a-f8bd-4564-a9b2-569a8d127f5e" ItemType="Report" Name="link" TargetType="CZ.Advantages.Asap.Schema.GuiModel.WebReport" IsAbstract="false" SS01="Jít na odkaz" SS03="http" LS01="{link}" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" />
     <SchemaItem Id="a1abc879-1b66-4a2d-8484-c40b65ea9200" ItemType="Report" Name="googleMapsLink" TargetType="CZ.Advantages.Asap.Schema.GuiModel.WebReport" IsAbstract="false" SS01="Mapa" LS01="http://maps.google.com" I03="1" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4" />
-    <SchemaItem Id="02a52ab2-2847-4c4e-a93e-b33ed23e78d2" ItemType="Rule" Name="_test_string" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4">
+    <SchemaItem Id="02a52ab2-2847-4c4e-a93e-b33ed23e78d2" ItemType="Rule" Name="_test_string" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EndRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
@@ -3704,13 +3704,13 @@ DELETE FROM AsapApplicationRole WHERE Name IN ('PAR_DefaultWarehouse_Shipping', 
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="2ec4865e-9d0e-434a-91ec-ba4acd8235da" ItemType="Rule" Name="SR_BusinessPartnerCommunicationChannel_SupportsWeb" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="a74f730c-d2b1-4210-a6ec-e648549128b0" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4">
+    <SchemaItem Id="2ec4865e-9d0e-434a-91ec-ba4acd8235da" ItemType="Rule" Name="SR_BusinessPartnerCommunicationChannel_SupportsWeb" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EntityRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="a74f730c-d2b1-4210-a6ec-e648549128b0" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4">
       <M01>AS:LookupValue('299c7880-8506-4488-b116-833af0ee8f78', AS:isnull(/row/@refBusinessPartnerCommunicationChannelTypeId, '00000000-0000-0000-0000-000000000000')) = AS:GetConstant('BusinessPartnerCommunicationDeviceType_Web')</M01>
     </SchemaItem>
-    <SchemaItem Id="5c7cf753-afcb-4709-bc1e-a32cb048edf0" ItemType="Rule" Name="SR_BusinessPartnerCommunicationChannel_SupportsMap" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="a74f730c-d2b1-4210-a6ec-e648549128b0" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4">
+    <SchemaItem Id="5c7cf753-afcb-4709-bc1e-a32cb048edf0" ItemType="Rule" Name="SR_BusinessPartnerCommunicationChannel_SupportsMap" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EntityRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="a74f730c-d2b1-4210-a6ec-e648549128b0" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4">
       <M01>string(/row/@Street1) or string(/row/@Street2) or string(/row/@City)</M01>
     </SchemaItem>
-    <SchemaItem Id="71c948fd-00c2-4b72-b044-bbf07d99bb44" ItemType="Rule" Name="_test_systemRole" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4">
+    <SchemaItem Id="71c948fd-00c2-4b72-b044-bbf07d99bb44" ItemType="Rule" Name="_test_systemRole" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EntityRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4">
       <M01>/row/@IsSystemRole = 'true'</M01>
     </SchemaItem>
     <SchemaItem Id="00a31319-0ec3-4567-84c4-5ae3fe55641c" ItemType="Transformation" Name="page_tasks_ical" TargetType="CZ.Advantages.Asap.Schema.EntityModel.XslTransformation" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="8cc0fbaa-7a38-434d-b8f9-95d3a7ec030f" refSchemaExtensionId="756a579c-57a2-4590-bc09-683f8a4eece4">

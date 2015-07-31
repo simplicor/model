@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="yes"?>
 <ROOT>
   <xs:schema id="ROOT" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
-    <xs:element name="ROOT" msdata:IsDataSet="true" msdata:Locale="" msdata:EnforceConstraints="False" msprop:Id="0f9daa67-4fe0-4ffb-9d8a-70204dc1ed78">
+    <xs:element name="ROOT" msdata:IsDataSet="true" msdata:Locale="" msdata:EnforceConstraints="False" msprop:ModelVersion="4.10.0.0" msprop:Id="0f9daa67-4fe0-4ffb-9d8a-70204dc1ed78">
       <xs:complexType>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element name="SchemaExtension" msdata:Locale="" msdata:DisplayExpression="'SchemaExtension'" msprop:EntityId="d0e64ed8-2784-41ef-af7d-fabd05f5fed8" msprop:IsAuditingEnabled="False" msprop:Id="be6e112c-c8b3-48c6-85e3-1416c3c521a9">
@@ -5559,25 +5559,25 @@ ALTER TABLE [InventoryControlType] DROP CONSTRAINT [DF_InventoryControlType_IsAc
     <SchemaItem Id="ea043164-a829-4e80-b168-fb9a34f84f6c" ItemType="PropertyValueItem" Name="DataMember" TargetType="CZ.Advantages.Asap.Schema.GuiModel.PropertyValueItem" IsAbstract="false" I01="0" B01="false" G01="8c12e0ab-e4bd-4675-8f12-c5930a07be14" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" refParentItemId="842e2159-3306-45e4-a31e-9bc6c71568f7" />
     <SchemaItem Id="faea2800-a9f2-49df-903a-fc3670407739" ItemType="PropertyValueItem" Name="Height" TargetType="CZ.Advantages.Asap.Schema.GuiModel.PropertyValueItem" IsAbstract="false" I01="200" B01="false" G01="2e965f41-7fea-480b-a44a-095637d0af7d" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" refParentItemId="842e2159-3306-45e4-a31e-9bc6c71568f7" />
     <SchemaItem Id="3e1e5066-cf73-40bd-b10d-fcd1ed1a4d1d" ItemType="PropertyValueItem" Name="HideNavigationPanel" TargetType="CZ.Advantages.Asap.Schema.GuiModel.PropertyValueItem" IsAbstract="false" I01="0" B01="false" G01="298b927a-509d-4c65-930c-c871746fb7e2" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" refParentItemId="842e2159-3306-45e4-a31e-9bc6c71568f7" />
-    <SchemaItem Id="0674d3b3-9f0a-48b7-b932-93e211da5f9a" ItemType="Rule" Name="PackageItem_NotPackage" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
+    <SchemaItem Id="0674d3b3-9f0a-48b7-b932-93e211da5f9a" ItemType="Rule" Name="PackageItem_NotPackage" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EntityRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
       <M01>/row/@refPackageItemTypeId != AS:GetConstant('PackageItemType_Package')</M01>
     </SchemaItem>
-    <SchemaItem Id="1f86c18c-caac-4b2f-9127-a3c5213ede3c" ItemType="Rule" Name="Product_HasNotOwnSpecification" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
+    <SchemaItem Id="1f86c18c-caac-4b2f-9127-a3c5213ede3c" ItemType="Rule" Name="Product_HasNotOwnSpecification" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EntityRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
       <M01>/row/@HasOwnSpecification ='false'</M01>
     </SchemaItem>
-    <SchemaItem Id="21ff33de-7dab-43f0-be8d-2e69cb800b3f" ItemType="Rule" Name="PackageItem_IsPackage" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
+    <SchemaItem Id="21ff33de-7dab-43f0-be8d-2e69cb800b3f" ItemType="Rule" Name="PackageItem_IsPackage" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EntityRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
       <M01>/row/@refPackageItemTypeId = AS:GetConstant('PackageItemType_Package')</M01>
     </SchemaItem>
-    <SchemaItem Id="480dc0ae-9dfa-4e41-a172-24806999bba4" ItemType="Rule" Name="Product_HasOwnSpecification" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
+    <SchemaItem Id="480dc0ae-9dfa-4e41-a172-24806999bba4" ItemType="Rule" Name="Product_HasOwnSpecification" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EntityRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
       <M01>/row/@HasOwnSpecification ='true'</M01>
     </SchemaItem>
-    <SchemaItem Id="5287d238-d65f-42a6-bcb0-5de3b3519bf7" ItemType="Rule" Name="PackageItem_TypeEmpty" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
+    <SchemaItem Id="5287d238-d65f-42a6-bcb0-5de3b3519bf7" ItemType="Rule" Name="PackageItem_TypeEmpty" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EntityRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
       <M01>not(string(/row/@refPackageItemTypeId))</M01>
     </SchemaItem>
-    <SchemaItem Id="71820732-2d5a-49be-9635-1c38b968ef8e" ItemType="Rule" Name="Product_HasCustomValidation" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
+    <SchemaItem Id="71820732-2d5a-49be-9635-1c38b968ef8e" ItemType="Rule" Name="Product_HasCustomValidation" TargetType="CZ.Advantages.Asap.Schema.RuleModel.StartRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
       <M01>string(/ROOT/Product/ProductDistributionCategory_ValidationRule)</M01>
     </SchemaItem>
-    <SchemaItem Id="cd339952-ea27-46ed-9c2d-82eff3b9fe59" ItemType="Rule" Name="Product_Check" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XslRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
+    <SchemaItem Id="cd339952-ea27-46ed-9c2d-82eff3b9fe59" ItemType="Rule" Name="Product_Check" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EndRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
@@ -5614,7 +5614,7 @@ ALTER TABLE [InventoryControlType] DROP CONSTRAINT [DF_InventoryControlType_IsAc
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="ee61fbfe-2ad3-4970-9f15-eccd83e73f27" ItemType="Rule" Name="Product_CustomValidation" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
+    <SchemaItem Id="ee61fbfe-2ad3-4970-9f15-eccd83e73f27" ItemType="Rule" Name="Product_CustomValidation" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EndRuleLookupXPath" IsAbstract="false" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
       <M01>/ROOT/Product/ProductDistributionCategory_ValidationRule</M01>
     </SchemaItem>
     <SchemaItem Id="5e567939-c8ba-4bb9-aaa3-a9b126e7c146" ItemType="String" Name="Product_BarCodeDuplicity" TargetType="CZ.Advantages.Asap.Schema.StringItem" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="427accb7-4baf-428c-ab7a-ee8dc0b054d8" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">

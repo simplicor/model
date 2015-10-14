@@ -282,7 +282,7 @@
       </xs:keyref>
     </xs:element>
   </xs:schema>
-  <SchemaExtension Id="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" Name="GTS SMS" Version="1.0.0" Copyright="">
+  <SchemaExtension Id="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" Name="GTS SMS" Version="1.0.1" Copyright="">
     <Description />
     <SchemaItemGroup Id="e87e88aa-3ad4-4a50-ad13-01aa2839844d" Name="GTS SMS" RootItemType="Rule" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" />
     <SchemaItemGroup Id="841e3fe9-50b6-493b-ba16-05a306911d5f" Name="GTS SMS" RootItemType="Workflow" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" />
@@ -300,6 +300,20 @@
     <SchemaItem Id="8a97ee88-1b5b-431e-94cf-4b72a5830a8a" ItemType="DataConstant" Name="GTS_Password" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataConstant" IsAbstract="false" LS01="" I01="0" I02="9" F01="0.0000000000" C01="0.0000" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="a83565dd-e92b-4c14-8b23-91e49db7091a" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" />
     <SchemaItem Id="8bc130ae-16b5-4b1b-bd08-53d28c679d2a" ItemType="DataConstant" Name="GTS_GatewayURL" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataConstant" IsAbstract="false" LS01="" I01="0" I02="9" F01="0.0000000000" C01="0.0000" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="a83565dd-e92b-4c14-8b23-91e49db7091a" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" />
     <SchemaItem Id="6273fb62-cc7c-4fc2-82df-afe584be070e" ItemType="DeploymentVersion" Name="1.0.0" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="1.0.0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="0c461535-1a58-4d67-b33f-1517d384b167" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" />
+    <SchemaItem Id="f7f342ac-a6f9-4639-b02a-aea2722308a0" ItemType="DeploymentUpdateScriptActivity" Name="00020_InsertSMSProviders" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="20" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" refParentItemId="6273fb62-cc7c-4fc2-82df-afe584be070e">
+      <M01>Insert into SmsProvider (Id, Name, RecordCreated) values ('85be586f-cf83-4240-b451-cbd3ae3255f9', 'Daktela SMS', GETDATE())
+Insert into SmsProvider (Id, Name, RecordCreated) values ('b1517b19-b14f-4df6-b1a9-990cd2fe19a4', 'GTS SMS', GETDATE()) </M01>
+    </SchemaItem>
+    <SchemaItem Id="f400a445-a7bd-49c6-bfaa-bcdbe517ee97" ItemType="DeploymentUpdateScriptActivity" Name="00010_Database_Entity_SmsProvider" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" refParentItemId="6273fb62-cc7c-4fc2-82df-afe584be070e">
+      <M01>CREATE TABLE [SmsProvider] (
+	[Name] NVARCHAR(100) NULL,
+	[RecordCreatedBy] UNIQUEIDENTIFIER NULL,
+	[RecordUpdatedBy] UNIQUEIDENTIFIER NULL,
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY NONCLUSTERED,
+	[RecordCreated] DATETIME NULL,
+	[RecordUpdated] DATETIME NULL)</M01>
+    </SchemaItem>
+    <SchemaItem Id="e027fc88-30c7-485d-aed9-403a223e91bf" ItemType="DeploymentVersion" Name="1.0.1" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="1.0.1" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="0c461535-1a58-4d67-b33f-1517d384b167" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" />
     <SchemaItem Id="b91fe254-d629-4cbc-bf38-88d7b61bc76b" ItemType="Transformation" Name="GTS_SendSMS" TargetType="CZ.Advantages.Asap.Schema.EntityModel.XslTransformation" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="70275b79-9cc5-4f34-afcb-85d2384d02a0" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"

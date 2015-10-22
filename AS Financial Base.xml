@@ -386,11 +386,6 @@
       </Documentation>
     </SchemaItem>
     <SchemaItem Id="24e8086a-21dc-49bb-a7b2-1472b5f73697" ItemType="DataEntityColumn" Name="DateFrom" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Datum platnosti od" SS03="DateFrom" I01="4" I02="0" I03="1" I04="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="74eda36e-9a01-4f8f-9a9c-feb13fd88512" refParentItemId="b7de2968-5ede-4f66-bf37-06363c7b6f58" />
-    <SchemaItem Id="536ba7cc-b52f-4090-87ed-3c819390727c" ItemType="DataEntityColumn" Name="DateTo" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Datum platnosti do" SS03="DateTo" I01="4" I02="0" I03="1" I04="0" L01="0" L02="1" B01="false" B02="false" B03="false" B04="false" B07="false" refSchemaExtensionId="74eda36e-9a01-4f8f-9a9c-feb13fd88512" refParentItemId="b7de2968-5ede-4f66-bf37-06363c7b6f58">
-      <Documentation Id="31f4175d-a2ca-400c-a3a7-0dc9838e08a2" Category="USER_LONG_HELP" refSchemaItemId="536ba7cc-b52f-4090-87ed-3c819390727c">
-        <Data>Datum, do kdy je tento kurz platný.</Data>
-      </Documentation>
-    </SchemaItem>
     <SchemaItem Id="a1640796-fbbc-4113-a9c3-85df5d40fb5d" ItemType="DataEntityColumn" Name="refCurrencyId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Měna" SS03="refCurrencyId" I01="10" I02="0" I03="1" I04="0" L01="0" L02="1" B01="false" B02="false" B03="false" G01="8318fbda-a5b3-415b-9992-613da595fec3" G03="8cbfb9a8-1afa-44e4-b33a-fd7519578fca" G04="c54413b6-eb88-49c8-a7ff-3bb942c1984e" refSchemaExtensionId="74eda36e-9a01-4f8f-9a9c-feb13fd88512" refParentItemId="b7de2968-5ede-4f66-bf37-06363c7b6f58">
       <Documentation Id="9f030e31-7ddc-4793-8bac-b4b0f5be8a88" Category="USER_LONG_HELP" refSchemaItemId="a1640796-fbbc-4113-a9c3-85df5d40fb5d">
         <Data>Měna tohoto kurzu</Data>

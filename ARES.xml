@@ -637,58 +637,40 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
-	xmlns:date="http://exslt.org/dates-and-times" exclude-result-prefixes="AS date"&gt;
+	xmlns:date="http://exslt.org/dates-and-times"
+	xmlns:ds="http://tempuri.org/DSKurz.xsd"
+	exclude-result-prefixes="AS date ds"&gt;
+	
 
-	&lt;xsl:param name="newRate" select="/ROOT"/&gt;
-
+	&lt;xsl:param name="exchangeRateListId" select="'43b6acd4-223c-4c75-9eaa-a83da2bf100d'"/&gt;
+	
 	&lt;xsl:template match="ROOT"&gt;
-		&lt;!--
-			1. kurz 1.1. do 30.1.
-			2. kurz 1.2. do 31.12.9999
-			aktuální kurz 1.2. do 31.12.9999
-			 - existuje do 30.1.? 
-			 	-&gt; ano - kurz od 1.2. již existuje
-			aktuální kurz 1.3. do 31.12.9999
-			 - existuje do 28.2.? 
-			 	-&gt; ne - založíme kurz 1.3. do 31.12.9999
-			 		  + aktuální kurz (1.2.) ukončíme na 28.2.
-		--&gt;
 		&lt;ROOT&gt;
-			
-			&lt;xsl:variable name="currentDate" select="AS:isnull(substring-before(ExchangeRate/@DateTo,'T'),'1970-01-01T00:00:00Z')" /&gt;
-			&lt;xsl:variable name="newDate" select="substring-before($newRate/DSKurz/kurz/DO,'T')" /&gt;
-			&lt;xsl:variable name="diffDate" select="AS:DifferenceInDays($currentDate, $newDate)" /&gt;
-			
-			&lt;test date="{$diffDate}" /&gt;
-			
-			&lt;xsl:if test="$diffDate &amp;gt; 0" &gt;
-				&lt;!-- set an existing rate to end one day before the current rate --&gt;
-				&lt;xsl:apply-templates select="ExchangeRate"/&gt;
-				&lt;!-- save a new rate --&gt;
-				&lt;xsl:apply-templates select="$newRate/DSKurz/kurz"/&gt;
-			&lt;/xsl:if&gt;	
+			&lt;xsl:apply-templates select="kurz" /&gt;
 		&lt;/ROOT&gt;
 	&lt;/xsl:template&gt;
-
-	&lt;xsl:template match="ExchangeRate"&gt;
-		&lt;xsl:copy&gt;
-			&lt;xsl:copy-of select="@*"/&gt;
-			&lt;xsl:attribute name="DateTo"&gt;
-				&lt;xsl:value-of select="AS:AddDays($newRate/DSKurz/kurz/OD, -1)"/&gt;
-			&lt;/xsl:attribute&gt;
-			&lt;xsl:copy-of select="*"/&gt;
-		&lt;/xsl:copy&gt;
-	&lt;/xsl:template&gt;
-
-	&lt;xsl:template match="kurz"&gt;
-		&lt;ExchangeRate
-			Id="{AS:GenerateId()}"
-			refCurrencyId="{@refCurrencyId}"
-			DateTo="{DO}"
-			ExchangeRate="{translate(KURZ, ',', '.')}"
-			Unit="{POCET}"
-			refExchangeRateListId="{@refExchangeRateListId}"
-		/&gt;
+		&lt;!--
+			Nove se kurzy ukládají s datem platnosti OD
+			  - není třeba měni žádná z přechozích kurzů
+		--&gt;
+	&lt;xsl:template match="kurz"&gt;	
+		&lt;xsl:variable name="listId" select="AS:isnull($exchangeRateListId, 
+											AS:GetConstant('ExchangeRateList_CelniKurzy'))"/&gt;
+		&lt;xsl:variable name="currencyId" 	select="AS:LookupValue('4fa0d1fe-d309-43ff-9e0d-ad2422df6f0c', MENA)"/&gt;
+		&lt;xsl:variable name="lastLoadDate" select="AS:isnull(AS:LookupValue('f6840f6b-a74b-46aa-84a4-b7aa2747e883',
+															'ExchangeRate_parCurrencyId',$currencyId ,
+															'ExchangeRate_parExchangeRateListId', $listId),'1970-01-01')"/&gt;
+		&lt;xsl:if test="AS:DifferenceInDays($lastLoadDate,OD) &gt; 0"&gt;	
+			&lt;ExchangeRate
+					Id="{AS:GenerateId()}"
+					refCurrencyId="{$currencyId}"
+					DateFrom="{OD}"
+					DateTo="{OD}"
+					ExchangeRate="{translate(KURZ, ',', '.')}"
+					Unit="{POCET}"
+					refExchangeRateListId="{$listId}"
+				/&gt;	
+		&lt;/xsl:if&gt;
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
@@ -1121,6 +1103,25 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
 
 </M01>
     </SchemaItem>
+    <SchemaItem Id="e019f84e-cae4-4329-85d6-3325edbd85f0" ItemType="Transformation" Name="CelniSprava_LoadDailyRate" TargetType="CZ.Advantages.Asap.Schema.EntityModel.XslTransformation" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="469c580c-6342-43c8-a6c4-d08cad26f8bf" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c">
+      <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
+	xmlns:date="http://exslt.org/dates-and-times" exclude-result-prefixes="AS date"&gt;
+
+	&lt;xsl:template match="/"&gt;
+		&lt;xsl:variable name="celniKurzy" select="AS:HttpRequest('https://www.celnisprava.cz/hhnd.axd?hparams=ZXI9MSZ0eXBlPXhtbCZoc2E9Q1NDUi5Qb3J0YWxDUy5LdXJ6eSZoc2Q9JTdlJTJmSGVybWVzQXBwcyUyZlhQLkt1cnp5JTJmJmhhbj1GaWxlSGFuZGxlciZjcmM9MzIzNGZmMjk17840')"/&gt;
+			&lt;ROOT&gt;
+				&lt;File&gt;
+					&lt;Name&gt;&lt;xsl:value-of select="date:date-time()"/&gt;&lt;/Name&gt;
+					&lt;Data&gt;
+						&lt;xsl:value-of select="$celniKurzy"/&gt;
+					&lt;/Data&gt;
+				&lt;/File&gt;
+			&lt;/ROOT&gt;
+	&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</M01>
+    </SchemaItem>
     <SchemaItem Id="e795bd64-1d9b-4db9-a82d-23968fd73915" ItemType="Transformation" Name="M2M_SaveGpsTrack" TargetType="CZ.Advantages.Asap.Schema.EntityModel.XslTransformation" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="469c580c-6342-43c8-a6c4-d08cad26f8bf" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c">
       <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
@@ -1223,7 +1224,7 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
     <SchemaItem Id="98939bf2-065d-4ed0-871e-ec358adec0ae" ItemType="WorkflowContextReference" Name="FleetVehicle_Complete" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="4b5fb7bf-7dca-4f02-8a11-e36cdcb0a5ee" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="a724ab12-0a0e-4524-bb8d-b6f1be25ca42" />
     <SchemaItem Id="a915958c-6791-40c2-a6f9-d229a72e164b" ItemType="ServiceMethodCallParameter" Name="XslScript" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="7eecc204-f38e-49fc-8875-fd6b4ba019fd" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="55ec70c5-bb1a-4fd6-8977-7e1d9978e584" />
     <SchemaItem Id="b3bd63b6-6920-454e-bdc5-7ce14fb4c081" ItemType="TransformationReference" Name="M2M_LoadGpsTrack" TargetType="CZ.Advantages.Asap.Schema.EntityModel.TransformationReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="cf5b06a5-0f9b-4fd0-af2a-abb357304cad" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="a915958c-6791-40c2-a6f9-d229a72e164b" />
-    <SchemaItem Id="7615d7b1-c638-44e3-a06c-6cfe997d4d2a" ItemType="Workflow" Name="CelniSprava_SaveDailyRates" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" />
+    <SchemaItem Id="7615d7b1-c638-44e3-a06c-6cfe997d4d2a" ItemType="Workflow" Name="CelniSprava_SaveDailyRates" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="3" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" />
     <SchemaItem Id="cbfc5a2c-0996-4d34-9092-103c86b7f88b" ItemType="ContextStore" Name="xml" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="78a0f3a0-116f-48a7-8bdd-adf7c868ce85" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="7615d7b1-c638-44e3-a06c-6cfe997d4d2a" />
     <SchemaItem Id="319360ce-bca4-4e58-8fb6-7647debd1e3c" ItemType="ContextStore" Name="exchangeRateListId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="7615d7b1-c638-44e3-a06c-6cfe997d4d2a" />
     <SchemaItem Id="f260aeba-7d44-4ba6-9d29-f2fa7b821003" ItemType="ContextStore" Name="WQ_TextFile" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0e157367-9ecd-42e1-8e68-da905adceb6b" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="7615d7b1-c638-44e3-a06c-6cfe997d4d2a" />
@@ -1236,27 +1237,19 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
     <SchemaItem Id="6a7b93b9-a563-45f4-86a3-ef47feb61178" ItemType="TransformationReference" Name="CelniSprava_ExtractXml" TargetType="CZ.Advantages.Asap.Schema.EntityModel.TransformationReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="1d184f79-9e9f-45ed-a1a5-72583c7257c3" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="e44b4b70-1556-465d-a6a1-de9589ed1361" />
     <SchemaItem Id="1a37dd67-a538-440f-b3e8-5d229bb3fc02" ItemType="WorkflowTask" Name="02_foreach_exchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ForeachWorkflowBlock" IsAbstract="false" SS02="*" LS01="/DSKurz/kurz" I01="1" B01="false" B02="false" B03="false" B04="false" B05="true" B06="false" B07="false" G07="cbfc5a2c-0996-4d34-9092-103c86b7f88b" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="7615d7b1-c638-44e3-a06c-6cfe997d4d2a" />
     <SchemaItem Id="2f03f6c4-8b0c-4373-ba8b-0421af555f4e" ItemType="ContextStore" Name="ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="d5058368-08b8-4536-9fe7-3a98eb37c882" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="1a37dd67-a538-440f-b3e8-5d229bb3fc02" />
-    <SchemaItem Id="d6f4b9d0-f9df-4c50-9f38-3e6d6caccbf2" ItemType="WorkflowTask" Name="01_LoadData_CurrentExchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallTask" IsAbstract="false" SS02="*" I01="1" I05="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="2f03f6c4-8b0c-4373-ba8b-0421af555f4e" G10="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" G11="93a3ced9-fafd-4f38-9467-3af1f72b5d62" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="1a37dd67-a538-440f-b3e8-5d229bb3fc02" />
-    <SchemaItem Id="eadb7bb2-434f-46e1-8b7f-119028e0bed6" ItemType="ServiceMethodCallParameter" Name="DataStructure" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="12495b9d-f2b9-4b70-b14c-7cb67784c9f3" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="d6f4b9d0-f9df-4c50-9f38-3e6d6caccbf2" />
-    <SchemaItem Id="61cbccaf-0c23-4dca-bfa3-7866867e494c" ItemType="DataStructureReference" Name="ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="d5058368-08b8-4536-9fe7-3a98eb37c882" G02="9ea975e4-5b23-41d8-a185-47a2cf88da8c" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="eadb7bb2-434f-46e1-8b7f-119028e0bed6" />
-    <SchemaItem Id="9b7e9be8-fd86-49f7-9f05-346bb0c8b059" ItemType="ServiceMethodCallParameter" Name="Parameters" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ff27a2ff-5965-4eed-b6dd-9cd040583d03" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="d6f4b9d0-f9df-4c50-9f38-3e6d6caccbf2" />
-    <SchemaItem Id="d42129f0-82fd-44bb-a855-3b18b6f84433" ItemType="WorkflowContextReference" Name="ExchangeRate_parExchangeRateListId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="319360ce-bca4-4e58-8fb6-7647debd1e3c" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9b7e9be8-fd86-49f7-9f05-346bb0c8b059" />
-    <SchemaItem Id="97f5e375-8650-437f-9cf1-4aad016c8863" ItemType="WorkflowContextReference" Name="ExchangeRate_parDate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/DSKurz/kurz/OD" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="cbfc5a2c-0996-4d34-9092-103c86b7f88b" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9b7e9be8-fd86-49f7-9f05-346bb0c8b059" />
-    <SchemaItem Id="c3f130d5-a3fb-41d3-842f-5cd972ccb197" ItemType="WorkflowContextReference" Name="ExchangeRate_parCurrencyId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/DSKurz/kurz/@refCurrencyId" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="cbfc5a2c-0996-4d34-9092-103c86b7f88b" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9b7e9be8-fd86-49f7-9f05-346bb0c8b059" />
-    <SchemaItem Id="a422040a-0416-471b-bc2e-a83552fdcd7f" ItemType="WorkflowTask" Name="03_StoreData_ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallTask" IsAbstract="false" SS02="*" I01="1" I05="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="2f03f6c4-8b0c-4373-ba8b-0421af555f4e" G10="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" G11="3c1c855d-3c06-49e1-bfbf-cf234134d083" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="1a37dd67-a538-440f-b3e8-5d229bb3fc02" />
+    <SchemaItem Id="a422040a-0416-471b-bc2e-a83552fdcd7f" ItemType="WorkflowTask" Name="02_StoreData_ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallTask" IsAbstract="false" SS02="*" I01="1" I05="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="2f03f6c4-8b0c-4373-ba8b-0421af555f4e" G10="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" G11="3c1c855d-3c06-49e1-bfbf-cf234134d083" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="1a37dd67-a538-440f-b3e8-5d229bb3fc02" />
     <SchemaItem Id="6592f734-f745-4d2a-a04d-7365bf896b15" ItemType="ServiceMethodCallParameter" Name="Data" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="d4d7ec83-a1e8-458e-9900-36562b201ffc" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="a422040a-0416-471b-bc2e-a83552fdcd7f" />
     <SchemaItem Id="84b44ac3-5f75-4e14-950e-9e52d06be53f" ItemType="WorkflowContextReference" Name="ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="2f03f6c4-8b0c-4373-ba8b-0421af555f4e" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="6592f734-f745-4d2a-a04d-7365bf896b15" />
     <SchemaItem Id="710cbf07-52e8-4da7-86d7-92703237ae27" ItemType="ServiceMethodCallParameter" Name="DataStructure" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="c229b1e0-cb1e-4c79-ad99-488775df3b19" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="a422040a-0416-471b-bc2e-a83552fdcd7f" />
     <SchemaItem Id="1945a5d5-a3ad-4776-b27c-cdeeebe176ce" ItemType="DataStructureReference" Name="ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="d5058368-08b8-4536-9fe7-3a98eb37c882" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="710cbf07-52e8-4da7-86d7-92703237ae27" />
-    <SchemaItem Id="f2017272-681b-4402-9c95-41376f8eef7f" ItemType="WorkflowTaskDependency" Name="After_02_Transform_ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkflowTaskDependency" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="9f36344e-af45-4d24-a571-d288de989da9" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="a422040a-0416-471b-bc2e-a83552fdcd7f" />
-    <SchemaItem Id="9f36344e-af45-4d24-a571-d288de989da9" ItemType="WorkflowTask" Name="02_Transform_ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallTask" IsAbstract="false" SS02="*" I01="1" I05="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="2f03f6c4-8b0c-4373-ba8b-0421af555f4e" G10="600930a5-102b-43e8-8af1-677c6d7e79f3" G11="a215c2d6-e7aa-4b2f-97d9-03a8d019d4c6" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="1a37dd67-a538-440f-b3e8-5d229bb3fc02" />
+    <SchemaItem Id="f2017272-681b-4402-9c95-41376f8eef7f" ItemType="WorkflowTaskDependency" Name="After_01_Transform_ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkflowTaskDependency" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="9f36344e-af45-4d24-a571-d288de989da9" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="a422040a-0416-471b-bc2e-a83552fdcd7f" />
+    <SchemaItem Id="9f36344e-af45-4d24-a571-d288de989da9" ItemType="WorkflowTask" Name="01_Transform_ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallTask" IsAbstract="false" SS02="*" I01="1" I05="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="2f03f6c4-8b0c-4373-ba8b-0421af555f4e" G10="600930a5-102b-43e8-8af1-677c6d7e79f3" G11="a215c2d6-e7aa-4b2f-97d9-03a8d019d4c6" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="1a37dd67-a538-440f-b3e8-5d229bb3fc02" />
     <SchemaItem Id="fe14c868-c3f7-4be9-b341-8b5dc7d56761" ItemType="ServiceMethodCallParameter" Name="Parameters" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ce3ebb59-6528-4157-b51a-500f84a635f0" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9f36344e-af45-4d24-a571-d288de989da9" />
-    <SchemaItem Id="f8a6d246-e747-49f6-824a-c16f5fecb97e" ItemType="WorkflowContextReference" Name="newRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="cbfc5a2c-0996-4d34-9092-103c86b7f88b" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="fe14c868-c3f7-4be9-b341-8b5dc7d56761" />
+    <SchemaItem Id="6de100aa-f255-402a-9c7e-77e416447fa7" ItemType="WorkflowContextReference" Name="exchangeRateListId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="319360ce-bca4-4e58-8fb6-7647debd1e3c" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="fe14c868-c3f7-4be9-b341-8b5dc7d56761" />
     <SchemaItem Id="52af668c-5c5f-4bc6-b3e2-a2cc612a81f9" ItemType="ServiceMethodCallParameter" Name="Data" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="3e94d691-e045-426a-bc79-febc3562fa15" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9f36344e-af45-4d24-a571-d288de989da9" />
-    <SchemaItem Id="0cd801ee-c5b6-4b84-9255-75df2c0d1e81" ItemType="WorkflowContextReference" Name="ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="2f03f6c4-8b0c-4373-ba8b-0421af555f4e" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="52af668c-5c5f-4bc6-b3e2-a2cc612a81f9" />
+    <SchemaItem Id="2f5764eb-df13-4f52-b0d6-14e770cc7ed4" ItemType="WorkflowContextReference" Name="xml" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="cbfc5a2c-0996-4d34-9092-103c86b7f88b" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="52af668c-5c5f-4bc6-b3e2-a2cc612a81f9" />
     <SchemaItem Id="a2e2caaf-cc08-47d9-80c3-a64b4df537ad" ItemType="ServiceMethodCallParameter" Name="XslScript" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="7eecc204-f38e-49fc-8875-fd6b4ba019fd" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9f36344e-af45-4d24-a571-d288de989da9" />
     <SchemaItem Id="4f9fdc88-1d8c-45b3-a77f-6b97c6be9075" ItemType="TransformationReference" Name="CelniSprava_ConvertExchangeRate" TargetType="CZ.Advantages.Asap.Schema.EntityModel.TransformationReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="09cb95e7-a72b-4aff-8190-242563985906" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="a2e2caaf-cc08-47d9-80c3-a64b4df537ad" />
-    <SchemaItem Id="089e55b5-1b44-44c5-a202-def056056afa" ItemType="WorkflowTaskDependency" Name="After_01_LoadData_ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkflowTaskDependency" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="d6f4b9d0-f9df-4c50-9f38-3e6d6caccbf2" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9f36344e-af45-4d24-a571-d288de989da9" />
     <SchemaItem Id="83895d11-4c38-471b-b469-32ea600797ab" ItemType="WorkflowTaskDependency" Name="After_01_RetrieveXml" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkflowTaskDependency" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="1ab0a0e1-86cc-4c33-822e-40cb986c5d5e" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="1a37dd67-a538-440f-b3e8-5d229bb3fc02" />
     <SchemaItem Id="92987018-868c-4135-b467-6bee93f120bb" ItemType="Workflow" Name="CNB_SaveDailyRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="3" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" />
     <SchemaItem Id="e02433b8-aa6a-4964-9d8a-4d4c17166599" ItemType="ContextStore" Name="ExchangeRate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="d5058368-08b8-4536-9fe7-3a98eb37c882" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="92987018-868c-4135-b467-6bee93f120bb" />
@@ -1290,6 +1283,16 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
     <SchemaItem Id="5222a2d5-b920-4456-b565-a55446c63347" ItemType="WorkflowContextReference" Name="WQ_TextFile" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="fe4e69a1-ce49-40ec-ac59-db1a0c430cbb" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="3303e1f4-20e4-4b0d-b1bc-a5144a9fbab3" />
     <SchemaItem Id="80b6311d-5af1-47c1-b095-ca7fb8e27835" ItemType="ServiceMethodCallParameter" Name="XslScript" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="7eecc204-f38e-49fc-8875-fd6b4ba019fd" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="44677560-405b-4b1b-ab85-c3a181296f7f" />
     <SchemaItem Id="f36d6497-0977-4d8c-9114-9d15b5758567" ItemType="TransformationReference" Name="M2M_SaveGpsTrack" TargetType="CZ.Advantages.Asap.Schema.EntityModel.TransformationReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="e795bd64-1d9b-4db9-a82d-23968fd73915" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="80b6311d-5af1-47c1-b095-ca7fb8e27835" />
+    <SchemaItem Id="d5e4ce3c-70ca-45ad-a5e4-c34cb47b3246" ItemType="Workflow" Name="CelniSprava_DailyExchangeRateLoader" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c">
+      <SchemaItemAncestor refAncestorId="c5edb03a-08f3-4497-ab85-20fe241d1f29" Id="26fd8829-d3b2-41b7-81c2-1d2eeb7cae94" refSchemaItemId="d5e4ce3c-70ca-45ad-a5e4-c34cb47b3246" />
+    </SchemaItem>
+    <SchemaItem Id="7170a532-c880-4b29-be82-4f7767668f7d" ItemType="ContextStore" Name="result" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="78a0f3a0-116f-48a7-8bdd-adf7c868ce85" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="d5e4ce3c-70ca-45ad-a5e4-c34cb47b3246" />
+    <SchemaItem Id="900b4e58-71e3-4acb-90de-47f4c8315b55" ItemType="WorkflowTask" Name="01_LoadRatesFromWeb" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallTask" IsAbstract="false" SS02="*" I01="1" I05="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="7170a532-c880-4b29-be82-4f7767668f7d" G10="600930a5-102b-43e8-8af1-677c6d7e79f3" G11="a215c2d6-e7aa-4b2f-97d9-03a8d019d4c6" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="d5e4ce3c-70ca-45ad-a5e4-c34cb47b3246" />
+    <SchemaItem Id="68729bab-a81c-4c5d-a092-016719edbb2a" ItemType="ServiceMethodCallParameter" Name="Data" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="3e94d691-e045-426a-bc79-febc3562fa15" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="900b4e58-71e3-4acb-90de-47f4c8315b55" />
+    <SchemaItem Id="5c93e18b-db95-43dd-8494-60098727e237" ItemType="WorkflowContextReference" Name="result" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="7170a532-c880-4b29-be82-4f7767668f7d" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="68729bab-a81c-4c5d-a092-016719edbb2a" />
+    <SchemaItem Id="89fc88ec-d4de-4628-8800-d879bc19f4bf" ItemType="ServiceMethodCallParameter" Name="Parameters" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ce3ebb59-6528-4157-b51a-500f84a635f0" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="900b4e58-71e3-4acb-90de-47f4c8315b55" />
+    <SchemaItem Id="58cd9a93-1606-4f49-abba-e8cf6423c397" ItemType="ServiceMethodCallParameter" Name="XslScript" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="7eecc204-f38e-49fc-8875-fd6b4ba019fd" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="900b4e58-71e3-4acb-90de-47f4c8315b55" />
+    <SchemaItem Id="167b3728-36fd-436e-a897-dcf9d1bb4eb8" ItemType="TransformationReference" Name="CelniSprava_LoadDailyRate" TargetType="CZ.Advantages.Asap.Schema.EntityModel.TransformationReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="e019f84e-cae4-4329-85d6-3325edbd85f0" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="58cd9a93-1606-4f49-abba-e8cf6423c397" />
     <SchemaItem Id="f1e00afa-9e15-463e-ae0e-60b4ac5659d6" ItemType="Workflow" Name="M2M_GpsRecordLoader" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c">
       <SchemaItemAncestor refAncestorId="c5edb03a-08f3-4497-ab85-20fe241d1f29" Id="3deef58c-b022-4b5b-b247-bcd41bf6b2c2" refSchemaItemId="f1e00afa-9e15-463e-ae0e-60b4ac5659d6" />
     </SchemaItem>
@@ -1350,6 +1353,7 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
     <SchemaItem Id="20d2a33f-490d-447d-958b-0ed8ec745b11" ItemType="WorkqueueLoader" Name="M2M_GpsRecordLoader" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkqueueLoader" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="f1e00afa-9e15-463e-ae0e-60b4ac5659d6" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="08bd5b92-bfea-4a61-8574-4baeab844284" />
     <SchemaItem Id="af958bd5-093d-4d77-b423-96dea49635fa" ItemType="WorkqueueLoader" Name="CNB_DailyExchangeRateLoader" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkqueueLoader" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="1ff85da9-668c-4331-9293-7ed3f9e5d4a0" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="08bd5b92-bfea-4a61-8574-4baeab844284" />
     <SchemaItem Id="3a04d6bf-3d0c-495e-a6e7-9e516caf094f" ItemType="WorkqueueLoader" Name="M2M_GpsTrackLoader" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkqueueLoader" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="62087577-7a9c-4a8c-99c0-9436cd7cc941" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="08bd5b92-bfea-4a61-8574-4baeab844284" />
+    <SchemaItem Id="b644cf45-2977-4f2a-9d8b-f62702fe0d6c" ItemType="WorkqueueLoader" Name="CelniSprava_DailyExchangeRateLoader" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkqueueLoader" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="d5e4ce3c-70ca-45ad-a5e4-c34cb47b3246" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="08bd5b92-bfea-4a61-8574-4baeab844284" />
     <SchemaItem Id="b08e084d-9443-4052-8179-0e09b0ff2228" ItemType="WorkQueueWorkflowCommandParameterMapping" Name="WQ_TextFile" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkQueueWorkflowCommandParameterMapping" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="a26613db-8aa0-4735-a4de-13559854f2f6" />
     <SchemaItem Id="ecdace85-8744-4e62-ac48-70d72a1fc508" ItemType="WorkQueueWorkflowCommandParameterMapping" Name="exchangeRateListId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkQueueWorkflowCommandParameterMapping" IsAbstract="false" I01="1" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="dd4f2f0e-82c9-475e-a001-b32c8c4a7314" />
     <SchemaItem Id="e636f036-777c-4ae8-a7a2-bb7b02d85a99" ItemType="WorkQueueWorkflowCommandParameterMapping" Name="WQ_TextFile" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkQueueWorkflowCommandParameterMapping" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="dd4f2f0e-82c9-475e-a001-b32c8c4a7314" />

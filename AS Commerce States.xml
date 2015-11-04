@@ -817,6 +817,60 @@ WHERE
     <SchemaItem Id="45352de4-686a-428b-b8c0-50c213ec7e1b" ItemType="Rule" Name="SR_DeliveryDirectionId_Purchase" TargetType="CZ.Advantages.Asap.Schema.RuleModel.XPathRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="90d4656f-913b-45e1-a921-13a042e4b467" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4">
       <M01>/ROOT/value = AS:GetConstant('DocumentDirection_Purchase')</M01>
     </SchemaItem>
+    <SchemaItem Id="49a51618-8288-4192-81d1-9a769169e6cd" ItemType="Rule" Name="ER_DocumentBillingDetail_OverrideExpirationDate" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EndRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="90d4656f-913b-45e1-a921-13a042e4b467" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4">
+      <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
+	xmlns:date="http://exslt.org/dates-and-times" exclude-result-prefixes="AS date"&gt;
+
+	&lt;xsl:include href="model://e1c65fcd-118d-4eb3-9c2f-aa27fec132ba"/&gt;
+	&lt;xsl:include href="model://4beeaf13-b585-479d-aca5-deeddcfcbd18"/&gt;
+
+	&lt;xsl:template match="ROOT"&gt;
+		&lt;RuleExceptionDataCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+			&lt;xsl:apply-templates select="Document/DocumentDelivery/DocumentBillingDetail"/&gt;
+		&lt;/RuleExceptionDataCollection&gt;
+	&lt;/xsl:template&gt;
+	
+	&lt;xsl:template match="DocumentBillingDetail"&gt;
+		&lt;xsl:call-template name="ExpirationDateValidation"&gt;
+			&lt;xsl:with-param name="referenceCode" select="../../@ReferenceCode"/&gt;
+			&lt;xsl:with-param name="text" select="@InfoText1" /&gt;
+			&lt;xsl:with-param name="plneni" select="../@Text"/&gt;
+			&lt;xsl:with-param name="overrideExpDate" select="@OverrideExpirationDate"/&gt;
+			&lt;xsl:with-param name="planDelivery" select="../@DatePlanned" /&gt;
+		&lt;/xsl:call-template&gt;
+	&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</M01>
+    </SchemaItem>
+    <SchemaItem Id="4beeaf13-b585-479d-aca5-deeddcfcbd18" ItemType="Rule" Name="ER_DocumentBillingDetail_ExpirationDateTemplate" TargetType="CZ.Advantages.Asap.Schema.RuleModel.EndRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="90d4656f-913b-45e1-a921-13a042e4b467" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4">
+      <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
+	xmlns:date="http://exslt.org/dates-and-times" exclude-result-prefixes="AS date"&gt;
+
+	&lt;xsl:template name="ExpirationDateValidation"&gt;
+		&lt;xsl:param name="referenceCode" /&gt;
+		&lt;xsl:param name="text" /&gt;
+		&lt;xsl:param name="plneni" /&gt;
+		&lt;xsl:param name="overrideExpDate" /&gt;
+		&lt;xsl:param name="planDelivery" /&gt;
+		&lt;xsl:if test="string($overrideExpDate) and AS:DifferenceInDays($planDelivery, $overrideExpDate) &amp;lt; 0 "&gt;
+			&lt;xsl:call-template name="Exception"&gt;
+				&lt;xsl:with-param name="FieldName"&gt;&lt;xsl:value-of select="'OverrideExpirationDate'"/&gt;&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="EntityName"&gt;&lt;xsl:value-of select="'DocumentBillingDetail'"/&gt;&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="Message"&gt;&lt;xsl:value-of select="AS:GetString('Commerce_DocumentBillingDetail_OverrideExprirationDate', 
+						AS:FormatDate($overrideExpDate, 'dd.MM.yyyy'),
+						AS:FormatDate($planDelivery, 'dd.MM.yyyy'), $text, $referenceCode, $plneni
+				)"/&gt;&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="Severity"&gt;&lt;xsl:value-of select="'High'"/&gt;&lt;/xsl:with-param&gt;
+			&lt;/xsl:call-template&gt;
+		&lt;/xsl:if&gt;
+	&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</M01>
+    </SchemaItem>
     <SchemaItem Id="51c1b348-b054-434b-b515-0d93ac62398d" ItemType="Rule" Name="SR_DocumentDelivery_ShouldGenerateReturnOutbound" TargetType="CZ.Advantages.Asap.Schema.RuleModel.StartRule" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="90d4656f-913b-45e1-a921-13a042e4b467" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4">
       <M01>AS:LookupValue('41c797b3-4df3-4708-b8cb-5350756d1e60', /row/@refWarehouseId) ='true' and AS:LookupValue('1282374c-77e9-4880-906e-fa9b2f83add5', /row/@refDocumentId) = AS:GetConstant('DocumentDirection_Purchase') and not((AS:LookupValue('e613b0e1-60a6-4d5e-b970-20d401c63725', /row/@refDocumentId) = AS:GetConstant('DocumentSubtype_Bill_Invoice') or AS:LookupValue('e613b0e1-60a6-4d5e-b970-20d401c63725', /row/@refDocumentId) = AS:GetConstant('DocumentSubtype_Bill_Proforma')))</M01>
     </SchemaItem>
@@ -1210,6 +1264,7 @@ WHERE
 
 	&lt;xsl:include href="model://e1c65fcd-118d-4eb3-9c2f-aa27fec132ba"/&gt;
 	&lt;xsl:include href="model://16eb7a42-af3f-4773-bd3c-329069c03551"/&gt;
+	&lt;xsl:include href="model://4beeaf13-b585-479d-aca5-deeddcfcbd18"/&gt;
 
 	&lt;xsl:key name="warehouseItems" match="/ROOT/Document/DocumentDelivery/DocumentBillingDetail[string(@refProductId)]" use="concat(../@refWarehouseId, @refProductId)" /&gt;
 	&lt;xsl:key name="productsCustomer" match="/ROOT/Document/DocumentDelivery/DocumentBillingDetail[string(@refProductId)]" use="concat(../../@refBusinessPartnerId, AS:LookupValue('1693882d-8926-4971-bef8-45d41eed5095', @refProductId))" /&gt;
@@ -1982,6 +2037,28 @@ WHERE
 			&lt;/xsl:call-template&gt;
 		&lt;/xsl:if&gt;
 		
+		&lt;xsl:call-template name="ExpirationDateValidation"&gt;
+			&lt;xsl:with-param name="referenceCode" select="../../@ReferenceCode"/&gt;
+			&lt;xsl:with-param name="text" select="@InfoText1" /&gt;
+			&lt;xsl:with-param name="overrideExpDate" select="@OverrideExpirationDate"/&gt;
+			&lt;xsl:with-param name="planDelivery" select="../@DatePlanned" /&gt;
+			&lt;xsl:with-param name="plneni" select="../@Text"/&gt;
+		&lt;/xsl:call-template&gt;
+		
+		&lt;!--&lt;xsl:if test="string(@OverrideExpirationDate) and AS:DifferenceInDays(@ExpirationDate, @OverrideExpirationDate) &amp;lt; 0 "&gt;
+			&lt;xsl:call-template name="Exception"&gt;
+				&lt;xsl:with-param name="FieldName"&gt;&lt;xsl:value-of select="'OverrideExpirationDate'"/&gt;&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="EntityName"&gt;&lt;xsl:value-of select="'DocumentBillingDetail'"/&gt;&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="Message"&gt;&lt;xsl:value-of select="AS:GetString('Commerce_OverrideExprirationDAte_BillingDetail', 
+						AS:FormatDate(@OverrideExpirationDate, 'dd.MM.yyyy'),
+						AS:FormatDate(@ExpirationDate, 'dd.MM.yyyy'),
+						../../@ReferenceCode,
+						../@Text
+				)"/&gt;&lt;/xsl:with-param&gt;
+				&lt;xsl:with-param name="Severity"&gt;&lt;xsl:value-of select="'High'"/&gt;&lt;/xsl:with-param&gt;
+			&lt;/xsl:call-template&gt;
+		&lt;/xsl:if&gt;--&gt;
+		
 		&lt;xsl:if test="string(@refProductId) and $distributeAllProducts = 'false'"&gt;
 			&lt;xsl:if test="not(string(AS:LookupValue('bb4170d1-b3f6-4632-b7c0-0980496d20b1', 'SiteProductDistributionCategory_parSiteId', ../../@refSiteId, 'Product_parId', @refProductId)))"&gt;
 				&lt;xsl:call-template name="Exception"&gt;
@@ -2418,6 +2495,9 @@ WHERE
     </SchemaItem>
     <SchemaItem Id="50928565-601f-47f6-93be-5e2af498c402" ItemType="String" Name="Commerce_DocumentNotFullyDelivered" TargetType="CZ.Advantages.Asap.Schema.StringItem" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="926373d4-db0a-4cee-a4d5-1a8b4883b0c8" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4">
       <M01>Doklad {0} nemá nastavena všechna plnění do stavu Dodáno - schváleno.</M01>
+    </SchemaItem>
+    <SchemaItem Id="55748969-144c-4b2f-88c5-63e284fd52a9" ItemType="String" Name="Commerce_DocumentBillingDetail_OverrideExprirationDate" TargetType="CZ.Advantages.Asap.Schema.StringItem" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="926373d4-db0a-4cee-a4d5-1a8b4883b0c8" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4">
+      <M01>Požadované datum spotřeby {0} musí být větší nebo rovno datu plánováného dodání {1}. Položka: {2}, doklad: {3}, plnění: {4}.</M01>
     </SchemaItem>
     <SchemaItem Id="58244344-ac87-43ad-a291-282fa52fec96" ItemType="String" Name="Commerce_PurchaseBillDuplicate" TargetType="CZ.Advantages.Asap.Schema.StringItem" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="926373d4-db0a-4cee-a4d5-1a8b4883b0c8" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4">
       <M01>Již existuje přijatá faktura '{1}' s číslem dokladu partnera '{0}'. Dodavatel '{2}'.</M01>
@@ -3323,6 +3403,14 @@ WHERE
     <SchemaItem Id="435011ac-a92f-417e-b973-91e7bbd0b677" ItemType="WorkflowContextReference" Name="Document_parId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" G01="123e2e5a-a2b6-4b65-8b8b-c5a031b0a83e" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="f9169157-5bb2-452d-8037-35d3a4a490cd" />
     <SchemaItem Id="ca3bbf0b-2081-438f-934c-fb556cff2da9" ItemType="ServiceMethodCallParameter" Name="DataStructure" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" G01="12495b9d-f2b9-4b70-b14c-7cb67784c9f3" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="0a7928be-ee75-48c7-8b86-6d57c3b14fdc" />
     <SchemaItem Id="662e7667-60b7-4ad7-9a51-630fdbf160cf" ItemType="DataStructureReference" Name="Document" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureReference" IsAbstract="false" G01="6aff906d-525d-45ee-8c03-982714045eb9" G02="9e240edd-719f-4b15-96e1-7f63516fceb8" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="ca3bbf0b-2081-438f-934c-fb556cff2da9" />
+    <SchemaItem Id="8e37ee64-2db6-416a-b9e8-5216e9680749" ItemType="Workflow" Name="OnUpdate_DocumentBillingDetail_OverrideExpirationDate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="3" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="2779caa4-a92c-44d2-8c3f-47c14190095e" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
+    <SchemaItem Id="205a4f39-0e73-44a2-83dc-004bd304fb79" ItemType="ContextStore" Name="Document_ByDocumentBilingDetail" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0ad026f6-3653-4886-9143-922774f9495b" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="8e37ee64-2db6-416a-b9e8-5216e9680749" />
+    <SchemaItem Id="2ec6c0ea-8cfe-4695-918a-d669ac1f4dd5" ItemType="ContextStore" Name="DocumentBillingDetailId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="8e37ee64-2db6-416a-b9e8-5216e9680749" />
+    <SchemaItem Id="a1e41e60-725b-4f04-909c-890d71a6584c" ItemType="WorkflowTask" Name="01_LoadDocumentComplate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallTask" IsAbstract="false" SS02="*" I01="1" I05="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G03="205a4f39-0e73-44a2-83dc-004bd304fb79" G04="49a51618-8288-4192-81d1-9a769169e6cd" G07="205a4f39-0e73-44a2-83dc-004bd304fb79" G10="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" G11="93a3ced9-fafd-4f38-9467-3af1f72b5d62" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="8e37ee64-2db6-416a-b9e8-5216e9680749" />
+    <SchemaItem Id="ea955281-29ba-4767-b957-2221bc771b19" ItemType="ServiceMethodCallParameter" Name="DataStructure" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="12495b9d-f2b9-4b70-b14c-7cb67784c9f3" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="a1e41e60-725b-4f04-909c-890d71a6584c" />
+    <SchemaItem Id="e377f2a7-7b10-47f3-9891-a56fc6682605" ItemType="DataStructureReference" Name="Document_ByDocumentBilingDetail" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0ad026f6-3653-4886-9143-922774f9495b" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="ea955281-29ba-4767-b957-2221bc771b19" />
+    <SchemaItem Id="5022c21c-02c1-47db-bd84-c5f467652aa1" ItemType="ServiceMethodCallParameter" Name="Parameters" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ff27a2ff-5965-4eed-b6dd-9cd040583d03" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="a1e41e60-725b-4f04-909c-890d71a6584c" />
+    <SchemaItem Id="ae510a3c-cf7e-49dc-b1bc-98df8e36e328" ItemType="WorkflowContextReference" Name="DocumentBillingDetail_parId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="2ec6c0ea-8cfe-4695-918a-d669ac1f4dd5" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="5022c21c-02c1-47db-bd84-c5f467652aa1" />
     <SchemaItem Id="91ae1978-beec-4712-9376-a634c7d1bcc6" ItemType="Workflow" Name="OnEnter_Document_OrderApproved" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="2779caa4-a92c-44d2-8c3f-47c14190095e" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
     <SchemaItem Id="40745ada-9d80-4c2e-882d-2cae31f6ce90" ItemType="ContextStore" Name="Document" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="7e9e1798-0002-45d6-9d75-5932e04d03f7" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="91ae1978-beec-4712-9376-a634c7d1bcc6" />
     <SchemaItem Id="d3d78c09-f4d4-4c19-8ea9-885432cf1110" ItemType="ContextStore" Name="DocumentId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="91ae1978-beec-4712-9376-a634c7d1bcc6" />
@@ -3904,6 +3992,10 @@ WHERE
     <SchemaItem Id="f5f299dc-9e9b-4c4e-ad7f-6eb317d2bf12" ItemType="WorkflowEntityParameterMapping" Name="PaymentId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.StateMachineEventParameterMapping" IsAbstract="false" I01="1" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="c54413b6-eb88-49c8-a7ff-3bb942c1984e" G02="abc0b6d2-65da-47e3-8627-89a285671bb3" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="314faf72-906c-4bd2-b19f-48ab92a2fe2e" />
     <SchemaItem Id="2b279aa6-d8c5-443e-9588-a3adfae5c8d6" ItemType="StateMachineEvent" Name="OnRecordCreated" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.StateMachineEvent" IsAbstract="false" LS01="*" I01="3" G01="b9cb1f8e-10f6-4a3f-9ab6-3b19357bb94f" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="e8222db6-b303-46d1-9f3b-7b026d6169e8" />
     <SchemaItem Id="f4609523-120d-4477-8e12-0ef8a86cd645" ItemType="WorkflowEntityParameterMapping" Name="PaymentId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.StateMachineEventParameterMapping" IsAbstract="false" I01="1" G01="c54413b6-eb88-49c8-a7ff-3bb942c1984e" G02="423b2144-c899-41b2-b38c-5886444cedbe" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="2b279aa6-d8c5-443e-9588-a3adfae5c8d6" />
+    <SchemaItem Id="f877882b-30b3-4eff-9323-095ab13ab3dd" ItemType="WorkflowStateMachine" Name="DocumentBillingDetail" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.StateMachine" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="41aa0893-7f28-4bed-ae52-e2504b8f20cf" refSchemaItemGroupId="03040019-3dcf-4f67-ac02-ad8adcb61db9" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
+    <SchemaItem Id="2e9504f2-81df-4322-accd-13293f85b361" ItemType="StateMachineEvent" Name="OnUpdated_DocumentBillingDetailOverrideExpirationDate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.StateMachineEvent" IsAbstract="false" LS01="*" I01="4" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="8e37ee64-2db6-416a-b9e8-5216e9680749" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="f877882b-30b3-4eff-9323-095ab13ab3dd" />
+    <SchemaItem Id="469466c7-afec-4e42-acc0-c44e9e82d29a" ItemType="StateMachineEventFieldDependency" Name="OverrideExpirationDate" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.StateMachineEventFieldDependency" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="3788a413-412f-4955-8786-35119f5af8d7" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="2e9504f2-81df-4322-accd-13293f85b361" />
+    <SchemaItem Id="75afa5b4-7164-4321-bb45-233056123455" ItemType="WorkflowEntityParameterMapping" Name="DocumenBillingDetailId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.StateMachineEventParameterMapping" IsAbstract="false" I01="1" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="c54413b6-eb88-49c8-a7ff-3bb942c1984e" G02="2ec6c0ea-8cfe-4695-918a-d669ac1f4dd5" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="2e9504f2-81df-4322-accd-13293f85b361" />
     <SchemaItem Id="377b8db7-e960-470d-ab56-0ae11f15bf66" ItemType="DataConstantReference" Name="false" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataConstantReference" IsAbstract="true" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="9e301a8b-b356-42fa-ae57-3be3a28650d7" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="6fc29358-410a-4100-8ba8-98291f74d049" />
     <SchemaItem Id="75cdeef0-613f-4974-be4e-363229392858" ItemType="DataConstantReference" Name="DocumentContractState_Closed" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataConstantReference" IsAbstract="true" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="049f7b23-c62c-4cdb-aa41-ac7b25adcad1" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="e7754a62-6e17-48b2-b466-73eff0adf5c7" />
     <SchemaItem Id="2c4b9988-c5b3-4d69-bbc5-3c7bd870f3e7" ItemType="DataConstantReference" Name="DocumentContractState_Delivered" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataConstantReference" IsAbstract="true" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="30849a46-3b33-4b6e-a1f8-8753101359dd" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="e7754a62-6e17-48b2-b466-73eff0adf5c7" />

@@ -856,6 +856,7 @@ WHERE
 		&lt;xsl:param name="plneni" /&gt;
 		&lt;xsl:param name="overrideExpDate" /&gt;
 		&lt;xsl:param name="planDelivery" /&gt;
+			
 		&lt;xsl:if test="string($overrideExpDate) and AS:DifferenceInDays($planDelivery, $overrideExpDate) &amp;lt; 0 "&gt;
 			&lt;xsl:call-template name="Exception"&gt;
 				&lt;xsl:with-param name="FieldName"&gt;&lt;xsl:value-of select="'OverrideExpirationDate'"/&gt;&lt;/xsl:with-param&gt;
@@ -2037,13 +2038,15 @@ WHERE
 			&lt;/xsl:call-template&gt;
 		&lt;/xsl:if&gt;
 		
-		&lt;xsl:call-template name="ExpirationDateValidation"&gt;
-			&lt;xsl:with-param name="referenceCode" select="../../@ReferenceCode"/&gt;
-			&lt;xsl:with-param name="text" select="@InfoText1" /&gt;
-			&lt;xsl:with-param name="overrideExpDate" select="@OverrideExpirationDate"/&gt;
-			&lt;xsl:with-param name="planDelivery" select="../@DatePlanned" /&gt;
-			&lt;xsl:with-param name="plneni" select="../@Text"/&gt;
-		&lt;/xsl:call-template&gt;
+		&lt;xsl:if test="string(../@DatePlanned)"&gt;
+			&lt;xsl:call-template name="ExpirationDateValidation"&gt;
+				&lt;xsl:with-param name="referenceCode" select="../../@ReferenceCode"/&gt;
+				&lt;xsl:with-param name="text" select="@InfoText1" /&gt;
+				&lt;xsl:with-param name="overrideExpDate" select="@OverrideExpirationDate"/&gt;
+				&lt;xsl:with-param name="planDelivery" select="../@DatePlanned" /&gt;
+				&lt;xsl:with-param name="plneni" select="../@Text"/&gt;
+			&lt;/xsl:call-template&gt;
+		&lt;/xsl:if&gt;
 		
 		&lt;!--&lt;xsl:if test="string(@OverrideExpirationDate) and AS:DifferenceInDays(@ExpirationDate, @OverrideExpirationDate) &amp;lt; 0 "&gt;
 			&lt;xsl:call-template name="Exception"&gt;

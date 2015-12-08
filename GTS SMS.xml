@@ -327,6 +327,7 @@ Insert into SmsProvider (Id, Name, RecordCreated) values ('b1517b19-b14f-4df6-b1
 	&lt;xsl:param name="phoneNumber"/&gt;
 	
 	&lt;xsl:template match="/"&gt;
+		
 		&lt;xsl:variable name="rawGateway" select="AS:GetConstant('GTS_GatewayURL')"/&gt;
 		&lt;xsl:variable name="username" select="AS:GetConstant('GTS_Username')" /&gt;
 		&lt;xsl:variable name="password" select="AS:GetConstant('GTS_Password')" /&gt;
@@ -334,19 +335,14 @@ Insert into SmsProvider (Id, Name, RecordCreated) values ('b1517b19-b14f-4df6-b1
 				
 		&lt;xsl:variable name="sms" select="AS:HttpRequest(concat(
 			$rawGateway,
-			'?MT_Destination=',
-			translate($phoneNumber, ' ', ''),
-			'&amp;amp;MT_Type=SMS',
-			'&amp;amp;MT_SubType=Text',
-			'&amp;amp;MT_Data=',
-			$text
-			), 'GET', $authType, $username , $password )"/&gt;
-		
-		&lt;xsl:variable name="smsXml" select="AS:ToXml($sms)"/&gt;
+			'?MT_Destination=',	translate($phoneNumber, ' ', ''),
+			'&amp;amp;MT_Type=SMS', '&amp;amp;MT_SubType=Text',
+			'&amp;amp;MT_Data=',$text), $authType, $username, $password )"/&gt;
 		
 		&lt;!-- split return code by ;--&gt;
-		&lt;xsl:variable name="result" select="str:split($smsXml, ';')"/&gt;
+		&lt;xsl:variable name="result" select="str:split($sms, ';')"/&gt;
 		
+		&lt;ROOT&gt;
 		&lt;xsl:choose&gt;
 			&lt;xsl:when test="$result[1]='REJECT'"&gt;
 				&lt;xsl:message terminate="yes"&gt;&lt;xsl:value-of select="concat('REJECT:Selhalo odeslání SMS na číslo ', $phoneNumber, '. Chyba: ', $result[2])"/&gt;&lt;/xsl:message&gt;
@@ -356,15 +352,16 @@ Insert into SmsProvider (Id, Name, RecordCreated) values ('b1517b19-b14f-4df6-b1
 			&lt;/xsl:when&gt;
 			&lt;xsl:when test="$result[1]='THROTTLING-ACTIVE'"&gt;
 				&lt;xsl:message terminate="yes"&gt;&lt;xsl:value-of select="concat('Dosažen maximální počet odeslání sms, vyčkejte ', $result[2], ' s.')"/&gt;&lt;/xsl:message&gt;
-			&lt;/xsl:when&gt;			
+			&lt;/xsl:when&gt;
 		&lt;/xsl:choose&gt;
+		&lt;/ROOT&gt;
 	&lt;/xsl:template&gt;
 	
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
     <SchemaItem Id="b0af3977-9e16-4033-951d-67134e55193c" ItemType="Workflow" Name="GTS_SMS" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="841e3fe9-50b6-493b-ba16-05a306911d5f" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" />
     <SchemaItem Id="518a056a-295e-4903-84a4-12ece7cb21ae" ItemType="ContextStore" Name="text" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" refParentItemId="b0af3977-9e16-4033-951d-67134e55193c" />
-    <SchemaItem Id="3a0f2b43-a3e3-40fb-ae7c-1bd4e19b4dbd" ItemType="ContextStore" Name="dummy" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="78a0f3a0-116f-48a7-8bdd-adf7c868ce85" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" refParentItemId="b0af3977-9e16-4033-951d-67134e55193c" />
+    <SchemaItem Id="3a0f2b43-a3e3-40fb-ae7c-1bd4e19b4dbd" ItemType="ContextStore" Name="_any" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="78a0f3a0-116f-48a7-8bdd-adf7c868ce85" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" refParentItemId="b0af3977-9e16-4033-951d-67134e55193c" />
     <SchemaItem Id="31d95e32-7624-4ba5-942b-f7b44669d2e3" ItemType="ContextStore" Name="phoneNumber" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" refParentItemId="b0af3977-9e16-4033-951d-67134e55193c" />
     <SchemaItem Id="bc542b2b-c979-4cb1-99c2-56e20691c72a" ItemType="WorkflowTask" Name="Send_SMS" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallTask" IsAbstract="false" SS02="*" I01="1" I05="1" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="518a056a-295e-4903-84a4-12ece7cb21ae" G10="600930a5-102b-43e8-8af1-677c6d7e79f3" G11="a215c2d6-e7aa-4b2f-97d9-03a8d019d4c6" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" refParentItemId="b0af3977-9e16-4033-951d-67134e55193c" />
     <SchemaItem Id="12f6868d-4fe8-4aa0-b935-012ddaa49712" ItemType="ServiceMethodCallParameter" Name="Parameters" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ce3ebb59-6528-4157-b51a-500f84a635f0" refSchemaExtensionId="34ba3c54-f8ff-4db6-b398-e9b8e50a5cef" refParentItemId="bc542b2b-c979-4cb1-99c2-56e20691c72a" />

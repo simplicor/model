@@ -282,7 +282,7 @@
       </xs:keyref>
     </xs:element>
   </xs:schema>
-  <SchemaExtension Id="bf952042-08e6-413d-be15-e2c3231fcbb4" Name="AS Commerce States" Version="1.17" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
+  <SchemaExtension Id="bf952042-08e6-413d-be15-e2c3231fcbb4" Name="AS Commerce States" Version="1.18" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
     <Description />
     <SchemaItemGroup Id="90d4656f-913b-45e1-a921-13a042e4b467" Name="Commerce States" RootItemType="Rule" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
     <SchemaItemGroup Id="2779caa4-a92c-44d2-8c3f-47c14190095e" Name="Commerce States" RootItemType="Workflow" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
@@ -539,6 +539,7 @@ INSERT INTO DimensionEntityRelation (Id, refTargetDimensionEntityId, refSourceDi
 INSERT INTO Counter (Id, ReferenceCode, ManageValidityByDate, Description) values(newid(), 'Payment_BonusPoints_Payment', 1, 'Bonusové body - úhrada')
 </M01>
     </SchemaItem>
+    <SchemaItem Id="9641a0bf-d2af-400b-a02c-54319fc28a7e" ItemType="DeploymentVersion" Name="1.18" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="1.18" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="40b2aa97-1f90-4c4a-8933-821b2245d18c" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
     <SchemaItem Id="980f10c5-6459-425b-ac80-d169b608e377" ItemType="DeploymentVersion" Name="1.15" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="1.15" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="40b2aa97-1f90-4c4a-8933-821b2245d18c" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
     <SchemaItem Id="bfe67f7c-2262-4503-a237-1ed5e6f85591" ItemType="DeploymentUpdateScriptActivity" Name="00010_AddRoles" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="980f10c5-6459-425b-ac80-d169b608e377">
       <M01>INSERT INTO AsapApplicationRole (Id, Name, IsSystemRole, RecordCreated) VALUES (newid(), 'DATA_Commerce_RestrictPurchaseOrderUpdateAfterOrdered', 1, getdate())</M01>
@@ -838,7 +839,7 @@ WHERE
 			&lt;xsl:with-param name="text" select="@InfoText1" /&gt;
 			&lt;xsl:with-param name="plneni" select="../@Text"/&gt;
 			&lt;xsl:with-param name="overrideExpDate" select="@OverrideExpirationDate"/&gt;
-			&lt;xsl:with-param name="planDelivery" select="../@DatePlanned" /&gt;
+			&lt;xsl:with-param name="agreedDelivery" select="../@DateAgreed" /&gt;
 		&lt;/xsl:call-template&gt;
 	&lt;/xsl:template&gt;
 
@@ -855,15 +856,15 @@ WHERE
 		&lt;xsl:param name="text" /&gt;
 		&lt;xsl:param name="plneni" /&gt;
 		&lt;xsl:param name="overrideExpDate" /&gt;
-		&lt;xsl:param name="planDelivery" /&gt;
+		&lt;xsl:param name="agreedDelivery" /&gt;
 			
-		&lt;xsl:if test="string($overrideExpDate) and AS:DifferenceInDays($planDelivery, $overrideExpDate) &amp;lt; 0 "&gt;
+		&lt;xsl:if test="string($overrideExpDate) and AS:DifferenceInDays($agreedDelivery, $overrideExpDate) &amp;lt; 0 "&gt;
 			&lt;xsl:call-template name="Exception"&gt;
 				&lt;xsl:with-param name="FieldName"&gt;&lt;xsl:value-of select="'OverrideExpirationDate'"/&gt;&lt;/xsl:with-param&gt;
 				&lt;xsl:with-param name="EntityName"&gt;&lt;xsl:value-of select="'DocumentBillingDetail'"/&gt;&lt;/xsl:with-param&gt;
 				&lt;xsl:with-param name="Message"&gt;&lt;xsl:value-of select="AS:GetString('Commerce_DocumentBillingDetail_OverrideExprirationDate', 
 						AS:FormatDate($overrideExpDate, 'dd.MM.yyyy'),
-						AS:FormatDate($planDelivery, 'dd.MM.yyyy'), $text, $referenceCode, $plneni
+						AS:FormatDate($agreedDelivery, 'dd.MM.yyyy'), $text, $referenceCode, $plneni
 				)"/&gt;&lt;/xsl:with-param&gt;
 				&lt;xsl:with-param name="Severity"&gt;&lt;xsl:value-of select="'High'"/&gt;&lt;/xsl:with-param&gt;
 			&lt;/xsl:call-template&gt;
@@ -1780,6 +1781,26 @@ WHERE
 				&lt;/xsl:call-template&gt;
 			&lt;/xsl:if&gt;
 
+			&lt;!--DatePlanned must be lower or equal than DateAgreed--&gt;
+			&lt;xsl:if test="string(@DatePlanned) and string(@DateAgreed)"&gt;
+				&lt;xsl:variable name="diffDateDelivery" select="AS:DifferenceInDays(@DatePlanned, @DateAgreed)" /&gt;
+				&lt;xsl:if test="$diffDateDelivery &amp;lt; 0"&gt;
+					&lt;xsl:call-template name="Exception"&gt;
+						&lt;xsl:with-param name="FieldName"&gt;
+							&lt;xsl:value-of select="'DatePlanned'"/&gt;
+						&lt;/xsl:with-param&gt;
+						&lt;xsl:with-param name="EntityName"&gt;
+							&lt;xsl:value-of select="'DocumentDelivery'"/&gt;
+						&lt;/xsl:with-param&gt;
+						&lt;xsl:with-param name="Message"&gt;
+							&lt;xsl:value-of select="AS:GetString('Commerce_DocumentDelivery_ErrorPlannedDate', AS:FormatDate(@DatePlanned, 'dd.MM.yyy'), AS:FormatDate(@DateAgreed, 'dd.MM.yyyy'))"/&gt;
+						&lt;/xsl:with-param&gt;
+						&lt;xsl:with-param name="Severity"&gt;
+							&lt;xsl:value-of select="'High'"/&gt;
+						&lt;/xsl:with-param&gt;
+					&lt;/xsl:call-template&gt;
+				&lt;/xsl:if&gt;
+			&lt;/xsl:if&gt;
 			&lt;!-- transportation type mandatory !--&gt;
 			&lt;xsl:if test="not(string(@refDocumentTransportationTypeId))"&gt;
 				&lt;xsl:call-template name="Exception"&gt;
@@ -2038,12 +2059,12 @@ WHERE
 			&lt;/xsl:call-template&gt;
 		&lt;/xsl:if&gt;
 		
-		&lt;xsl:if test="string(../@DatePlanned)"&gt;
+		&lt;xsl:if test="string(../@DateAgreed)"&gt;
 			&lt;xsl:call-template name="ExpirationDateValidation"&gt;
 				&lt;xsl:with-param name="referenceCode" select="../../@ReferenceCode"/&gt;
 				&lt;xsl:with-param name="text" select="@InfoText1" /&gt;
 				&lt;xsl:with-param name="overrideExpDate" select="@OverrideExpirationDate"/&gt;
-				&lt;xsl:with-param name="planDelivery" select="../@DatePlanned" /&gt;
+				&lt;xsl:with-param name="agreedDelivery" select="../@DateAgreed" /&gt;
 				&lt;xsl:with-param name="plneni" select="../@Text"/&gt;
 			&lt;/xsl:call-template&gt;
 		&lt;/xsl:if&gt;
@@ -2504,6 +2525,9 @@ WHERE
     </SchemaItem>
     <SchemaItem Id="58244344-ac87-43ad-a291-282fa52fec96" ItemType="String" Name="Commerce_PurchaseBillDuplicate" TargetType="CZ.Advantages.Asap.Schema.StringItem" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="926373d4-db0a-4cee-a4d5-1a8b4883b0c8" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4">
       <M01>Již existuje přijatá faktura '{1}' s číslem dokladu partnera '{0}'. Dodavatel '{2}'.</M01>
+    </SchemaItem>
+    <SchemaItem Id="67d40dfb-c09e-407b-a1a6-e1e95ddbd18d" ItemType="String" Name="Commerce_DocumentDelivery_ErrorPlannedDate" TargetType="CZ.Advantages.Asap.Schema.StringItem" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="926373d4-db0a-4cee-a4d5-1a8b4883b0c8" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4">
+      <M01>Datum plánovaného dodání {0} musí být menší nebo rozvno datu smluveného dodání {1}.</M01>
     </SchemaItem>
     <SchemaItem Id="7914032d-29e1-4b13-ad49-191e8f8acb45" ItemType="String" Name="Commerce_DocumentDelivery_Bill_WarehouseMandatoryOnDelivery" TargetType="CZ.Advantages.Asap.Schema.StringItem" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="926373d4-db0a-4cee-a4d5-1a8b4883b0c8" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4">
       <M01>Není možné dodat plnění {0} dokladu {1}. Není vyplněn sklad.</M01>

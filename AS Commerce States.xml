@@ -282,7 +282,7 @@
       </xs:keyref>
     </xs:element>
   </xs:schema>
-  <SchemaExtension Id="bf952042-08e6-413d-be15-e2c3231fcbb4" Name="AS Commerce States" Version="1.18" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
+  <SchemaExtension Id="bf952042-08e6-413d-be15-e2c3231fcbb4" Name="AS Commerce States" Version="1.19" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
     <Description />
     <SchemaItemGroup Id="90d4656f-913b-45e1-a921-13a042e4b467" Name="Commerce States" RootItemType="Rule" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
     <SchemaItemGroup Id="2779caa4-a92c-44d2-8c3f-47c14190095e" Name="Commerce States" RootItemType="Workflow" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
@@ -539,6 +539,7 @@ INSERT INTO DimensionEntityRelation (Id, refTargetDimensionEntityId, refSourceDi
 INSERT INTO Counter (Id, ReferenceCode, ManageValidityByDate, Description) values(newid(), 'Payment_BonusPoints_Payment', 1, 'Bonusové body - úhrada')
 </M01>
     </SchemaItem>
+    <SchemaItem Id="905f3ecb-6f00-4a52-a266-70b8491996b1" ItemType="DeploymentVersion" Name="1.19" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="1.19" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="40b2aa97-1f90-4c4a-8933-821b2245d18c" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
     <SchemaItem Id="9641a0bf-d2af-400b-a02c-54319fc28a7e" ItemType="DeploymentVersion" Name="1.18" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="1.18" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="40b2aa97-1f90-4c4a-8933-821b2245d18c" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
     <SchemaItem Id="980f10c5-6459-425b-ac80-d169b608e377" ItemType="DeploymentVersion" Name="1.15" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="1.15" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="40b2aa97-1f90-4c4a-8933-821b2245d18c" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
     <SchemaItem Id="bfe67f7c-2262-4503-a237-1ed5e6f85591" ItemType="DeploymentUpdateScriptActivity" Name="00010_AddRoles" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" refParentItemId="980f10c5-6459-425b-ac80-d169b608e377">
@@ -834,13 +835,16 @@ WHERE
 	&lt;/xsl:template&gt;
 	
 	&lt;xsl:template match="DocumentBillingDetail"&gt;
-		&lt;xsl:call-template name="ExpirationDateValidation"&gt;
-			&lt;xsl:with-param name="referenceCode" select="../../@ReferenceCode"/&gt;
-			&lt;xsl:with-param name="text" select="@InfoText1" /&gt;
-			&lt;xsl:with-param name="plneni" select="../@Text"/&gt;
-			&lt;xsl:with-param name="overrideExpDate" select="@OverrideExpirationDate"/&gt;
-			&lt;xsl:with-param name="agreedDelivery" select="../@DateAgreed" /&gt;
-		&lt;/xsl:call-template&gt;
+		&lt;xsl:variable name="bestBeforeDays" select="AS:LookupValue('616af6ef-9848-4247-b040-25d41b325e37',@refProductId)" /&gt;
+		&lt;xsl:if test="string($bestBeforeDays)"&gt;
+			&lt;xsl:call-template name="ExpirationDateValidation"&gt;
+				&lt;xsl:with-param name="referenceCode" select="../../@ReferenceCode"/&gt;
+				&lt;xsl:with-param name="text" select="@InfoText1" /&gt;
+				&lt;xsl:with-param name="plneni" select="../@Text"/&gt;
+				&lt;xsl:with-param name="overrideExpDate" select="@OverrideExpirationDate"/&gt;
+				&lt;xsl:with-param name="agreedDelivery" select="../@DateAgreed" /&gt;
+			&lt;/xsl:call-template&gt;
+		&lt;/xsl:if&gt;
 	&lt;/xsl:template&gt;
 
 &lt;/xsl:stylesheet&gt;</M01>
@@ -2059,7 +2063,9 @@ WHERE
 			&lt;/xsl:call-template&gt;
 		&lt;/xsl:if&gt;
 		
-		&lt;xsl:if test="string(../@DateAgreed)"&gt;
+		&lt;xsl:variable name="bestBeforeDays" select="AS:LookupValue('616af6ef-9848-4247-b040-25d41b325e37',@refProductId)" /&gt;
+		
+		&lt;xsl:if test="string(../@DateAgreed) and string($bestBeforeDays)"&gt;
 			&lt;xsl:call-template name="ExpirationDateValidation"&gt;
 				&lt;xsl:with-param name="referenceCode" select="../../@ReferenceCode"/&gt;
 				&lt;xsl:with-param name="text" select="@InfoText1" /&gt;

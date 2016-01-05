@@ -282,7 +282,7 @@
       </xs:keyref>
     </xs:element>
   </xs:schema>
-  <SchemaExtension Id="15a6ce70-b7c4-41c4-9f30-247fc949ea66" Name="AS Product" Version="2.8.1" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
+  <SchemaExtension Id="15a6ce70-b7c4-41c4-9f30-247fc949ea66" Name="AS Product" Version="2.8.2" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
     <Description />
     <SchemaItemGroup Id="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" Name="Product Management" RootItemType="Rule" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" />
     <SchemaItemGroup Id="cd5ccf82-5a54-4afb-a018-3e98ae366765" Name="PackageItemType" RootItemType="DataConstant" refParentGroupId="1e543e78-1224-4837-98b4-bc1f2570e749" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" />
@@ -1643,6 +1643,7 @@ ALTER TABLE [Product] DROP CONSTRAINT [DF_Product_WeightToleranceNegative]</M01>
     <SchemaItem Id="aa2fbd21-2556-4bbe-82cf-fd7d2f96e254" ItemType="DeploymentUpdateScriptActivity" Name="00020_Database_Column_Mapping_Product.Description" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="20" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" refParentItemId="477a97b5-8d57-4a09-8ab4-6363e02f4f2e">
       <M01>ALTER TABLE [Product] ADD [Description] NTEXT NULL</M01>
     </SchemaItem>
+    <SchemaItem Id="486e80bc-ae74-40ee-849a-a5c95c6a3ad5" ItemType="DeploymentVersion" Name="2.8.2" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2.8.2" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="f7edb0c9-302d-4e53-a6f4-9087add22f48" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" />
     <SchemaItem Id="4ce00bb4-4ba1-4398-bdd6-9ff129297f71" ItemType="DeploymentVersion" Name="1.10" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="1.10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="f7edb0c9-302d-4e53-a6f4-9087add22f48" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" />
     <SchemaItem Id="92d55a9c-f0f8-44f4-9ec6-0e4b480f4ea2" ItemType="DeploymentUpdateScriptActivity" Name="00010_Database_Object_Mapping_ProductVariety" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" refParentItemId="4ce00bb4-4ba1-4398-bdd6-9ff129297f71">
       <M01>CREATE TABLE [ProductVariety] (

@@ -2063,16 +2063,17 @@ WHERE
 			&lt;/xsl:call-template&gt;
 		&lt;/xsl:if&gt;
 		
-		&lt;xsl:variable name="bestBeforeDays" select="AS:LookupValue('616af6ef-9848-4247-b040-25d41b325e37',@refProductId)" /&gt;
-		
-		&lt;xsl:if test="string(../@DateAgreed) and string($bestBeforeDays)"&gt;
-			&lt;xsl:call-template name="ExpirationDateValidation"&gt;
-				&lt;xsl:with-param name="referenceCode" select="../../@ReferenceCode"/&gt;
-				&lt;xsl:with-param name="text" select="@InfoText1" /&gt;
-				&lt;xsl:with-param name="overrideExpDate" select="@OverrideExpirationDate"/&gt;
-				&lt;xsl:with-param name="agreedDelivery" select="../@DateAgreed" /&gt;
-				&lt;xsl:with-param name="plneni" select="../@Text"/&gt;
-			&lt;/xsl:call-template&gt;
+		&lt;xsl:if test="string(@refProductId)"&gt;
+			&lt;xsl:variable name="bestBeforeDays" select="AS:LookupValue('616af6ef-9848-4247-b040-25d41b325e37',@refProductId)" /&gt;
+			&lt;xsl:if test="string(../@DateAgreed) and string($bestBeforeDays)"&gt;
+				&lt;xsl:call-template name="ExpirationDateValidation"&gt;
+					&lt;xsl:with-param name="referenceCode" select="../../@ReferenceCode"/&gt;
+					&lt;xsl:with-param name="text" select="@InfoText1" /&gt;
+					&lt;xsl:with-param name="overrideExpDate" select="@OverrideExpirationDate"/&gt;
+					&lt;xsl:with-param name="agreedDelivery" select="../@DateAgreed" /&gt;
+					&lt;xsl:with-param name="plneni" select="../@Text"/&gt;
+				&lt;/xsl:call-template&gt;
+			&lt;/xsl:if&gt;
 		&lt;/xsl:if&gt;
 		
 		&lt;!--&lt;xsl:if test="string(@OverrideExpirationDate) and AS:DifferenceInDays(@ExpirationDate, @OverrideExpirationDate) &amp;lt; 0 "&gt;

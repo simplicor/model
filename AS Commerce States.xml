@@ -282,7 +282,7 @@
       </xs:keyref>
     </xs:element>
   </xs:schema>
-  <SchemaExtension Id="bf952042-08e6-413d-be15-e2c3231fcbb4" Name="AS Commerce States" Version="1.19" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
+  <SchemaExtension Id="bf952042-08e6-413d-be15-e2c3231fcbb4" Name="AS Commerce States" Version="1.20" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
     <Description />
     <SchemaItemGroup Id="90d4656f-913b-45e1-a921-13a042e4b467" Name="Commerce States" RootItemType="Rule" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />
     <SchemaItemGroup Id="2779caa4-a92c-44d2-8c3f-47c14190095e" Name="Commerce States" RootItemType="Workflow" refSchemaExtensionId="bf952042-08e6-413d-be15-e2c3231fcbb4" />

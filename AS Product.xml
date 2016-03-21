@@ -282,7 +282,7 @@
       </xs:keyref>
     </xs:element>
   </xs:schema>
-  <SchemaExtension Id="15a6ce70-b7c4-41c4-9f30-247fc949ea66" Name="AS Product" Version="3.0.1" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
+  <SchemaExtension Id="15a6ce70-b7c4-41c4-9f30-247fc949ea66" Name="AS Product" Version="3.0.2" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
     <Description />
     <SchemaItemGroup Id="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" Name="Product Management" RootItemType="Rule" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" />
     <SchemaItemGroup Id="cd5ccf82-5a54-4afb-a018-3e98ae366765" Name="PackageItemType" RootItemType="DataConstant" refParentGroupId="1e543e78-1224-4837-98b4-bc1f2570e749" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" />

@@ -282,7 +282,7 @@
       </xs:keyref>
     </xs:element>
   </xs:schema>
-  <SchemaExtension Id="15a6ce70-b7c4-41c4-9f30-247fc949ea66" Name="AS Product" Version="3.0.2" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
+  <SchemaExtension Id="15a6ce70-b7c4-41c4-9f30-247fc949ea66" Name="AS Product" Version="3.0.3" Copyright="(c) 2005-2007 Advantage Solutions, s. r. o.">
     <Description />
     <SchemaItemGroup Id="fe4fb4c2-f074-4eab-a0bc-24f791f0202e" Name="Product Management" RootItemType="Rule" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" />
     <SchemaItemGroup Id="cd5ccf82-5a54-4afb-a018-3e98ae366765" Name="PackageItemType" RootItemType="DataConstant" refParentGroupId="1e543e78-1224-4837-98b4-bc1f2570e749" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" />
@@ -2399,6 +2399,7 @@ ALTER TABLE [Product] DROP CONSTRAINT [DF_Product_IsActive]</M01>
 	[RecordCreated] DATETIME NULL,
 	[RecordUpdated] DATETIME NULL)</M01>
     </SchemaItem>
+    <SchemaItem Id="d86f36ef-b17a-4432-8766-50e63f30adb5" ItemType="DeploymentVersion" Name="3.0.3" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="3.0.3" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="f7edb0c9-302d-4e53-a6f4-9087add22f48" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" />
     <SchemaItem Id="dbbcae1e-b774-4941-bf46-f04919e02106" ItemType="DeploymentVersion" Name="2.1" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2.1" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="f7edb0c9-302d-4e53-a6f4-9087add22f48" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" />
     <SchemaItem Id="161b602d-d835-49c2-a94f-38560ba16b4e" ItemType="DeploymentUpdateScriptActivity" Name="00020_Database_Object_Mapping_ProductPackage" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="20" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" refParentItemId="dbbcae1e-b774-4941-bf46-f04919e02106">
       <M01>

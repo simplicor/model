@@ -5895,23 +5895,6 @@ ALTER TABLE [InventoryControlType] DROP CONSTRAINT [DF_InventoryControlType_IsAc
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
-    <SchemaItem Id="4361a96e-f309-4023-90b4-3463a24fb946" ItemType="Transformation" Name="test" TargetType="CZ.Advantages.Asap.Schema.EntityModel.XslTransformation" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66">
-      <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
-	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
-	xmlns:date="http://exslt.org/dates-and-times" exclude-result-prefixes="AS date"&gt;
-
-	&lt;xsl:template match="ROOT"&gt;
-		&lt;ROOT&gt;
-			&lt;xsl:apply-templates select="a"/&gt;
-		&lt;/ROOT&gt;
-	&lt;/xsl:template&gt;
-
-	&lt;xsl:template match="a"&gt;
-		&lt;xsl:value-of select="AS:LookupValue('708951ba-4939-40ba-8dc5-9405ffd65b16', '0B631A8D-91CC-4C18-AFDE-D1E55DBF40A3')"/&gt;
-	&lt;/xsl:template&gt;
-&lt;/xsl:stylesheet&gt;</M01>
-    </SchemaItem>
     <SchemaItem Id="4dc39a05-35b9-467a-bca4-203b151813b0" ItemType="Workflow" Name="Product_RemovePicture" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="1ed853d8-fb2d-4340-b771-c6bad66ed2ac" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" />
     <SchemaItem Id="7954487b-7e90-4415-9512-019242c22a3d" ItemType="ContextStore" Name="ProductPictureOnly" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="09e85880-2abd-4861-a21f-0ab0ef8988cc" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" refParentItemId="4dc39a05-35b9-467a-bca4-203b151813b0" />
     <SchemaItem Id="0cf9209d-4846-4a26-87d5-64e27a793e47" ItemType="ContextStore" Name="Product_parId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="15a6ce70-b7c4-41c4-9f30-247fc949ea66" refParentItemId="4dc39a05-35b9-467a-bca4-203b151813b0" />

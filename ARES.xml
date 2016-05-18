@@ -312,7 +312,7 @@
     <SchemaItem Id="aea793c3-95d9-408c-ba40-34801c8fa60b" ItemType="DataEntityColumn" Name="in9" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Vstup č. 9" SS03="in9" I01="8" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="32770269-a986-422d-b500-434f7406aa84" />
     <SchemaItem Id="0ebe7b71-ea28-4174-be5f-3763f16b9206" ItemType="DataEntityColumn" Name="in81" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Vstup č. 81" SS03="in81" I01="8" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="32770269-a986-422d-b500-434f7406aa84" />
     <SchemaItem Id="a6934f15-664e-4486-94be-4018c628095f" ItemType="DataEntityColumn" Name="in192" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Vstup č. 192" SS03="in192" I01="8" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="32770269-a986-422d-b500-434f7406aa84" />
-    <SchemaItem Id="b4fcf495-737a-476a-93e1-6d9c1aeb5d7c" ItemType="DataEntityColumn" Name="in23" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Vstup č. 23" SS03="in23" I01="8" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="32770269-a986-422d-b500-434f7406aa84" />
+    <SchemaItem Id="b4fcf495-737a-476a-93e1-6d9c1aeb5d7c" ItemType="DataEntityColumn" Name="in23" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Vstup č. 23 (Teplota)" SS03="in23" I01="8" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="32770269-a986-422d-b500-434f7406aa84" />
     <SchemaItem Id="0e6fa4ab-3db7-4874-93db-720199112b58" ItemType="DataEntityColumn" Name="refFleetVehicleId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Vůz" SS03="refFleetVehicleId" I01="10" I02="0" I03="1" I04="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G03="e493c530-964f-44ed-87af-5173d9e9210a" G04="c54413b6-eb88-49c8-a7ff-3bb942c1984e" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="32770269-a986-422d-b500-434f7406aa84" />
     <SchemaItem Id="a1eedebd-69d3-429d-9714-837c12f85a07" ItemType="DataEntityColumn" Name="in255" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Vstup č. 255" SS03="in255" I01="8" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="32770269-a986-422d-b500-434f7406aa84" />
     <SchemaItem Id="bb5053df-4d89-436c-a461-9670619018e0" ItemType="DataEntityColumn" Name="in65" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Vstup č. 65" SS03="in65" I01="8" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="32770269-a986-422d-b500-434f7406aa84" />
@@ -397,6 +397,33 @@
     <SchemaItem Id="bc4fa4f5-a7bd-4066-a490-911f92b7669e" ItemType="DataStructure" Name="SeeMe_GpsData" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructure" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="8414e697-413c-48fb-9416-5f638c22ce92" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" />
     <SchemaItem Id="1910d634-191f-4c2f-85f9-6e446023e774" ItemType="DataStructureEntity" Name="SeeMe_GpsData" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureEntity" IsAbstract="false" SS01="" I01="0" I02="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="144f393e-856f-4bed-968b-249c24438673" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="bc4fa4f5-a7bd-4066-a490-911f92b7669e" />
     <SchemaItem Id="51315e38-8bdc-403e-8bc1-dea6216d80cd" ItemType="DeploymentVersion" Name="2.2.0" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2.2.0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="4ab95332-fa1f-498c-84fc-53811027d54b" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" />
+    <SchemaItem Id="b127f623-f1e2-4986-b413-19a373e0c10f" ItemType="DeploymentUpdateScriptActivity" Name="00010_Database_Entity_SeeMe_GpsData" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="10" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="51315e38-8bdc-403e-8bc1-dea6216d80cd">
+      <M01>CREATE TABLE [SeeMe_GpsData] (
+	[Latitude] NVARCHAR(50) NULL,
+	[timestamp] DATETIME NULL,
+	[Temperature1] DECIMAL(28,10) NULL,
+	[refFleetVehicleId] UNIQUEIDENTIFIER NOT NULL,
+	[Longitude] NVARCHAR(50) NULL,
+	[RecordCreatedBy] UNIQUEIDENTIFIER NULL,
+	[RecordUpdatedBy] UNIQUEIDENTIFIER NULL,
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY NONCLUSTERED,
+	[RecordCreated] DATETIME NULL,
+	[RecordUpdated] DATETIME NULL)</M01>
+    </SchemaItem>
+    <SchemaItem Id="6c565833-6eed-4dd1-b42a-54b747c778b1" ItemType="DeploymentUpdateScriptActivity" Name="00030_Database_Field_FleetVehicle.SeeMe_ObjectId" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="30" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="51315e38-8bdc-403e-8bc1-dea6216d80cd">
+      <M01>ALTER TABLE [FleetVehicle] ADD [SeeMe_ObjectId] NVARCHAR(20) NULL</M01>
+    </SchemaItem>
+    <SchemaItem Id="6ada53a9-d123-4db2-81bd-fa7fdac87d72" ItemType="DeploymentUpdateScriptActivity" Name="00020_Database_Entity_SeeMe_GpsData_FK" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="20" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="51315e38-8bdc-403e-8bc1-dea6216d80cd">
+      <M01>
+ALTER TABLE [SeeMe_GpsData] ADD CONSTRAINT FK_SeeMe_GpsData_refFleetVehicleId_FleetVehicle
+	FOREIGN KEY (
+		[refFleetVehicleId]
+	)
+
+	REFERENCES [FleetVehicle] (
+		[Id]
+	)</M01>
+    </SchemaItem>
     <SchemaItem Id="72658a34-b444-4e23-8665-9d77f7da4bd2" ItemType="DeploymentVersion" Name="2.1.0" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.DeploymentVersion" IsAbstract="false" SS01="2.1.0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="4ab95332-fa1f-498c-84fc-53811027d54b" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" />
     <SchemaItem Id="38d0578a-0b51-4abe-be67-1d6b23fecad5" ItemType="DeploymentUpdateScriptActivity" Name="00030_Database_Entity_M2M_GpsData" TargetType="CZ.Advantages.Asap.Schema.DeploymentModel.ServiceCommandUpdateScriptActivity" IsAbstract="false" I01="30" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G05="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="72658a34-b444-4e23-8665-9d77f7da4bd2">
       <M01>
@@ -694,13 +721,14 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
 	&lt;xsl:param name="lastState"/&gt;
 	
 	&lt;xsl:variable name="apiKey" select="AS:GetConstant('SeeMe_ApiKey')"/&gt;
-	&lt;xsl:variable name="dateFromX" select="AS:isnull($lastState,
+	&lt;xsl:variable name="dateFrom" select="AS:isnull($lastState,
 			AS:FormatDate(AS:AddMinutes(date:date-time(),-1440), 'yyyy-MM-dd'))"/&gt;
-	&lt;xsl:variable name="dateTillX" select="AS:FormatDate(AS:AddMinutes(date:date-time(),-240), 'yyyy-MM-dd')"/&gt; 
+	&lt;xsl:variable name="dateTill" select="AS:FormatDate(AS:AddMinutes(date:date-time(),-240), 'yyyy-MM-dd')"/&gt; 
 	
-	&lt;!-- test data kvuli API --&gt;
+	&lt;!-- test data kvuli API 
 	&lt;xsl:variable name="dateFrom" select="'2016-01-01'"/&gt;
 	&lt;xsl:variable name="dateTill" select="'2016-01-02'"/&gt;
+	--&gt;
 	
 	&lt;xsl:template match="ROOT"&gt;
 		&lt;ROOT&gt;
@@ -1109,11 +1137,7 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
 		&lt;xsl:apply-templates select="AS:ToXml(Data)/FleetVehicle/nodes/response/node"/&gt;
 	&lt;/xsl:template&gt;
 
-&lt;!-- hours are added according to current timezone because M2M send data in format without timezone --&gt;	
 	&lt;xsl:template match="node"&gt;	
-		&lt;!-- 
-		TODO: kvuli reportum je potreba aby se ukladalo do M2M tabulek
-		--&gt;
 		&lt;SeeMe_GpsData
 			Id="{AS:GenerateId()}"
 			refFleetVehicleId="{../../../@Id}"
@@ -1465,6 +1489,7 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
     <SchemaItem Id="17fdf0b9-7720-4461-88a7-67b2674bd732" ItemType="DataEntityColumn" Name="NotEqual" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCall" IsAbstract="false" SS01="" I01="0" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="4da95828-d10e-4224-8461-debfa6284dfd" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="620fbcc3-c910-42e6-8629-ec2b8dfc969c" />
     <SchemaItem Id="293321ba-4d50-42d6-a2f7-ae9d7fb020b0" ItemType="DataEntityColumn" Name="NotEqual" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCall" IsAbstract="false" SS01="" I01="0" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="4da95828-d10e-4224-8461-debfa6284dfd" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="895a0c6c-db80-40d7-aeb6-35da07bda4ea" />
     <SchemaItem Id="3ac77316-c77c-4862-b3ac-bc0144c832cd" ItemType="DataEntityColumn" Name="GreaterThanOrEqual" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FunctionCall" IsAbstract="false" SS01="" I01="0" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="eb654e87-6c71-4219-9c0e-cdfd0c01f382" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="83ac30fa-f846-470c-98f4-892c3fae16e0" />
+    <SchemaItem Id="1fb9d09a-12f3-40d1-b082-dc9e0c39adde" ItemType="DataEntityColumn" Name="SeeMe_ObjectId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="SeeMe ID vozidla" SS03="SeeMe_ObjectId" I01="9" I02="20" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="e493c530-964f-44ed-87af-5173d9e9210a" />
     <SchemaItem Id="ca2bbd17-3ccc-4e68-a78e-a39abce7df89" ItemType="DataStructureFilterSet" Name="GetAllRatesByDate" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSet" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="d5058368-08b8-4536-9fe7-3a98eb37c882" />
     <SchemaItem Id="577e47f8-50b0-42d3-b4cd-a644bf4579a8" ItemType="DataStructureFilterSet" Name="GetVehiclesWithSeeMe_ObjectId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSet" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="ed2d71ec-b508-4e94-ab6f-5c2790c6a5e9" />
     <SchemaItem Id="1771b00c-30fa-4a6a-93ea-c55e3328b2a0" ItemType="DataStructureFilterSet" Name="GetVehiclesWithM2MKey" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureFilterSet" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="ed2d71ec-b508-4e94-ab6f-5c2790c6a5e9" />

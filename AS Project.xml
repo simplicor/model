@@ -1122,7 +1122,7 @@ stálý zákazník
         <Data>Stav tohoto úkolu</Data>
       </Documentation>
     </SchemaItem>
-    <SchemaItem Id="68aee58e-8879-4702-a1d4-82a8e86bf930" ItemType="DataEntityColumn" Name="DateFinished" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Dokončeno" SS03="DateFinished" I01="4" I02="0" I03="1" I04="0" L01="0" L02="1" B01="true" B02="false" B03="false" B04="false" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" refParentItemId="43a4a638-83ca-4591-9d4f-35cfd6e5a97f">
+    <SchemaItem Id="68aee58e-8879-4702-a1d4-82a8e86bf930" ItemType="DataEntityColumn" Name="DateFinished" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Dokončeno" SS03="DateFinished" I01="4" I02="0" I03="1" I04="1" L01="0" L02="1" B01="true" B02="false" B03="false" B04="false" B07="false" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" refParentItemId="43a4a638-83ca-4591-9d4f-35cfd6e5a97f">
       <Documentation Id="8673fdcc-d95e-4d5e-a292-5262ac2d442a" Category="USER_LONG_HELP" refSchemaItemId="68aee58e-8879-4702-a1d4-82a8e86bf930">
         <Data>Datum skutečného dokončení úkolu zaměstnancem nebo zařízením</Data>
       </Documentation>
@@ -1144,7 +1144,7 @@ stálý zákazník
       </Documentation>
     </SchemaItem>
     <SchemaItem Id="fc724a56-3a60-4753-aa34-9b4bfa49c819" ItemType="DataEntityColumn" Name="refBlockProjectStageId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Zablokovat fázi" SS03="refBlockProjectStageId" I01="10" I02="0" I03="1" I04="0" B01="true" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="8d636b90-cd46-4d81-bbf3-dd5bb5887669" G03="2c144909-27aa-4dd9-9d4c-a71bba810f16" G04="c54413b6-eb88-49c8-a7ff-3bb942c1984e" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" refParentItemId="43a4a638-83ca-4591-9d4f-35cfd6e5a97f" />
-    <SchemaItem Id="e6d2c3c0-669f-4dfa-b884-afcfa2300cee" ItemType="DataEntityColumn" Name="refProjectTaskResultTypeId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Výsledek" SS03="refProjectTaskResultTypeId" I01="10" I02="0" I03="1" I04="0" L01="0" L02="1" B01="true" B02="false" B03="false" B04="false" G01="4b7f1744-bd87-48df-9238-e0e237815460" G03="15b13d88-d9b4-41d8-acdd-0d841bc397d1" G04="c54413b6-eb88-49c8-a7ff-3bb942c1984e" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" refParentItemId="43a4a638-83ca-4591-9d4f-35cfd6e5a97f">
+    <SchemaItem Id="e6d2c3c0-669f-4dfa-b884-afcfa2300cee" ItemType="DataEntityColumn" Name="refProjectTaskResultTypeId" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Výsledek" SS03="refProjectTaskResultTypeId" I01="10" I02="0" I03="1" I04="1" L01="0" L02="1" B01="true" B02="false" B03="false" B04="false" B07="false" G01="4b7f1744-bd87-48df-9238-e0e237815460" G03="15b13d88-d9b4-41d8-acdd-0d841bc397d1" G04="c54413b6-eb88-49c8-a7ff-3bb942c1984e" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" refParentItemId="43a4a638-83ca-4591-9d4f-35cfd6e5a97f">
       <Documentation Id="edaa7730-34ca-40e6-9b61-a07d422d906c" Category="USER_LONG_HELP" refSchemaItemId="e6d2c3c0-669f-4dfa-b884-afcfa2300cee">
         <Data>Upřesňuje s jakým konkrétním výsledkem byl tento úkol dokončen. Např. úspěšně, neúspěšně, zrušen, apod.</Data>
       </Documentation>
@@ -1160,7 +1160,7 @@ stálý zákazník
         <Data>Osoba, která odpovídá za splnění úkolu v požadovaném termínu. </Data>
       </Documentation>
     </SchemaItem>
-    <SchemaItem Id="8659b2d4-2a75-49cd-9937-ed8a5036fc5d" ItemType="DataEntityColumn" Name="DateApproved" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Schváleno" SS03="DateApproved" I01="4" I02="0" I03="1" I04="0" L01="0" L02="1" B01="true" B02="false" B03="false" B04="false" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" refParentItemId="43a4a638-83ca-4591-9d4f-35cfd6e5a97f">
+    <SchemaItem Id="8659b2d4-2a75-49cd-9937-ed8a5036fc5d" ItemType="DataEntityColumn" Name="DateApproved" TargetType="CZ.Advantages.Asap.Schema.EntityModel.FieldMappingItem" IsAbstract="false" SS01="Schváleno" SS03="DateApproved" I01="4" I02="0" I03="1" I04="1" L01="0" L02="1" B01="true" B02="false" B03="false" B04="false" B07="false" refSchemaExtensionId="ccda3930-c9de-4f2d-99f9-39f182343ca0" refParentItemId="43a4a638-83ca-4591-9d4f-35cfd6e5a97f">
       <Documentation Id="faf62b27-3e9a-4e80-888f-1fc32db8afc0" Category="USER_LONG_HELP" refSchemaItemId="8659b2d4-2a75-49cd-9937-ed8a5036fc5d">
         <Data>Datum potvrzení splnění úkolu vedoucím projektu</Data>
       </Documentation>

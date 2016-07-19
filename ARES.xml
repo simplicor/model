@@ -721,15 +721,8 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
 	&lt;xsl:param name="lastState"/&gt;
 	
 	&lt;xsl:variable name="apiKey" select="AS:GetConstant('SeeMe_ApiKey')"/&gt;
-	&lt;xsl:variable name="dateFrom" select="AS:isnull($lastState,
-			AS:FormatDate(AS:AddMinutes(date:date-time(),-1440), 'yyyy-MM-dd'))"/&gt;
-	&lt;xsl:variable name="dateTill" select="AS:FormatDate(AS:AddMinutes(date:date-time(),-240), 'yyyy-MM-dd')"/&gt; 
-	
-	&lt;!-- test data kvuli API 
-	&lt;xsl:variable name="dateFrom" select="'2016-01-01'"/&gt;
-	&lt;xsl:variable name="dateTill" select="'2016-01-02'"/&gt;
-	--&gt;
-	
+	&lt;xsl:variable name="dateFrom" select="AS:isnull($lastState,AS:FormatDate(AS:AddMinutes(date:date-time(),-1440), 'yyyyMMddTHH:mm:ss'))"/&gt;
+	&lt;xsl:variable name="dateTill" select="AS:FormatDate(AS:AddMinutes(date:date-time(),-10), 'yyyyMMddTHH:mm:ss')"/&gt; 
 	&lt;xsl:template match="ROOT"&gt;
 		&lt;ROOT&gt;
 			&lt;File&gt;
@@ -753,9 +746,9 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
 						'&amp;amp;key=',$apiKey
 					)
 				)
-			"/&gt;
+			"/&gt; 
 		&lt;/xsl:variable&gt;
-		&lt;xsl:value-of select="concat('&amp;lt;FleetVehicle Id=&amp;quot;',@Id,'&amp;quot;&amp;gt;',substring($result, 40),'&amp;lt;/FleetVehicle&amp;gt;')"/&gt;
+&lt;xsl:value-of select="concat('&amp;lt;FleetVehicle Id=&amp;quot;',@Id,'&amp;quot;&amp;gt;',substring($result, 40),'&amp;lt;/FleetVehicle&amp;gt;')"/&gt;
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
@@ -866,6 +859,21 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
 			&lt;xsl:attribute name="DateTo"&gt;&lt;xsl:value-of select="AS:AddDays(@DateTo, -1)"/&gt;&lt;/xsl:attribute&gt;
 			&lt;xsl:copy-of select="*"/&gt;
 		&lt;/xsl:copy&gt;
+	&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</M01>
+    </SchemaItem>
+    <SchemaItem Id="43831152-fde3-47e1-8a4f-98403bd3d2cf" ItemType="Transformation" Name="SeeMe_Update_ResultState" TargetType="CZ.Advantages.Asap.Schema.EntityModel.XslTransformation" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="469c580c-6342-43c8-a6c4-d08cad26f8bf" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c">
+      <M01>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+	xmlns:AS="http://schema.advantages.cz/AsapFunctions"
+	xmlns:date="http://exslt.org/dates-and-times" exclude-result-prefixes="AS date"&gt;
+
+	&lt;xsl:param name="lastState"/&gt;
+
+	&lt;xsl:template match="ROOT"&gt;
+		&lt;ROOT&gt;
+			&lt;value&gt;&lt;xsl:value-of select="AS:isnull(/ROOT/File/Name, $lastState)"/&gt;&lt;/value&gt;
+		&lt;/ROOT&gt;
 	&lt;/xsl:template&gt;
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
@@ -1141,7 +1149,7 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
 		&lt;SeeMe_GpsData
 			Id="{AS:GenerateId()}"
 			refFleetVehicleId="{../../../@Id}"
-			timestamp="{translate(timestamp, ' ', 'T')}"
+			timestamp="{concat(substring(translate(timestamp, ' ', 'T'),1,string-length(timestamp)-2),':00')}"
 			Temperature1="{Temperature1}"
 			Longitude="{Longitude}"
 			Latitude="{Latitude}"
@@ -1328,7 +1336,7 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
     <SchemaItem Id="91cbb50e-f618-40db-9616-60ffe16df7c4" ItemType="ServiceMethodCallParameter" Name="Data" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="3e94d691-e045-426a-bc79-febc3562fa15" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9b8af23c-d441-48c4-a035-cc0b1dee609b" />
     <SchemaItem Id="d40751ea-b047-48f0-b10c-b60564a0696d" ItemType="WorkflowContextReference" Name="WQ_TextFile" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ccf070dd-9125-4253-80f4-f0db338e3479" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="91cbb50e-f618-40db-9616-60ffe16df7c4" />
     <SchemaItem Id="da75e0e7-81f6-43cc-bb99-f8c098e8be1b" ItemType="ServiceMethodCallParameter" Name="Parameters" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ce3ebb59-6528-4157-b51a-500f84a635f0" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9b8af23c-d441-48c4-a035-cc0b1dee609b" />
-    <SchemaItem Id="36fddaf0-32d5-40e2-9218-84be7603bc8f" ItemType="Workflow" Name="SeeMe_GpsDataLoader" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="3" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c">
+    <SchemaItem Id="36fddaf0-32d5-40e2-9218-84be7603bc8f" ItemType="Workflow" Name="SeeMe_GpsDataLoader" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c">
       <SchemaItemAncestor refAncestorId="c5edb03a-08f3-4497-ab85-20fe241d1f29" Id="b879b477-8970-4a12-b970-6ac674a6fa9d" refSchemaItemId="36fddaf0-32d5-40e2-9218-84be7603bc8f" />
     </SchemaItem>
     <SchemaItem Id="9b9e325a-7d1f-4fff-aef2-13e6798b73cd" ItemType="ContextStore" Name="FleetVehicle_Complete" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ed2d71ec-b508-4e94-ab6f-5c2790c6a5e9" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="36fddaf0-32d5-40e2-9218-84be7603bc8f" />
@@ -1337,6 +1345,7 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
     <SchemaItem Id="7029c4b8-5714-4320-8e87-0ea7400bd2b4" ItemType="ServiceMethodCallParameter" Name="XslScript" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="7eecc204-f38e-49fc-8875-fd6b4ba019fd" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9fe6752c-a086-4ea3-88f9-3c7acc99f5b1" />
     <SchemaItem Id="05c8ecb6-d644-461d-b414-d82c4575f029" ItemType="TransformationReference" Name="SeeMe_GetGpsData" TargetType="CZ.Advantages.Asap.Schema.EntityModel.TransformationReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="1cdafc76-457d-4835-b73d-e33562f4bbab" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="7029c4b8-5714-4320-8e87-0ea7400bd2b4" />
     <SchemaItem Id="44034b7a-6f29-4e79-bca6-aee85d44e55d" ItemType="ServiceMethodCallParameter" Name="Parameters" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ce3ebb59-6528-4157-b51a-500f84a635f0" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9fe6752c-a086-4ea3-88f9-3c7acc99f5b1" />
+    <SchemaItem Id="56a12103-465f-4d62-b7ee-abf61f7c2c5e" ItemType="WorkflowContextReference" Name="lastState" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="5b42a43e-2c4b-40ea-ac95-b4171bc5e19a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="44034b7a-6f29-4e79-bca6-aee85d44e55d" />
     <SchemaItem Id="d7deda08-f917-49ab-a49b-b439b6940b3e" ItemType="ServiceMethodCallParameter" Name="Data" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="3e94d691-e045-426a-bc79-febc3562fa15" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9fe6752c-a086-4ea3-88f9-3c7acc99f5b1" />
     <SchemaItem Id="3d74f3e0-f2b9-4e7b-9368-218c5a9225e6" ItemType="WorkflowContextReference" Name="FleetVehicle_Complete" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="9b9e325a-7d1f-4fff-aef2-13e6798b73cd" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="d7deda08-f917-49ab-a49b-b439b6940b3e" />
     <SchemaItem Id="cfc66118-d903-4f85-842b-1323da59abc9" ItemType="WorkflowTaskDependency" Name="After_01_LoadFleetVehicles_bySeeMe_ObjectId" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkflowTaskDependency" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="45f76e10-ecb4-44e4-a041-c3f1341f2037" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9fe6752c-a086-4ea3-88f9-3c7acc99f5b1" />
@@ -1350,7 +1359,7 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
     <SchemaItem Id="e7d3dc7e-08b0-46fb-a447-63b1300f75a6" ItemType="ServiceMethodCallParameter" Name="Data" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="3e94d691-e045-426a-bc79-febc3562fa15" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="3fd2ca94-0579-4d07-901a-f797f408b477" />
     <SchemaItem Id="f636973a-abab-487a-b2b0-6409e10bb2a6" ItemType="WorkflowContextReference" Name="Data" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="012c0531-ca33-4334-9b5d-1f84859413e9" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="e7d3dc7e-08b0-46fb-a447-63b1300f75a6" />
     <SchemaItem Id="435b5a4b-81fa-4990-9008-c86aaccf39da" ItemType="ServiceMethodCallParameter" Name="XslScript" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="7eecc204-f38e-49fc-8875-fd6b4ba019fd" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="3fd2ca94-0579-4d07-901a-f797f408b477" />
-    <SchemaItem Id="285f8df1-21c8-4a93-a4b7-f08548fd9a95" ItemType="TransformationReference" Name="GPS_Update_ResultState" TargetType="CZ.Advantages.Asap.Schema.EntityModel.TransformationReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="45c7f5fd-de0a-460f-bd4e-a90fe3237b8c" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="435b5a4b-81fa-4990-9008-c86aaccf39da" />
+    <SchemaItem Id="285f8df1-21c8-4a93-a4b7-f08548fd9a95" ItemType="TransformationReference" Name="SeeMe_Update_ResultState" TargetType="CZ.Advantages.Asap.Schema.EntityModel.TransformationReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="43831152-fde3-47e1-8a4f-98403bd3d2cf" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="435b5a4b-81fa-4990-9008-c86aaccf39da" />
     <SchemaItem Id="e4c8403d-c424-42ac-9322-c7d823fc9364" ItemType="WorkflowTaskDependency" Name="After_02_GetGpsData" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.WorkflowTaskDependency" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="9fe6752c-a086-4ea3-88f9-3c7acc99f5b1" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="3fd2ca94-0579-4d07-901a-f797f408b477" />
     <SchemaItem Id="62087577-7a9c-4a8c-99c0-9436cd7cc941" ItemType="Workflow" Name="M2M_GpsTrackLoader" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c">
       <SchemaItemAncestor refAncestorId="c5edb03a-08f3-4497-ab85-20fe241d1f29" Id="1a1fd3a8-eb24-4888-a7b3-3a1444f97c53" refSchemaItemId="62087577-7a9c-4a8c-99c0-9436cd7cc941" />
@@ -1470,7 +1479,7 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
     <SchemaItem Id="8fe448af-7579-4451-9aa0-38be8b9e1c91" ItemType="ServiceMethodCallParameter" Name="Parameters" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ff27a2ff-5965-4eed-b6dd-9cd040583d03" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="2cb732de-4a21-4e34-9e67-f09d8f7b81cb" />
     <SchemaItem Id="0f3406cc-c8f7-4f87-b1ae-c511e28d228d" ItemType="ServiceMethodCallParameter" Name="DataStructure" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="12495b9d-f2b9-4b70-b14c-7cb67784c9f3" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="2cb732de-4a21-4e34-9e67-f09d8f7b81cb" />
     <SchemaItem Id="de8493b0-b917-4379-9087-6debb678ab0f" ItemType="DataStructureReference" Name="FleetVehicle_Complete" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ed2d71ec-b508-4e94-ab6f-5c2790c6a5e9" G02="1771b00c-30fa-4a6a-93ea-c55e3328b2a0" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="0f3406cc-c8f7-4f87-b1ae-c511e28d228d" />
-    <SchemaItem Id="f53ea4a7-dbe5-484c-952e-089065fec540" ItemType="Workflow" Name="SeeMe_SaveGpsData" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="3" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" />
+    <SchemaItem Id="f53ea4a7-dbe5-484c-952e-089065fec540" ItemType="Workflow" Name="SeeMe_SaveGpsData" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" />
     <SchemaItem Id="bb68a80e-4a88-44b5-a20e-311308e5255a" ItemType="ContextStore" Name="SeeMe_GpsData" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="bc4fa4f5-a7bd-4066-a490-911f92b7669e" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="f53ea4a7-dbe5-484c-952e-089065fec540" />
     <SchemaItem Id="2fb6f24f-1f78-44eb-b1f9-afbb09b61d58" ItemType="ContextStore" Name="WQ_TextFile" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0e157367-9ecd-42e1-8e68-da905adceb6b" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="f53ea4a7-dbe5-484c-952e-089065fec540" />
     <SchemaItem Id="01a30783-ed3e-4112-96d7-162c988ddf6a" ItemType="WorkflowTask" Name="02_StoreData_SeeMe_GpsData" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallTask" IsAbstract="false" SS02="*" I01="1" I05="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="bb68a80e-4a88-44b5-a20e-311308e5255a" G10="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" G11="3c1c855d-3c06-49e1-bfbf-cf234134d083" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="f53ea4a7-dbe5-484c-952e-089065fec540" />

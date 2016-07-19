@@ -728,7 +728,9 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
 			&lt;File&gt;
 				&lt;Name&gt;&lt;xsl:value-of select="$dateTill"/&gt;&lt;/Name&gt;
 				&lt;Data&gt;
+				    &lt;xsl:value-of select="'&amp;lt;FleetVehicles&amp;gt;'"/&gt;
 					&lt;xsl:apply-templates select="FleetVehicle"/&gt;
+					&lt;xsl:value-of select="'&amp;lt;/FleetVehicles&amp;gt;'"/&gt;
 				&lt;/Data&gt;
 			&lt;/File&gt;
 		&lt;/ROOT&gt;
@@ -1142,10 +1144,9 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
 	&lt;/xsl:template&gt;
 	
 	&lt;xsl:template match="WorkQueueEntry"&gt;
-		&lt;xsl:apply-templates select="AS:ToXml(Data)/FleetVehicle/nodes/response/node"/&gt;
+		&lt;xsl:apply-templates select="AS:ToXml(Data)/FleetVehicles/FleetVehicle/nodes/response/node"/&gt;
 	&lt;/xsl:template&gt;
-
-	&lt;xsl:template match="node"&gt;	
+		&lt;xsl:template match="node"&gt;	
 		&lt;SeeMe_GpsData
 			Id="{AS:GenerateId()}"
 			refFleetVehicleId="{../../../@Id}"
@@ -1154,7 +1155,7 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
 			Longitude="{Longitude}"
 			Latitude="{Latitude}"
 		/&gt;
-	&lt;/xsl:template&gt;
+	&lt;/xsl:template&gt;	
 &lt;/xsl:stylesheet&gt;</M01>
     </SchemaItem>
     <SchemaItem Id="b91846b1-024c-4941-8529-67961b641c51" ItemType="Transformation" Name="M2M_SaveGpsRecord" TargetType="CZ.Advantages.Asap.Schema.EntityModel.XslTransformation" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="469c580c-6342-43c8-a6c4-d08cad26f8bf" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c">
@@ -1336,7 +1337,7 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
     <SchemaItem Id="91cbb50e-f618-40db-9616-60ffe16df7c4" ItemType="ServiceMethodCallParameter" Name="Data" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="3e94d691-e045-426a-bc79-febc3562fa15" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9b8af23c-d441-48c4-a035-cc0b1dee609b" />
     <SchemaItem Id="d40751ea-b047-48f0-b10c-b60564a0696d" ItemType="WorkflowContextReference" Name="WQ_TextFile" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextReference" IsAbstract="false" LS01="/" I01="9" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ccf070dd-9125-4253-80f4-f0db338e3479" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="91cbb50e-f618-40db-9616-60ffe16df7c4" />
     <SchemaItem Id="da75e0e7-81f6-43cc-bb99-f8c098e8be1b" ItemType="ServiceMethodCallParameter" Name="Parameters" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ce3ebb59-6528-4157-b51a-500f84a635f0" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="9b8af23c-d441-48c4-a035-cc0b1dee609b" />
-    <SchemaItem Id="36fddaf0-32d5-40e2-9218-84be7603bc8f" ItemType="Workflow" Name="SeeMe_GpsDataLoader" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c">
+    <SchemaItem Id="36fddaf0-32d5-40e2-9218-84be7603bc8f" ItemType="Workflow" Name="SeeMe_GpsDataLoader" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="3" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c">
       <SchemaItemAncestor refAncestorId="c5edb03a-08f3-4497-ab85-20fe241d1f29" Id="b879b477-8970-4a12-b970-6ac674a6fa9d" refSchemaItemId="36fddaf0-32d5-40e2-9218-84be7603bc8f" />
     </SchemaItem>
     <SchemaItem Id="9b9e325a-7d1f-4fff-aef2-13e6798b73cd" ItemType="ContextStore" Name="FleetVehicle_Complete" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ed2d71ec-b508-4e94-ab6f-5c2790c6a5e9" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="36fddaf0-32d5-40e2-9218-84be7603bc8f" />
@@ -1479,7 +1480,7 @@ CREATE INDEX [ix_FleetVehicle] ON [M2M_GpsData] ([refFleetVehicleId] ASC)</M01>
     <SchemaItem Id="8fe448af-7579-4451-9aa0-38be8b9e1c91" ItemType="ServiceMethodCallParameter" Name="Parameters" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ff27a2ff-5965-4eed-b6dd-9cd040583d03" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="2cb732de-4a21-4e34-9e67-f09d8f7b81cb" />
     <SchemaItem Id="0f3406cc-c8f7-4f87-b1ae-c511e28d228d" ItemType="ServiceMethodCallParameter" Name="DataStructure" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallParameter" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="12495b9d-f2b9-4b70-b14c-7cb67784c9f3" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="2cb732de-4a21-4e34-9e67-f09d8f7b81cb" />
     <SchemaItem Id="de8493b0-b917-4379-9087-6debb678ab0f" ItemType="DataStructureReference" Name="FleetVehicle_Complete" TargetType="CZ.Advantages.Asap.Schema.EntityModel.DataStructureReference" IsAbstract="false" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="ed2d71ec-b508-4e94-ab6f-5c2790c6a5e9" G02="1771b00c-30fa-4a6a-93ea-c55e3328b2a0" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="0f3406cc-c8f7-4f87-b1ae-c511e28d228d" />
-    <SchemaItem Id="f53ea4a7-dbe5-484c-952e-089065fec540" ItemType="Workflow" Name="SeeMe_SaveGpsData" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" />
+    <SchemaItem Id="f53ea4a7-dbe5-484c-952e-089065fec540" ItemType="Workflow" Name="SeeMe_SaveGpsData" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.Workflow" IsAbstract="false" I01="3" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" refSchemaItemGroupId="9b93eb2e-7041-4b46-990a-ca02bf830b3a" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" />
     <SchemaItem Id="bb68a80e-4a88-44b5-a20e-311308e5255a" ItemType="ContextStore" Name="SeeMe_GpsData" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="bc4fa4f5-a7bd-4066-a490-911f92b7669e" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="f53ea4a7-dbe5-484c-952e-089065fec540" />
     <SchemaItem Id="2fb6f24f-1f78-44eb-b1f9-afbb09b61d58" ItemType="ContextStore" Name="WQ_TextFile" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ContextStore" IsAbstract="false" I01="11" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G01="0e157367-9ecd-42e1-8e68-da905adceb6b" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="f53ea4a7-dbe5-484c-952e-089065fec540" />
     <SchemaItem Id="01a30783-ed3e-4112-96d7-162c988ddf6a" ItemType="WorkflowTask" Name="02_StoreData_SeeMe_GpsData" TargetType="CZ.Advantages.Asap.Schema.WorkflowModel.ServiceMethodCallTask" IsAbstract="false" SS02="*" I01="1" I05="0" B01="false" B02="false" B03="false" B04="false" B05="false" B06="false" B07="false" G07="bb68a80e-4a88-44b5-a20e-311308e5255a" G10="bbd7bd32-d40b-441a-bb5b-0b0fa89169d4" G11="3c1c855d-3c06-49e1-bfbf-cf234134d083" refSchemaExtensionId="ba28ea56-7b50-4c14-b0a6-bce110152e2c" refParentItemId="f53ea4a7-dbe5-484c-952e-089065fec540" />
